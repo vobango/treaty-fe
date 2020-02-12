@@ -19,10 +19,9 @@
     "dev": "run-p build:styles start",
     "dev:watch": "run-p build:styles start prettier",
     "start": "react-scripts start",
-    "build": "run-p build:styles:prod build",
+    "build": "run-p build:styles build:app",
 		"build:app": "react-scripts build",
     "build:styles": "postcss src/styles/index.css -o src/styles/tailwind.css",
-    "build:styles:prod": "env NODE_ENV=production npm run build:styles",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prettier": "onchange '**/*.tsx' -- prettier --write {{changed}}"
