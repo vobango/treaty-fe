@@ -1,5 +1,5 @@
 {
-  "name": "treaty-fe",
+  "name": "cofind-front-end-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,7 +16,7 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "dev": "run-p build:styles start",
+    "dev": "run-p build:styles start test",
     "dev:watch": "run-p build:styles start prettier",
     "start": "react-scripts start",
     "build": "env NODE_ENV=production run-s build:styles build:app",
