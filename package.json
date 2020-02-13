@@ -22,6 +22,7 @@
     "build": "env NODE_ENV=production run-s build:styles build:app",
 		"build:app": "react-scripts build",
     "build:styles": "postcss src/styles/index.css -o src/styles/tailwind.css",
+		"precommit": "npm test",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prettier": "onchange '**/*.tsx' -- prettier --write {{changed}}"
