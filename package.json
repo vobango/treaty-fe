@@ -20,13 +20,17 @@
     "dev:watch": "run-p build:styles start prettier",
     "start": "react-scripts start",
     "build": "env NODE_ENV=production run-s build:styles build:app",
-		"build:app": "react-scripts build",
+    "build:app": "react-scripts build",
     "build:styles": "postcss src/styles/index.css -o src/styles/tailwind.css",
-		"precommit": "npm test",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prettier": "onchange '**/*.tsx' -- prettier --write {{changed}}"
   },
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm test"
+		}
+	},
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -45,6 +49,7 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.0.5",
     "autoprefixer": "^9.7.4",
+    "husky": "^4.2.3",
     "npm-run-all": "^4.1.5",
     "onchange": "^6.1.0",
     "postcss-cli": "^7.1.0",
