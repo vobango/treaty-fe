@@ -5,7 +5,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = React.useState('');
 
   return (
-    <form className="flex flex-col items-stretch justify-center h-full px-3">
+    <form className="flex flex-col flex-grow items-stretch justify-center h-auto px-3">
       <h1 className="text-2xl text-center mb-3">Log in to CoFind</h1>
       <div>
         <label className="block" htmlFor="username">

@@ -3,7 +3,7 @@ import Login from './Login';
 
 const App: React.FC = () => {
   return (
-    <div className="w-full h-full text-gray-900">
+    <div className="text-gray-900 h-screen flex flex-col">
       <h1>CoFind logo</h1>
       <Login />
     </div>
