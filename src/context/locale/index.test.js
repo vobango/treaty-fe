@@ -1,6 +1,7 @@
 import React from 'react';
 import {render, screen, fireEvent} from '@testing-library/react';
-import {useLocale, LocaleProvider, locales} from './index';
+import {useLocale, locales} from './index';
+import {renderWithLocale} from '../../testUtils';
 
 describe('Locale context', function() {
   // Simple component to test out context
@@ -14,9 +15,6 @@ describe('Locale context', function() {
         <p>{translate('test')}</p>
       </div>
     );
-  };
-  const renderWithLocale = child => {
-    return render(<LocaleProvider>{child}</LocaleProvider>);
   };
 
   describe('useLocaleState hook', function() {

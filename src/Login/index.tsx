@@ -1,15 +1,19 @@
 import React from 'react';
+import {useLocale} from '../context/locale';
 
 const Login: React.FC = () => {
+  const {translate} = useLocale();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   return (
     <form className="flex flex-col flex-grow items-stretch justify-center h-auto px-3">
-      <h1 className="text-2xl text-center mb-3">Log in to CoFind</h1>
+      <h1 className="text-2xl text-center mb-3">
+        {translate('loginTo')} CoFind
+      </h1>
       <div>
         <label className="block" htmlFor="username">
-          Username
+          {translate('username')}
         </label>
         <input
           id="username"
@@ -20,7 +24,7 @@ const Login: React.FC = () => {
       </div>
       <div className="mt-2">
         <label className="block" htmlFor="password">
-          Password
+          {translate('password')}
         </label>
         <input
           id="password"
@@ -30,7 +34,9 @@ const Login: React.FC = () => {
           type="password"
         />
       </div>
-      <button className="bg-gray-300 mt-3 p-3 text-xl rounded-sm">Login</button>
+      <button className="bg-gray-300 mt-3 p-3 text-xl rounded-sm">
+        {translate('login')}
+      </button>
     </form>
   );
 };

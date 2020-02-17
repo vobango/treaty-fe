@@ -1,6 +1,18 @@
 {
+	"login": {
+		"en": "Login"
+	},
+	"loginTo": {
+		"en": "Log in to"
+	},
+	"password": {
+		"en": "Password"
+	},
 	"test": {
 		"en": "TEST KEY, DO NOT REMOVE",
 		"et": "KONTROLLVÕTI, MITTE EEMALDADA"
+	},
+	"username": {
+		"en": "Username"
 	}
 }
