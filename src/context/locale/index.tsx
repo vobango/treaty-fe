@@ -1,9 +1,11 @@
 import React, {Dispatch, SetStateAction} from 'react';
+import {translator} from '../../i18n';
 
 type ProviderProps = {children: React.ReactNode};
 const locales = {
   EN: 'en',
-  ET: 'ET'
+  ET: 'et',
+  RU: 'ru'
 };
 const LocaleStateContext = React.createContext<string | undefined>(undefined);
 const LocaleModifierContext = React.createContext<
@@ -22,15 +24,17 @@ function LocaleProvider({children}: ProviderProps) {
   );
 }
 
-function useLocaleState() {
-  const context = React.useContext(LocaleStateContext);
-  if (context === undefined) {
+function useLocale() {
+  const locale = React.useContext(LocaleStateContext);
+  const setLocale = React.useContext(LocaleModifierContext);
+
+  if (locale === undefined || setLocale === undefined) {
     throw new Error(
       'Locale state must be used within LocaleProvider component!'
     );
   }
 
-  return context;
+  return {locale, setLocale, translate: translator(locale)};
 }
 
-export {useLocaleState, LocaleProvider, locales};
+export {useLocale, LocaleProvider, locales};

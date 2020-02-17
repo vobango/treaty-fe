@@ -1,24 +1,42 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
-import {useLocaleState, LocaleProvider, locales} from './index';
+import {render, screen, fireEvent} from '@testing-library/react';
+import {useLocale, LocaleProvider, locales} from './index';
 
 describe('Locale context', function() {
   // Simple component to test out context
   const Component = () => {
-    const locale = useLocaleState();
+    const {locale, setLocale, translate} = useLocale();
 
-    return <div>{locale}</div>;
+    return (
+      <div>
+        <div>{locale}</div>
+        <button onClick={() => setLocale(locales.ET)}>Change locale</button>
+        <p>{translate('test')}</p>
+      </div>
+    );
+  };
+  const renderWithLocale = child => {
+    return render(<LocaleProvider>{child}</LocaleProvider>);
   };
 
   describe('useLocaleState hook', function() {
     it('should return the current context value', function() {
-      render(
-        <LocaleProvider>
-          <Component />
-        </LocaleProvider>
-      );
+      renderWithLocale(<Component />);
 
+      // Assume EN is the default locale
       expect(screen.getByText(locales.EN)).toBeDefined();
+    });
+
+    it('should return a function to update locale', async function() {
+      renderWithLocale(<Component />);
+
+      await fireEvent.click(screen.getByText(/change locale/i));
+
+      expect(screen.getByText(locales.ET)).toBeDefined();
+    });
+
+    it('should return a function to translate keys with given locale', function() {
+      renderWithLocale(<Component />);
     });
 
     it('should throw an error if used outside of context provider', function() {
