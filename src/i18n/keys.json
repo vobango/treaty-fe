@@ -1,4 +1,10 @@
 {
+	"error": {
+		"en": "Error"
+	},
+	"loading": {
+		"en": "Loading"
+	},
 	"login": {
 		"en": "Login"
 	},
@@ -7,6 +13,12 @@
 	},
 	"password": {
 		"en": "Password"
+	},
+	"register": {
+		"en": "Sign up"
+	},
+	"repeatPassword": {
+		"en": "Repeat password"
 	},
 	"test": {
 		"en": "TEST KEY, DO NOT REMOVE",
