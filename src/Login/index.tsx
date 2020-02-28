@@ -77,11 +77,11 @@ const Login: React.FC = () => {
           </div>
           {formVisible === 'register' && (
             <div className="mt-2">
-              <label className="block" htmlFor="password">
+              <label className="block" htmlFor="password-repeat">
                 {translate('repeatPassword')}
               </label>
               <input
-                id="password"
+                id="password-repeat"
                 className="border border-gray-700 rounded-sm px-1 w-full"
                 value={passwordRepeat}
                 onChange={e => setPasswordRepeat(e.target.value)}
