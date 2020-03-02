@@ -1,7 +1,7 @@
 import React, {SyntheticEvent} from 'react';
 import {useLocale} from '../context/locale';
 import {useQuery} from 'react-query';
-import fetch from '../utils/fetch';
+import '../utils/fetch';
 
 const Login: React.FC = () => {
   const {translate} = useLocale();
@@ -10,20 +10,20 @@ const Login: React.FC = () => {
   const [passwordRepeat, setPasswordRepeat] = React.useState('');
   const [formVisible, setFormVisible] = React.useState('');
   const handleQuery = async () => {
-    if (!formVisible) return;
+    if (!formVisible) return false;
     if (formVisible === 'login') {
-      await fetch('/api/login', {
+      return await fetch('/api/login', {
         method: 'POST',
         body: JSON.stringify({username, password})
       });
     } else {
-      await fetch('/api/register', {
+      return await fetch('/api/register', {
         method: 'POST',
         body: JSON.stringify({username, password, passwordRepeat})
       });
     }
   };
-  const {error, isFetching, refetch} = useQuery('login', handleQuery, {
+  const {error, isFetching, refetch} = useQuery(formVisible, handleQuery, {
     retry: false,
     manual: true
   });
