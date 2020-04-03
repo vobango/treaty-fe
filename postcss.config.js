@@ -8,7 +8,7 @@ module.exports = context => {
       require('autoprefixer'),
       context.env === 'production'
         ? purgecss({
-            content: ['./public/index.html', './src/**/*.tsx'],
+            content: ['./public/index.html', './src/**/*.js'],
             defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
           })
         : null
