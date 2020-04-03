@@ -1,6 +1,15 @@
 {
+	"contact": {
+		"en": "Contact"
+	},
 	"error": {
 		"en": "Error"
+	},
+	"howItWorks": {
+		"en": "How does it work?"
+	},
+	"jobOffers": {
+		"en": "Job offers"
 	},
 	"loading": {
 		"en": "Loading"
@@ -14,6 +23,12 @@
 	"logo": {
 		"en": "Cofind logo",
 		"et": "Cofind logo"
+	},
+	"offerWork": {
+		"en": "Offer work"
+	},
+	"offerWorkers": {
+		"en": "Offer workers"
 	},
 	"password": {
 		"en": "Password"
@@ -30,5 +45,8 @@
 	},
 	"username": {
 		"en": "Username"
+	},
+	"workerOffers": {
+		"en": "Worker offers"
 	}
 }
