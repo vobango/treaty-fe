@@ -11,6 +11,10 @@
 	"loginTo": {
 		"en": "Log in to"
 	},
+	"logo": {
+		"en": "Cofind logo",
+		"et": "Cofind logo"
+	},
 	"password": {
 		"en": "Password"
 	},
