@@ -1,19 +1,16 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React from 'react';
 import {translator} from '../../i18n';
 
-type ProviderProps = {children: React.ReactNode};
 const locales = {
   EN: 'en',
   ET: 'et',
   RU: 'ru'
 };
-const LocaleStateContext = React.createContext<string | undefined>(undefined);
-const LocaleModifierContext = React.createContext<
-  Dispatch<SetStateAction<string>> | undefined
->(undefined);
+const LocaleStateContext = React.createContext(undefined);
+const LocaleModifierContext = React.createContext(undefined);
 
 // Provider for consuming and setting locale
-function LocaleProvider({children}: ProviderProps) {
+function LocaleProvider({children}) {
   const [state, setState] = React.useState(locales.EN);
   return (
     <LocaleStateContext.Provider value={state}>

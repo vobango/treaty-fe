@@ -3,10 +3,7 @@ const users = {};
 const persist = () =>
   window.localStorage.setItem(usersKey, JSON.stringify(users));
 const load = () =>
-  Object.assign(
-    users,
-    JSON.parse(window.localStorage.getItem(usersKey) as string)
-  );
+  Object.assign(users, JSON.parse(window.localStorage.getItem(usersKey)));
 
 try {
   load();
@@ -18,14 +15,12 @@ const fakeReqHandlers = [
   {
     url: '/api/register',
     method: 'POST',
-    handler: async (url: any, config: any) => {
-      // console.log(url, config);
+    handler: async (url, config) => {
       const {body} = config;
       const {username, password, passwordRepeat} = JSON.parse(body);
       const id = hash(username);
       const passwordHash = hash(password);
 
-      // @ts-ignore
       if (users[id]) {
         throw new Error(`Username ${username} is already used.`);
       }
@@ -47,7 +42,6 @@ const fakeReqHandlers = [
       }
 
       const user = {id, username, passwordHash};
-      // @ts-ignore
       users[id] = user;
       persist();
 
@@ -63,11 +57,10 @@ const fakeReqHandlers = [
   {
     url: '/api/login',
     method: 'POST',
-    handler: async (url: string, config: any) => {
+    handler: async (url, config) => {
       const {body} = config;
       const {username, password} = JSON.parse(body);
       const id = hash(username);
-      // @ts-ignore
       const user = users[id] || {};
 
       if (user.passwordHash !== hash(password)) {
@@ -79,7 +72,7 @@ const fakeReqHandlers = [
   }
 ];
 
-function hash(str: string) {
+function hash(str) {
   let hash = 5381,
     i = str.length;
 
@@ -91,9 +84,7 @@ function hash(str: string) {
 
 const originalFetch = window.fetch;
 
-// @ts-ignore
-window.fetch = async (url, config: any) => {
-  // @ts-ignore
+window.fetch = async (url, config) => {
   let {handler} = fakeReqHandlers.find(
     handler => handler.url === url && handler.method === config.method
   );
@@ -114,10 +105,8 @@ window.fetch = async (url, config: any) => {
   }
 };
 
-const query = async function(...args: any) {
-  // @ts-ignore
+const query = async function(...args) {
   return await fetch(...args);
-  // return await res.json();
 };
 
 export default query;

@@ -1,9 +1,9 @@
-import React, {SyntheticEvent} from 'react';
+import React from 'react';
 import {useLocale} from '../context/locale';
 import {useQuery} from 'react-query';
 import '../utils/fetch';
 
-const Login: React.FC = () => {
+const Login = () => {
   const {translate} = useLocale();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -31,7 +31,7 @@ const Login: React.FC = () => {
   return (
     <form
       className="flex flex-col flex-grow items-stretch justify-center h-auto px-3"
-      onSubmit={async (e: SyntheticEvent) => {
+      onSubmit={async e => {
         e.preventDefault();
         if (!formVisible) {
           setFormVisible('');

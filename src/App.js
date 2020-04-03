@@ -6,7 +6,7 @@ import logo from './assets/images/logo.png';
 
 const queryConfig = {refetchAllOnWindowFocus: false};
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <ReactQueryConfigProvider config={queryConfig}>
       <LocaleProvider>

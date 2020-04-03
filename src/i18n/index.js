@@ -1,12 +1,12 @@
 import data from './keys.json';
 import {locales} from '../context/locale';
 
-const translations: {[index: string]: any} = data;
-export const translator = (locale: string) => {
+const translations = data;
+export const translator = locale => {
   if (!Object.values(locales).includes(locale))
     throw new Error(`Locale "${locale}" does not exist in defined locales`);
 
-  return (key: string): string => {
+  return key => {
     const value = translations[key];
 
     if (!value) {
