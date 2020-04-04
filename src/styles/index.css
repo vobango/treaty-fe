@@ -4,3 +4,7 @@
 /* purgecss end ignore */
 
 @tailwind utilities;
+
+.content-image {
+    filter: contrast(40%);
+}
