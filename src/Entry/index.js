@@ -2,14 +2,13 @@ import React from 'react';
 import {useLocale} from '../context/locale';
 import {useQuery} from 'react-query';
 
-// TODO: if this component handles both login and registration,
-//  maybe change the component name to reflect that
-const Login = () => {
+const Entry = () => {
   const {translate} = useLocale();
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [passwordRepeat, setPasswordRepeat] = React.useState('');
   const [formVisible, setFormVisible] = React.useState('');
+
   const handleQuery = async () => {
     if (!formVisible) return false;
     if (formVisible === 'login') {
@@ -128,11 +127,11 @@ const Login = () => {
             setFormVisible(formVisible === 'login' ? 'register' : 'login');
           }}
         >
-          {formVisible === 'login' ? 'Sign up' : 'Login'} instead
+          {formVisible === 'login' ? 'Sign up' : 'Entry'} instead
         </button>
       )}
     </form>
   );
 };
 
-export default Login;
+export default Entry;
