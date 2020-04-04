@@ -15,7 +15,7 @@ export default () => {
   ];
   return (
     <div className="w-full">
-      <img className="absolute" src={landing1} alt="workers" />
+      <img className="absolute content-image" src={landing1} alt="workers" />
       <div className="w-full h-48 bg-black opacity-75 absolute" />
       <div className="w-full py-6 px-16 relative z-10 flex items-baseline justify-between">
         <a href="/">

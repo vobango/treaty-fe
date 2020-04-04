@@ -1,8 +1,9 @@
 import React from 'react';
 import {useLocale} from '../context/locale';
 import {useQuery} from 'react-query';
-import '../utils/fetch';
 
+// TODO: if this component handles both login and registration,
+//  maybe change the component name to reflect that
 const Login = () => {
   const {translate} = useLocale();
   const [username, setUsername] = React.useState('');
