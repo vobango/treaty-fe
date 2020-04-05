@@ -15,7 +15,8 @@
 		"en": "Loading"
 	},
 	"login": {
-		"en": "Login"
+		"en": "Login",
+		"et": "Sisene"
 	},
 	"loginTo": {
 		"en": "Log in to"
@@ -34,7 +35,8 @@
 		"en": "Password"
 	},
 	"register": {
-		"en": "Sign up"
+		"en": "Sign up",
+		"et": "Uus kasutaja"
 	},
 	"repeatPassword": {
 		"en": "Repeat password"
@@ -48,5 +50,9 @@
 	},
 	"workerOffers": {
 		"en": "Worker offers"
+	},
+	"entryText": {
+		"en": "To start, make a choice",
+		"et": "Alustamiseks tee oma valik"
 	}
 }

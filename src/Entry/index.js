@@ -1,136 +1,28 @@
-import React from 'react';
-import {useLocale} from '../context/locale';
-import {useQuery} from 'react-query';
+import React, {useState} from 'react';
+
+import EntryPage from './EntryPage';
+import Login from './Login';
+import Register from './Register';
+import PasswordReset from './PasswordReset';
 
 const Entry = () => {
-  const {translate} = useLocale();
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [passwordRepeat, setPasswordRepeat] = React.useState('');
-  const [formVisible, setFormVisible] = React.useState('');
+  const [currentPage, setCurrentPage] = useState('entry');
 
-  const handleQuery = async () => {
-    if (!formVisible) return false;
-    if (formVisible === 'login') {
-      return await fetch('/api/login', {
-        method: 'POST',
-        body: JSON.stringify({username, password})
-      });
-    } else {
-      return await fetch('/api/register', {
-        method: 'POST',
-        body: JSON.stringify({username, password, passwordRepeat})
-      });
-    }
+  const changePage = page => {
+    setCurrentPage(page);
   };
-  const {error, isFetching, refetch} = useQuery(formVisible, handleQuery, {
-    retry: false,
-    manual: true
-  });
 
   return (
-    <form
-      className="flex flex-col flex-grow items-stretch justify-center h-auto px-3"
-      onSubmit={async e => {
-        e.preventDefault();
-        if (!formVisible) {
-          setFormVisible('');
-          return true;
-        }
-        await refetch();
-      }}
-    >
-      {formVisible && (
-        <>
-          <h1 className="text-2xl text-center mb-3">
-            {formVisible === 'login'
-              ? `${translate('loginTo')} CoFind`
-              : 'Create new user'}
-          </h1>
-          {!!error && (
-            <div className="text-red-600 text-center">{`${translate(
-              'error'
-            )}: ${error.message}`}</div>
-          )}
-          <div>
-            <label className="block" htmlFor="username">
-              {translate('username')}
-            </label>
-            <input
-              id="username"
-              className="border border-gray-700 rounded-sm px-1 w-full"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-            />
-          </div>
-          <div className="mt-2">
-            <label className="block" htmlFor="password">
-              {translate('password')}
-            </label>
-            <input
-              id="password"
-              className="border border-gray-700 rounded-sm px-1 w-full"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              type="password"
-            />
-          </div>
-          {formVisible === 'register' && (
-            <div className="mt-2">
-              <label className="block" htmlFor="password-repeat">
-                {translate('repeatPassword')}
-              </label>
-              <input
-                id="password-repeat"
-                className="border border-gray-700 rounded-sm px-1 w-full"
-                value={passwordRepeat}
-                onChange={e => setPasswordRepeat(e.target.value)}
-                type="password"
-              />
-            </div>
-          )}
-        </>
+    <>
+      {currentPage === 'entry' ? <EntryPage changePage={changePage} /> : ''}
+      {currentPage === 'login' ? <Login changePage={changePage} /> : ''}
+      {currentPage === 'register' ? <Register changePage={changePage} /> : ''}
+      {currentPage === 'resetPassword' ? (
+        <PasswordReset changePage={changePage} />
+      ) : (
+        ''
       )}
-      <button
-        className="bg-green-500 mt-3 p-3 text-xl text-white rounded"
-        onClick={e => {
-          if (!formVisible) {
-            e.preventDefault();
-            setFormVisible('login');
-          }
-        }}
-      >
-        {isFetching
-          ? translate('loading')
-          : formVisible === 'register'
-          ? translate('register')
-          : translate('login')}
-      </button>
-      {!formVisible && (
-        <button
-          className="bg-green-500 mt-3 p-3 text-xl text-white rounded"
-          onClick={e => {
-            if (!formVisible) {
-              e.preventDefault();
-              setFormVisible('register');
-            }
-          }}
-        >
-          New user
-        </button>
-      )}
-      {formVisible && (
-        <button
-          className="mt-3"
-          onClick={e => {
-            e.preventDefault();
-            setFormVisible(formVisible === 'login' ? 'register' : 'login');
-          }}
-        >
-          {formVisible === 'login' ? 'Sign up' : 'Entry'} instead
-        </button>
-      )}
-    </form>
+    </>
   );
 };
 
