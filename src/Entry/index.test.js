@@ -24,16 +24,17 @@ describe('Entry component', function() {
     expect(screen.getByText('EST'));
   });
 
-  describe('Entry flow', function() {
-    /*    it('should display loginScreen', async function() {
-      renderLogin();
+  describe('Login flow', function() {
+        it('should display loginScreen', async function() {
+          renderLogin();
 
-      // Choose login form
-      await fireEvent.click(screen.getByText('Login'));
+          // Choose login form
+          await fireEvent.click(screen.getByText('Login'));
 
-      expect(screen.getByLabelText(/username/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
-    });*/
+          expect(screen.getByText('Email:')).toBeInTheDocument();
+          expect(screen.getByText('Password:')).toBeInTheDocument();
+          expect(screen.getByText('Sign in')).toBeInTheDocument();
+        });
     // it('should display an error message when login fails', async function() {
     //   renderLogin();
     //
