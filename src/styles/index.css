@@ -8,3 +8,7 @@
 .content-image {
     filter: contrast(40%);
 }
+
+.bg-black-75 {
+    background: rgba(0, 0, 0, 0.75);
+}
