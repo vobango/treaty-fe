@@ -34,6 +34,7 @@ describe('Entry component', function() {
           expect(screen.getByText('Email:')).toBeInTheDocument();
           expect(screen.getByText('Password:')).toBeInTheDocument();
           expect(screen.getByText('Sign in')).toBeInTheDocument();
+          //expect(screen.getByText('Cancel')).toBeInTheDocument();
         });
     // it('should display an error message when login fails', async function() {
     //   renderLogin();

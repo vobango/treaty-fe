@@ -25,7 +25,7 @@ const Login = () => {
     }
   };
 
-  return <div>
+  return <div className="flex flex-col flex-grow justify-between h-auto px-4">
     <form>
       <label htmlFor="userEmail">
         Email:
@@ -55,6 +55,7 @@ const Login = () => {
     <button className="bg-green-400 hover:bg-green-500 w-full py-2 text-white" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
       Sign in
     </button>
+
   </div>;
 };
 
