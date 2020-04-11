@@ -32,14 +32,14 @@
 		"en": "Offer workers"
 	},
 	"password": {
-		"en": "Password"
+		"en": "Password*"
 	},
 	"register": {
 		"en": "Sign up",
 		"et": "Uus kasutaja"
 	},
 	"repeatPassword": {
-		"en": "Repeat password"
+		"en": "Repeat password*"
 	},
 	"test": {
 		"en": "TEST KEY, DO NOT REMOVE",
@@ -54,5 +54,20 @@
 	"entryText": {
 		"en": "To start, make a choice",
 		"et": "Alustamiseks tee oma valik"
+	},
+	"newAccount": {
+		"en": "Register new account"
+	},
+	"formEmail": {
+		"en": "Email*"
+	},
+	"cancelRegister": {
+		"en": "cancel"
+	},
+	"passwordMatchError": {
+		"en": "Passwords do not match!"
+	},
+	"generalRegisterError": {
+		"en": "Error Signing up with email and password"
 	}
 }

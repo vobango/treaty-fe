@@ -5,16 +5,16 @@ import {useLocale} from '../context/locale';
 const EntryPage = ({changePage}) => {
   const {translate} = useLocale();
   return (
-    <div className="flex flex-col flex-grow justify-between h-auto px-4">
+    <div className="flex flex-col flex-grow justify-between h-auto px-8">
       <a href="/" className="flex justify-center">
         <img
-          className="w-auto sm:h-36 mt-16"
+          className="w-auto sm:h-24 mt-8"
           src={logo}
           alt={translate('logo')}
         />
       </a>
       <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
-        <h1 className="text-xl text-gray-600 font-bold text-center px-16 mb-16">
+        <h1 className="text-lg text-gray-600 font-bold text-center px-8 mb-8">
           {translate('entryText')}
         </h1>
         <button

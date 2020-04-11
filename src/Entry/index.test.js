@@ -25,17 +25,17 @@ describe('Entry component', function() {
   });
 
   describe('Login flow', function() {
-        it('should display loginScreen', async function() {
-          renderLogin();
+    it('should display loginScreen', async function() {
+      renderLogin();
 
-          // Choose login form
-          await fireEvent.click(screen.getByText('Login'));
+      // Choose login form
+      await fireEvent.click(screen.getByText('Login'));
 
-          expect(screen.getByText('Email:')).toBeInTheDocument();
-          expect(screen.getByText('Password:')).toBeInTheDocument();
-          expect(screen.getByText('Sign in')).toBeInTheDocument();
-          //expect(screen.getByText('Cancel')).toBeInTheDocument();
-        });
+      expect(screen.getByText('Email:')).toBeInTheDocument();
+      expect(screen.getByText('Password:')).toBeInTheDocument();
+      expect(screen.getByText('Sign in')).toBeInTheDocument();
+      //expect(screen.getByText('Cancel')).toBeInTheDocument();
+    });
     // it('should display an error message when login fails', async function() {
     //   renderLogin();
     //
@@ -68,26 +68,31 @@ describe('Entry component', function() {
   });
 
   describe('Register flow', function() {
-    // it('should display inputs for username, password and password repeat', async function() {
-    //   renderLogin();
-    //
-    //   // Choose register form
-    //   await fireEvent.click(screen.getByText(/new user/i));
-    //
-    //   expect(screen.getByLabelText(/username/i)).toBeInTheDocument();
-    //   expect(screen.getAllByLabelText(/password/i, {exact: false}).length).toBe(
-    //     2
-    //   );
-    // });
-    // it('should be able to switch to login form from register', async function() {
-    //   renderLogin();
-    //
-    //   // Choose register form
-    //   await fireEvent.click(screen.getByText(/new user/i));
-    //
-    //   await fireEvent.click(screen.getByText(/login instead/i));
-    //
-    //   expect(screen.getByText(/log in to cofind/i)).toBeInTheDocument();
-    // });
+    it('should display inputs for username, password and password repeat', async function() {
+      renderLogin();
+
+      // Choose register form
+      await fireEvent.click(screen.getByText('Sign up'));
+
+      expect(screen.getByText('Register new account')).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('Email*')).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('Password*')).toBeInTheDocument();
+      expect(
+        screen.getByPlaceholderText('Repeat password*')
+      ).toBeInTheDocument();
+      expect(screen.getByText('Sign up')).toBeInTheDocument();
+      expect(screen.getByText('cancel')).toBeInTheDocument();
+    });
+
+    it('should be able to switch to login form from register', async function() {
+      renderLogin();
+
+      // Choose register form
+      await fireEvent.click(screen.getByText('Sign up'));
+
+      await fireEvent.click(screen.getByText('cancel'));
+
+      expect(screen.getByText('To start, make a choice'));
+    });
   });
 });
