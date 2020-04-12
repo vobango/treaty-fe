@@ -58,7 +58,7 @@
 	"newAccount": {
 		"en": "Register new account"
 	},
-	"formEmail": {
+	"email": {
 		"en": "Email*"
 	},
 	"cancelRegister": {
@@ -69,5 +69,8 @@
 	},
 	"generalRegisterError": {
 		"en": "Error Signing up with email and password"
+	},
+	"loginText": {
+		"en": "Login to your account"
 	}
 }

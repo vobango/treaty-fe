@@ -31,9 +31,11 @@ describe('Entry component', function() {
       // Choose login form
       await fireEvent.click(screen.getByText('Login'));
 
-      expect(screen.getByText('Email:')).toBeInTheDocument();
-      expect(screen.getByText('Password:')).toBeInTheDocument();
-      expect(screen.getByText('Sign in')).toBeInTheDocument();
+      expect(screen.getByText('Login to your account')).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('Email*')).toBeInTheDocument();
+      expect(screen.getByPlaceholderText('Password*')).toBeInTheDocument();
+      expect(screen.getByText('Login')).toBeInTheDocument();
+      expect(screen.getByText('cancel')).toBeInTheDocument();
       //expect(screen.getByText('Cancel')).toBeInTheDocument();
     });
     // it('should display an error message when login fails', async function() {

@@ -1,62 +1,81 @@
 import React, {useState} from 'react';
-import { auth } from "../firebase";
+import {auth} from '../firebase';
+import logo from '../assets/images/logo.png';
+import {useLocale} from '../context/locale';
 
-const Login = () => {
+const Login = ({changePage}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const {translate} = useLocale();
 
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
     auth.signInWithEmailAndPassword(email, password).catch(error => {
-      setError("Error signing in with password and email!");
-      console.error("Error signing in with password and email", error);
+      setError('Error signing in with password and email!');
+      console.error('Error signing in with password and email', error);
     });
   };
 
-  const onChangeHandler = (event) => {
+  const onChangeHandler = event => {
     const {name, value} = event.currentTarget;
 
-    if(name === 'userEmail') {
+    if (name === 'userEmail') {
       setEmail(value);
-    }
-    else if(name === 'userPassword'){
+    } else if (name === 'userPassword') {
       setPassword(value);
     }
   };
 
-  return <div className="flex flex-col flex-grow justify-between h-auto px-4">
-    <form>
-      <label htmlFor="userEmail">
-        Email:
-      </label>
-      <input
+  return (
+    <div className="flex flex-col flex-grow justify-between h-auto px-8">
+      <a href="/" className="flex justify-center">
+        <img
+          className="w-auto sm:h-24 mt-8"
+          src={logo}
+          alt={translate('logo')}
+        />
+      </a>
+      <h1 className="text-lg text-gray-600 font-bold text-center px-8 mb-8">
+        {translate('loginText')}
+      </h1>
+      <form>
+        <input
           type="email"
-          className=""
+          className="my-1 p-1 w-full border-b-2"
           name="userEmail"
-          value = {email}
-          placeholder="E.g: faruq123@gmail.com"
+          value={email}
+          placeholder={translate('email')}
           id="userEmail"
-          onChange = {(event) => onChangeHandler(event)}
-      />
-    </form>
-    <label htmlFor="userPassword" className="block">
-      Password:
-    </label>
-    <input
-        type="password"
-        className="mt-1 mb-3 p-1 w-full"
-        name="userPassword"
-        value = {password}
-        placeholder="Your Password"
-        id="userPassword"
-        onChange = {(event) => onChangeHandler(event)}
-    />
-    <button className="bg-green-400 hover:bg-green-500 w-full py-2 text-white" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
-      Sign in
-    </button>
-
-  </div>;
+          onChange={event => onChangeHandler(event)}
+        />
+        <input
+          type="password"
+          className="my-1 p-1 w-full border-b-2"
+          name="userPassword"
+          value={password}
+          placeholder={translate('password')}
+          id="userPassword"
+          onChange={event => onChangeHandler(event)}
+        />
+        {error ? <h1 className="text-red-600">{error}</h1> : null}
+      </form>
+      <button
+        className="bg-green-500 mt-4 p-4 text-3xl text-white rounded-lg md:w-full md:max-w-4xl"
+        onClick={event =>
+          signInWithEmailAndPasswordHandler(event, email, password)
+        }
+      >
+        {translate('login')}
+      </button>
+      <button
+        className="text-xl text-gray-600 font-bold my-8"
+        onClick={() => changePage('entry')}
+      >
+        {translate('cancelRegister')}
+      </button>
+    </div>
+  );
 };
 
 export default Login;

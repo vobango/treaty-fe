@@ -61,7 +61,7 @@ const Register = ({changePage}) => {
           className="my-1 p-1 w-full border-b-2"
           name="userEmail"
           value={email}
-          placeholder={translate('formEmail')}
+          placeholder={translate('email')}
           id="userEmail"
           onChange={event => onChangeHandler(event)}
         />
