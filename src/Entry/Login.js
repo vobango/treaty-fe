@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {auth} from '../firebase';
 import logo from '../assets/images/logo.png';
 import {useLocale} from '../context/locale';
+import entryStyles from './entryStyles';
 
 const Login = ({changePage}) => {
   const [email, setEmail] = useState('');
@@ -36,38 +37,38 @@ const Login = ({changePage}) => {
           alt={translate('logo')}
         />
       </a>
-      <h1 className="text-lg text-gray-600 font-bold text-center px-8 mb-8">
-        {translate('loginText')}
-      </h1>
-      <form>
-        <input
-          type="email"
-          className="my-1 p-1 w-full border-b-2"
-          name="userEmail"
-          value={email}
-          placeholder={translate('email')}
-          id="userEmail"
-          onChange={event => onChangeHandler(event)}
-        />
-        <input
-          type="password"
-          className="my-1 p-1 w-full border-b-2"
-          name="userPassword"
-          value={password}
-          placeholder={translate('password')}
-          id="userPassword"
-          onChange={event => onChangeHandler(event)}
-        />
-        {error ? <h1 className="text-red-600">{error}</h1> : null}
-      </form>
-      <button
-        className="bg-green-500 mt-4 p-4 text-3xl text-white rounded-lg md:w-full md:max-w-4xl"
-        onClick={event =>
-          signInWithEmailAndPasswordHandler(event, email, password)
-        }
-      >
-        {translate('login')}
-      </button>
+      <h1 className={entryStyles.headerText}>{translate('loginText')}</h1>
+      <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
+        <form className="md:w-1/3">
+          <input
+            type="email"
+            className={entryStyles.inputBox}
+            name="userEmail"
+            value={email}
+            placeholder={translate('email')}
+            id="userEmail"
+            onChange={event => onChangeHandler(event)}
+          />
+          <input
+            type="password"
+            className={entryStyles.inputBox}
+            name="userPassword"
+            value={password}
+            placeholder={translate('password')}
+            id="userPassword"
+            onChange={event => onChangeHandler(event)}
+          />
+          {error ? <h1 className="text-red-600">{error}</h1> : null}
+        </form>
+        <button
+          className={entryStyles.entryButton}
+          onClick={event =>
+            signInWithEmailAndPasswordHandler(event, email, password)
+          }
+        >
+          {translate('login')}
+        </button>
+      </div>
       <button
         className="text-xl text-gray-600 font-bold my-8"
         onClick={() => changePage('entry')}

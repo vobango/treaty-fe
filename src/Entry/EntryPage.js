@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../assets/images/logo.png';
 import {useLocale} from '../context/locale';
+import entryStyles from './entryStyles';
 
 const EntryPage = ({changePage}) => {
   const {translate} = useLocale();
@@ -14,17 +15,15 @@ const EntryPage = ({changePage}) => {
         />
       </a>
       <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
-        <h1 className="text-lg text-gray-600 font-bold text-center px-8 mb-8">
-          {translate('entryText')}
-        </h1>
+        <h1 className={entryStyles.headerText}>{translate('entryText')}</h1>
         <button
-          className="bg-green-500 mt4 p-4 text-3xl text-white rounded-lg md:w-full md:max-w-4xl"
+          className={entryStyles.entryButton}
           onClick={() => changePage('login')}
         >
           {translate('login')}
         </button>
         <button
-          className="bg-green-500 mt-8 p-4 text-3xl text-white rounded-lg md:w-full md:max-w-4xl"
+          className={entryStyles.entryButton}
           onClick={() => changePage('register')}
         >
           {translate('register')}
