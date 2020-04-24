@@ -73,7 +73,9 @@ export default () => {
           </h1>
           <Icon.Arrow className="h-8 lg:h-16" direction="left" />
         </div>
-        <p className="text-3xl lg:text-5xl">{translate('slogan')}</p>
+        <p className="text-3xl lg:text-5xl mt-4 tracking-wider">
+          {translate('slogan')}
+        </p>
       </div>
 
       {/* Shortcuts */}
@@ -86,7 +88,7 @@ export default () => {
             return (
               <div
                 key={headerKey}
-                className={`max-w-xs border-green-500 mx-12 lg:mx-0 py-6 lg:py-0 lg:px-12 text-center ${
+                className={`max-w-xs border-green-500 flex flex-col mx-12 lg:mx-0 py-6 lg:py-0 lg:px-12 text-center ${
                   i === 1
                     ? 'border-t-2 border-b-2 lg:border-t-0 lg:border-b-0 lg:border-l-2 lg:border-r-2'
                     : ''
@@ -96,7 +98,7 @@ export default () => {
                 <h2 className="font-bold text-3xl">{translate(headerKey)}</h2>
                 <p>{translate(contentKey)}</p>
                 <a
-                  className="bg-blue-500 rounded-lg block mt-6 py-2 px-4 text-white hover:shadow-outline active:bg-blue-600 focus:outline-none focus:shadow-outline"
+                  className="bg-blue-500 rounded-lg block mt-6 mx-auto py-2 px-6 text-white hover:shadow-outline active:bg-blue-600 focus:outline-none focus:shadow-outline"
                   href={to}
                 >
                   {translate('readMore')}
@@ -108,18 +110,21 @@ export default () => {
       </div>
 
       {/* How does it work */}
-      <div id="section-how-it-works" className="my-24 px-4 max-w-3xl mx-auto">
+      <div
+        id="section-how-it-works"
+        className="my-24 px-4 max-w-lg lg:max-w-3xl mx-auto"
+      >
         <h3 className="text-center text-3xl lg:text-5xl mb-4">
           {translate('howItWorks')}
         </h3>
         <p
-          className="px-2 lg:px-0"
+          className="px-2 lg:px-0 leading-relaxed"
           dangerouslySetInnerHTML={{__html: translate('howItWorksDesc')}}
         />
-        <ul className="mx-auto">
+        <ul className="mx-auto mt-4">
           {howItWorkSteps.map(step => (
             <li key={step} className="flex items-center my-3">
-              <Icon.ListPoint className="h-8 w-8 mr-6 text-green-500" />
+              <Icon.ListPoint className="h-8 w-8 mr-3 sm:mr-4 lg:mr-6 text-green-500" />
               <p className="max-w-xs lg:max-w-xl">{translate(step)}</p>
             </li>
           ))}
@@ -130,15 +135,15 @@ export default () => {
       <div
         id="section-for-worker"
         style={{backgroundImage: `url(${job_seeker})`}}
-        className="pt-12 pb-32 bg-contain lg:bg-cover"
+        className="pt-12 pb-32 lg:pb-48 bg-cover"
       >
-        <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wide">
+        <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wider">
           {translate('forWorker')}
         </h3>
       </div>
 
-      <div style={{marginTop: '-6rem'}} className="flex justify-center">
-        <div className="bg-white max-w-3xl p-6 shadow-2xl flex flex-col items-start">
+      <div className="flex justify-center mt-neg-6 lg:mt-neg-10">
+        <div className="bg-white max-w-3xl mx-4 p-6 shadow-2xl flex flex-col items-start">
           <p
             className="font-bold"
             dangerouslySetInnerHTML={{__html: translate('forWorkerIntro')}}
@@ -185,15 +190,15 @@ export default () => {
       <div
         id="section-for-employer"
         style={{backgroundImage: `url(${job_offer})`}}
-        className="pt-12 pb-32 bg-contain lg:bg-cover"
+        className="pt-12 pb-32 lg:pb-48 bg-cover"
       >
-        <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wide">
+        <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wider">
           {translate('forEmployer')}
         </h3>
       </div>
 
-      <div style={{marginTop: '-6rem'}} className="flex justify-center">
-        <div className="bg-white max-w-3xl p-6 shadow-2xl flex flex-col items-start">
+      <div className="flex justify-center mt-neg-6 lg:mt-neg-10">
+        <div className="bg-white max-w-3xl mx-4 p-6 shadow-2xl flex flex-col items-start">
           <p className="font-bold">{translate('forEmployerIntro')}</p>
           <ul>
             <li className="flex items-start my-3">
@@ -225,12 +230,15 @@ export default () => {
       </div>
 
       {/* Listings */}
-      <div id="section-listings" className="my-24 max-w-3xl mx-auto">
+      <div
+        id="section-listings"
+        className="my-24 mx-4 sm:mx-auto max-w-lg lg:max-w-3xl"
+      >
         <h3 className="text-center text-3xl lg:text-5xl mb-4">
           {translate('listings')}
         </h3>
-        <p className="px-4">{translate('listingsDescLong')}</p>
-        <div className="flex flex-col lg:flex-row justify-center mt-8 px-4">
+        <p>{translate('listingsDescLong')}</p>
+        <div className="flex flex-col lg:flex-row justify-center mt-8">
           <a
             className="flex items-center justify-center text-lg border-green-500 border-2 py-3 px-6 rounded-lg mb-6 lg:mb-0 lg:mr-10 hover:border-green-700 focus:outline-none focus:shadow-outline"
             href="/"

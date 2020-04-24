@@ -1,4 +1,8 @@
 {
+	"close": {
+		"en": "Close",
+		"et": "Sulge"
+	},
 	"contact": {
 		"en": "Contact",
 		"et": "Kontakt"
@@ -104,6 +108,10 @@
 	"logo": {
 		"en": "Cofind brings partners together",
 		"et": "Cofind toob partnerid kokku"
+	},
+	"menu": {
+		"en": "Menu",
+		"et": "Menüü"
 	},
 	"offerWork": {
 		"en": "Offer work",

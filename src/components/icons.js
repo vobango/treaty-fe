@@ -27,12 +27,27 @@ const Calendar = props => (
   </svg>
 );
 
+const Close = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+    />
+  </svg>
+);
+
 const ListPoint = props => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
       d="M17,12L12,17V14H8V10H12V7L17,12M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z"
     />
+  </svg>
+);
+
+const Menu = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path fill="currentColor" d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z" />
   </svg>
 );
 
@@ -91,7 +106,9 @@ const Tools = props => (
 export const Icon = {
   Arrow,
   Calendar,
+  Close,
   ListPoint,
+  Menu,
   Number,
   Search,
   Tools

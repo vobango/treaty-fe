@@ -2,10 +2,22 @@ import {useLocale} from '../../context/locale';
 import React from 'react';
 import Portal from '../../Portal';
 import {menuItems} from '../index';
+import {Icon} from '../../components/icons';
 
 export const MobileMenu = () => {
   const {translate} = useLocale();
   const [menuVisible, setMenuVisibility] = React.useState(false);
+
+  React.useEffect(() => {
+    const root = document.querySelector('#root');
+    if (!root) return;
+
+    if (menuVisible) {
+      root.classList.add('overflow-hidden');
+    } else {
+      root.classList.remove('overflow-hidden');
+    }
+  }, [menuVisible]);
 
   return (
     <div data-testid="mobile-menu">
@@ -37,13 +49,8 @@ export const MobileMenu = () => {
               onClick={() => setMenuVisibility(false)}
             >
               <div className="text-black">
-                <svg width={48} height={48} viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-                  />
-                </svg>
-                <span>Close</span>
+                <Icon.Close className="mx-auto w-12" />
+                <span>{translate('close')}</span>
               </div>
             </button>
           </div>
@@ -51,13 +58,8 @@ export const MobileMenu = () => {
       ) : (
         <button className="text-lg" onClick={() => setMenuVisibility(true)}>
           <div className="text-white">
-            <svg width={48} height={48} viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"
-              />
-            </svg>
-            <span>Menu</span>
+            <Icon.Menu className="mx-auto w-12" />
+            <span>{translate('menu')}</span>
           </div>
         </button>
       )}

@@ -55,6 +55,14 @@
 	.h-156 {
 		height: 56rem;
 	}
+
+	.mt-neg-6 {
+		margin-top: -6rem;
+	}
+
+	.mt-neg-10 {
+		margin-top: -10rem;
+	}
 }
 
 html {
