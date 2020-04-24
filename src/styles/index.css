@@ -43,9 +43,22 @@
 	font-display:auto;font-style:normal;font-weight:900;
 }
 
+@responsive {
+	.h-96 {
+		height: 36rem;
+	}
+
+	.h-128 {
+		height: 48rem;
+	}
+
+	.h-156 {
+		height: 56rem;
+	}
+}
+
 html {
 	font-family: co-text, sans-serif;
-
 }
 
 .bg-hero-img {
@@ -60,11 +73,10 @@ html {
 .bg-black-75 {
     background: rgba(0, 0, 0, 0.75);
 }
-
-.h-96 {
-	height: 36rem;
+.font-gothic {
+	font-family: "bernhard-gothic-urw", sans-serif;
 }
 
-.h-128 {
-	height: 48rem;
+.font-co-headline {
+	font-family: "co-headline", sans-serif;
 }

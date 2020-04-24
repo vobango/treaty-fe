@@ -5,7 +5,7 @@ import fetch from 'jest-fetch-mock';
 import {renderWithLocale} from '../testUtils';
 import Login from './index';
 
-describe('Login component', function() {
+describe.skip('Login component', function() {
   const renderLogin = () => {
     renderWithLocale(<Login />);
   };

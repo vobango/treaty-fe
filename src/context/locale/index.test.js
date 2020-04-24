@@ -21,8 +21,8 @@ describe('Locale context', function() {
     it('should return the current context value', function() {
       renderWithLocale(<Component />);
 
-      // Assume EN is the default locale
-      expect(screen.getByText(locales.EN)).toBeDefined();
+      // Assume ET is the default locale
+      expect(screen.getByText(locales.ET)).toBeDefined();
     });
 
     it('should return a function to update locale', async function() {

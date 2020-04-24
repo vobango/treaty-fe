@@ -4,18 +4,18 @@ import centerLogo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
 import {useMediaQuery} from 'react-responsive';
 import {screens} from '../utils/constants';
-import Portal from '../Portal';
 import job_seeker from '../assets/images/job_seeker.jpg';
 import job_offer from '../assets/images/job_offer.jpg';
 import hero from '../assets/images/landing_1.jpg';
+import {DesktopMenu} from './Menus/desktop';
+import {MobileMenu} from './Menus/mobile';
 
-const menuItems = [
-  {text: 'howItWorks', to: '/'},
-  {text: 'offerWork', to: '/'},
-  {text: 'offerWorkers', to: '/'},
-  {text: 'jobOffers', to: '/'},
-  {text: 'workerOffers', to: '/'},
-  {text: 'contact', to: '/'}
+export const menuItems = [
+  {text: 'howItWorks', to: '#section-how-it-works'},
+  {text: 'forWorker', to: '#section-for-worker'},
+  {text: 'forEmployer', to: '#section-for-employer'},
+  {text: 'listings', to: '#section-listings'},
+  {text: 'contact', to: '#section-footer'}
 ];
 
 const shortcuts = [
@@ -28,22 +28,9 @@ const shortcuts = [
         />
       </svg>
     ),
-    header: 'Tööotsijale',
-    content: 'Andmebaasi sisestatakse oma töösoovid ja oskused',
-    to: '/'
-  },
-  {
-    icon: (
-      <svg className="h-16 lg:h-24 mx-auto text-green-500" viewBox="0 0 24 24">
-        <path
-          fill="currentColor"
-          d="M19,4H18V2H16V4H8V2H6V4H5A2,2 0 0,0 3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6A2,2 0 0,0 19,4M19,20H5V10H19V20M5,8V6H19V8H5M10.56,18.46L16.5,12.53L15.43,11.47L10.56,16.34L8.45,14.23L7.39,15.29L10.56,18.46Z"
-        />
-      </svg>
-    ),
-    header: 'Tööpakkumised',
-    content: 'Parimad pakkumised erialalist tööd',
-    to: '/'
+    headerKey: 'forWorker',
+    contentKey: 'forWorkerDesc',
+    to: '#section-for-worker'
   },
   {
     icon: (
@@ -54,91 +41,24 @@ const shortcuts = [
         />
       </svg>
     ),
-    header: 'Tööandjale',
-    content: 'Ettevõtted, kes vajavad kiirelt vabu töökäsi',
-    to: '/'
+    headerKey: 'forEmployer',
+    contentKey: 'forEmployerDesc',
+    to: '#section-for-employer'
+  },
+  {
+    icon: (
+      <svg className="h-16 lg:h-24 mx-auto text-green-500" viewBox="0 0 24 24">
+        <path
+          fill="currentColor"
+          d="M19,4H18V2H16V4H8V2H6V4H5A2,2 0 0,0 3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6A2,2 0 0,0 19,4M19,20H5V10H19V20M5,8V6H19V8H5M10.56,18.46L16.5,12.53L15.43,11.47L10.56,16.34L8.45,14.23L7.39,15.29L10.56,18.46Z"
+        />
+      </svg>
+    ),
+    headerKey: 'jobOffers',
+    contentKey: 'listingsDesc',
+    to: '#section-listings'
   }
 ];
-
-const DesktopMenu = () => {
-  const {translate} = useLocale();
-
-  return (
-    <nav className="flex items-center justify-center">
-      <ul className="flex text-xl">
-        {menuItems.map(({text, to}) => {
-          return (
-            <li className="mx-6 text-white font-bold" key={text}>
-              <a
-                href={to}
-                className="border-0 border-b-2 border-transparent hover:border-white"
-              >
-                {translate(text)}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  );
-};
-
-const MobileMenu = () => {
-  const {translate} = useLocale();
-  const [menuVisible, setMenuVisibility] = React.useState(false);
-
-  return (
-    <div>
-      {menuVisible && (
-        <Portal id="menu">
-          <div className="bg-white fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-            <nav className="flex items-center justify-center">
-              <ul className="flex-col text-2xl">
-                {menuItems.map(({text, to}) => {
-                  return (
-                    <li className="m-6 text-black font-bold" key={text}>
-                      <a
-                        href={to}
-                        className="border-0 border-b-2 border-transparent hover:border-white"
-                      >
-                        {translate(text)}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-            <button
-              className="text-lg"
-              onClick={() => setMenuVisibility(false)}
-            >
-              <div className="text-black">
-                <svg width={48} height={48} viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-                  />
-                </svg>
-                <span>Close</span>
-              </div>
-            </button>
-          </div>
-        </Portal>
-      )}
-      <button className="text-lg" onClick={() => setMenuVisibility(true)}>
-        <div className="text-white">
-          <svg width={48} height={48} viewBox="0 0 24 24">
-            <path
-              fill="currentColor"
-              d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"
-            />
-          </svg>
-          <span>Menu</span>
-        </div>
-      </button>
-    </div>
-  );
-};
 
 const checkmark = (
   <svg className="h-8 w-8 mr-6 text-green-500" viewBox="0 0 24 24">
@@ -149,6 +69,8 @@ const checkmark = (
   </svg>
 );
 
+const howItWorkSteps = ['howItWorks-1', 'howItWorks-2', 'howItWorks-3'];
+
 export default () => {
   const {translate} = useLocale();
   const isDesktop = useMediaQuery({
@@ -157,18 +79,18 @@ export default () => {
 
   return (
     <div className="w-full relative">
+      {/* Navbar */}
       <div className="w-full py-6 px-4 lg:px-16 absolute z-10 flex items-end justify-between bg-black-75">
-        <a href="/">
-          <img
-            className="w-auto h-20 lg:h-24"
-            src={logo}
-            alt={translate('logo')}
-          />
-        </a>
+        <img
+          className="w-auto h-20 lg:h-24"
+          src={logo}
+          alt={translate('logo')}
+        />
         {isDesktop && <DesktopMenu />}
         {!isDesktop && <MobileMenu />}
       </div>
 
+      {/* Hero */}
       <div
         className="text-white w-full h-96 lg:h-128 bg-cover flex flex-col items-center justify-center"
         style={{backgroundImage: `url(${hero}`}}
@@ -177,31 +99,32 @@ export default () => {
           <svg className="h-8 lg:h-16" viewBox="0 0 24 24">
             <path
               fill="currentColor"
-              d="M2 12A10 10 0 0112 2a10 10 0 0110 10 10 10 0 01-10 10A10 10 0 012 12m8 5l5-5-5-5v10z"
+              d="M2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2A10,10 0 0,0 2,12M4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12M10,17L15,12L10,7V17Z"
             />
           </svg>
-          <h1 className="mx-4 text-4xl lg:text-6xl font-bold">
-            {'Cofind'.toUpperCase()}
+          <h1 className="mx-4 text-4xl lg:text-6xl font-bold uppercase">
+            Cofind
           </h1>
-          <svg className="h-8 lg:h-16" viewBox="0 0 24 24">
+          <svg className="h8 lg:h-16" viewBox="0 0 24 24">
             <path
               fill="currentColor"
-              d="M22 12a10 10 0 01-10 10A10 10 0 012 12 10 10 0 0112 2a10 10 0 0110 10m-8-5l-5 5 5 5V7z"
+              d="M22,12A10,10 0 0,0 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12M14,7L9,12L14,17V7Z"
             />
           </svg>
         </div>
-        <p className="text-3xl lg:text-5xl">toob partnerid kokku</p>
+        <p className="text-3xl lg:text-5xl">{translate('slogan')}</p>
       </div>
 
+      {/* Shortcuts */}
       <div
         className="z-20 flex flex-col items-center lg:justify-center"
         style={{marginTop: '-120px'}}
       >
         <div className="bg-white max-w-xs lg:max-w-full lg:pb-12 lg:pt-10 shadow-2xl lg:flex lg:justify-center">
-          {shortcuts.map(({icon, header, content, to}, i) => {
+          {shortcuts.map(({icon, headerKey, contentKey, to}, i) => {
             return (
               <div
-                key={header}
+                key={headerKey}
                 className={`max-w-xs border-green-500 mx-12 lg:mx-0 py-6 lg:py-0 lg:px-12 text-center ${
                   i === 1
                     ? 'border-t-2 border-b-2 lg:border-t-0 lg:border-b-0 lg:border-l-2 lg:border-r-2'
@@ -209,13 +132,13 @@ export default () => {
                 }`}
               >
                 {icon}
-                <h2 className="font-bold text-3xl">{header}</h2>
-                <p>{content}</p>
+                <h2 className="font-bold text-3xl">{translate(headerKey)}</h2>
+                <p>{translate(contentKey)}</p>
                 <a
                   className="bg-blue-500 rounded-lg block mt-6 py-2 px-4 text-white"
                   href={to}
                 >
-                  Vaata lähemalt
+                  {translate('readMore')}
                 </a>
               </div>
             );
@@ -223,61 +146,42 @@ export default () => {
         </div>
       </div>
 
-      <div className="my-24 px-4 max-w-3xl mx-auto">
+      {/* How does it work */}
+      <div id="section-how-it-works" className="my-24 px-4 max-w-3xl mx-auto">
         <h3 className="text-center text-3xl lg:text-5xl mb-4">
-          Kuidas see töötab?
+          {translate('howItWorks')}
         </h3>
-        <p className="px-2">
-          COFIND on suunatud ehitussektori peamisele puudusele - töö ja tööjõu
-          leidmise probleemile ja sellele, kui palju aega kulub ükskõik kumma
-          leidmiseks. <br /> See on lahendus, kus väga täpselt suunatud
-          pakkumine leiab kiiresti parima lahenduse. <br /> Ettevõte, kellel on
-          hetkeliselt puudu töökätest või on üle tööjõudu sisestavad oma väga
-          konkreetsed vajadused ning meie teeme ülejäänu. <br /> See on väga
-          täpselt suunatud pakkumise ja nõudluse vajaduse rahuldamine, kus nii
-          tööjõu pakkujad ja töökäte vajajad on võrdsed partnerid, kes tahavad
-          lahendada ühist probleemi - tööhõive probleemi - et keegi ei istuks
-          jõude, kui kusagil objekt põleb.
-        </p>
+        <p
+          className="px-2 lg:px-0"
+          dangerouslySetInnerHTML={{__html: translate('howItWorksDesc')}}
+        />
         <ul className="mx-auto">
-          <li className="flex items-center my-3">
-            {checkmark}{' '}
-            <p className="max-w-xs lg:max-w-xl">
-              Me otsime ja leiame Sulle parima partneri.
-            </p>
-          </li>
-          <li className="flex items-center my-3">
-            {checkmark}{' '}
-            <p className="max-w-xs lg:max-w-xl">
-              Me genereerime Sinu sinu sisestatud parameetritest teate ja
-              saadame selle laiali kõikidele, kes vajavad Sinu tööd või töökäsi.
-            </p>
-          </li>
-          <li className="flex items-center my-3">
-            {checkmark}{' '}
-            <p className="max-w-xs lg:max-w-xl">
-              Me teeme Sinu andmetest kuulutuse ja paneme selle oma lehele üles,
-              et ka need saaksid neid näha kelleni Sinu teade ei jõudnud.
-            </p>
-          </li>
+          {howItWorkSteps.map(step => (
+            <li key={step} className="flex items-center my-3">
+              {checkmark}{' '}
+              <p className="max-w-xs lg:max-w-xl">{translate(step)}</p>
+            </li>
+          ))}
         </ul>
       </div>
 
+      {/* Description 1 */}
       <div
+        id="section-for-worker"
         style={{backgroundImage: `url(${job_seeker})`}}
         className="pt-12 pb-32 bg-contain lg:bg-cover"
       >
         <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wide">
-          Tööotsijale
+          {translate('forWorker')}
         </h3>
       </div>
 
       <div style={{marginTop: '-6rem'}} className="flex justify-center">
         <div className="bg-white max-w-3xl p-6 shadow-2xl">
-          <p className="font-bold">
-            Töötajad koristavad juba teist nädalat 20m<sup>2</sup> suurust
-            ruumi?
-          </p>
+          <p
+            className="font-bold"
+            dangerouslySetInnerHTML={{__html: translate('forWorkerIntro')}}
+          />
           <ul>
             <li className="flex items-start my-3">
               <svg className="w-8 text-green-500 mr-3" viewBox="0 0 24 24">
@@ -287,8 +191,7 @@ export default () => {
                 />
               </svg>
               <p className="max-w-xs lg:max-w-2xl">
-                Sisesta oma väga konkreetsed soovid, et saaksime hakata otsima
-                Sulle parimat partnerit!
+                {translate('forWorker-1')}
               </p>
             </li>
             <li className="flex items-start my-3">
@@ -299,9 +202,7 @@ export default () => {
                 />
               </svg>
               <p className="max-w-xs lg:max-w-2xl">
-                Vähesed kuid konkreetsed andmed annavad võimaluse suunata
-                tööpakkumine täpselt nendele firmadele, kellel on Sinu
-                vajadustele vastavad spetsialistid ajutiselt üle.
+                {translate('forWorker-2')}
               </p>
             </li>
             <li className="flex items-center my-3">
@@ -312,36 +213,36 @@ export default () => {
                 />
               </svg>
               <p className="max-w-xs lg:max-w-2xl">
-                Saada mehed korraks teisele objektile, mille me leiame Sinu
-                eest.
+                {translate('forWorker-3')}
               </p>
             </li>
           </ul>
         </div>
       </div>
 
+      {/* Divider/logo */}
       <div className="py-24 lg:py-40">
         <img
           className="h-20 lg:h-32 mx-auto"
           src={centerLogo}
-          alt="Cofind - brings partners together"
+          alt={translate('logo')}
         />
       </div>
 
+      {/* Description 2 */}
       <div
+        id="section-for-employer"
         style={{backgroundImage: `url(${job_offer})`}}
         className="pt-12 pb-32 bg-contain lg:bg-cover"
       >
         <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wide">
-          Tööandjale
+          {translate('forEmployer')}
         </h3>
       </div>
 
       <div style={{marginTop: '-6rem'}} className="flex justify-center">
         <div className="bg-white max-w-3xl p-6 shadow-2xl">
-          <p className="font-bold">
-            Objekt on algamas, aga häid mehi on raske leida?
-          </p>
+          <p className="font-bold"></p>
           <ul>
             <li className="flex items-start my-3">
               <svg className="w-8 text-blue-500 mr-3" viewBox="0 0 24 24">
@@ -351,8 +252,7 @@ export default () => {
                 />
               </svg>
               <p className="max-w-xs lg:max-w-2xl">
-                Sisesta oma väga konkreetsed soovid, et saaksime hakata otsima
-                Sulle parimat partnerit!
+                {translate('forEmployer-1')}
               </p>
             </li>
             <li className="flex items-start my-3">
@@ -363,9 +263,7 @@ export default () => {
                 />
               </svg>
               <p className="max-w-xs lg:max-w-2xl">
-                Vähesed kuid konkreetsed andmed annavad võimaluse suunata
-                tööpakkumine täpselt nendele firmadele, kellel on Sinu
-                vajadustele vastavad spetsialistid ajutiselt üle.
+                {translate('forEmployer-2')}
               </p>
             </li>
             <li className="flex items-center my-3">
@@ -376,32 +274,25 @@ export default () => {
                 />
               </svg>
               <p className="max-w-xs lg:max-w-2xl">
-                Meie leiame head mehed ilma suurema vaevata Sinu eest.
+                {translate('forEmployer-3')}
               </p>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="my-24 max-w-3xl mx-auto">
+      {/* Listings */}
+      <div id="section-listings" className="my-24 max-w-3xl mx-auto">
         <h3 className="text-center text-3xl lg:text-5xl mb-4">
-          Vaata kuulutusi
+          {translate('listings')}
         </h3>
-        <p className="px-4">
-          Meie andmebaasist leiad parima võimaliku partneri kiiresti ilma, et
-          peaksid ise palju vaeva nägema. Andmebaasis vahetuvad pakkumised
-          põhimõtteliselt onlines, sest meie täpselt suunatud pakkumised aitavad
-          leida parima partneri kiiremini kui keegi teine. Kui baasis Sulle
-          sobivat pakkumist pole hetkel, siis oota natuke ja proovi uuesti. Kui
-          ikka ei leia siis sisesta oma parameetrid ja me saadame Sinu pakkumise
-          täpselt neile, kellel on Sinu tööd vaja.
-        </p>
+        <p className="px-4">{translate('listingsDescLong')}</p>
         <div className="flex flex-col lg:flex-row justify-center mt-8 px-4">
           <a
             className="flex items-center justify-center text-lg border-green-500 border-2 py-3 px-6 rounded-lg mb-6 lg:mb-0 lg:mr-10"
             href="/"
           >
-            Vaata töökuulutusi{' '}
+            {translate('viewJobOffers')}
             <svg className="w-8 text-green-500 ml-2" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
@@ -413,7 +304,7 @@ export default () => {
             href="/"
             className="flex items-center justify-center text-lg border-blue-500 border-2 py-3 px-6 rounded-lg"
           >
-            Vaata tööjõukuulutusi{' '}
+            {translate('viewWorkerOffers')}
             <svg className="w-8 text-blue-500 ml-2" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
@@ -424,7 +315,11 @@ export default () => {
         </div>
       </div>
 
-      <footer className="p-6 bg-gray-800 text-white flex flex-col-reverse lg:flex-row">
+      {/* Footer */}
+      <footer
+        id="section-footer"
+        className="p-6 bg-gray-800 text-white flex flex-col-reverse lg:flex-row"
+      >
         <img
           className="w-auto h-20 mx-auto lg:mx-0"
           src={logo}
