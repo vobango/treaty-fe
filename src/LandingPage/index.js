@@ -96,7 +96,7 @@ export default () => {
                 <h2 className="font-bold text-3xl">{translate(headerKey)}</h2>
                 <p>{translate(contentKey)}</p>
                 <a
-                  className="bg-blue-500 rounded-lg block mt-6 py-2 px-4 text-white"
+                  className="bg-blue-500 rounded-lg block mt-6 py-2 px-4 text-white hover:shadow-outline active:bg-blue-600 focus:outline-none focus:shadow-outline"
                   href={to}
                 >
                   {translate('readMore')}
@@ -138,7 +138,7 @@ export default () => {
       </div>
 
       <div style={{marginTop: '-6rem'}} className="flex justify-center">
-        <div className="bg-white max-w-3xl p-6 shadow-2xl">
+        <div className="bg-white max-w-3xl p-6 shadow-2xl flex flex-col items-start">
           <p
             className="font-bold"
             dangerouslySetInnerHTML={{__html: translate('forWorkerIntro')}}
@@ -163,6 +163,12 @@ export default () => {
               </p>
             </li>
           </ul>
+          <a
+            href="/sign-up"
+            className="bg-green-500 rounded-lg px-6 py-3 mt-3 mb-2 mx-auto text-white font-bold hover:bg-green-600 focus:outline-none focus:shadow-outline active:bg-green-700"
+          >
+            {translate('registerNow')}
+          </a>
         </div>
       </div>
 
@@ -187,7 +193,7 @@ export default () => {
       </div>
 
       <div style={{marginTop: '-6rem'}} className="flex justify-center">
-        <div className="bg-white max-w-3xl p-6 shadow-2xl">
+        <div className="bg-white max-w-3xl p-6 shadow-2xl flex flex-col items-start">
           <p className="font-bold">{translate('forEmployerIntro')}</p>
           <ul>
             <li className="flex items-start my-3">
@@ -209,6 +215,12 @@ export default () => {
               </p>
             </li>
           </ul>
+          <a
+            href="/sign-up"
+            className="bg-blue-500 rounded-lg px-6 py-3 mt-3 mb-2 mx-auto text-white font-bold hover:bg-blue-600 focus:outline-none focus:shadow-outline active:bg-blue-700"
+          >
+            {translate('registerNow')}
+          </a>
         </div>
       </div>
 
@@ -220,7 +232,7 @@ export default () => {
         <p className="px-4">{translate('listingsDescLong')}</p>
         <div className="flex flex-col lg:flex-row justify-center mt-8 px-4">
           <a
-            className="flex items-center justify-center text-lg border-green-500 border-2 py-3 px-6 rounded-lg mb-6 lg:mb-0 lg:mr-10"
+            className="flex items-center justify-center text-lg border-green-500 border-2 py-3 px-6 rounded-lg mb-6 lg:mb-0 lg:mr-10 hover:border-green-700 focus:outline-none focus:shadow-outline"
             href="/"
           >
             {translate('viewJobOffers')}
@@ -228,7 +240,7 @@ export default () => {
           </a>
           <a
             href="/"
-            className="flex items-center justify-center text-lg border-blue-500 border-2 py-3 px-6 rounded-lg"
+            className="flex items-center justify-center text-lg border-blue-500 border-2 py-3 px-6 rounded-lg hover:border-blue-700 focus:outline-none focus:shadow-outline"
           >
             {translate('viewWorkerOffers')}
             <Icon.Arrow

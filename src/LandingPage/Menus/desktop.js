@@ -16,7 +16,7 @@ export const DesktopMenu = () => {
             <li className="mx-6 text-white font-bold" key={text}>
               <a
                 href={to}
-                className="border-0 border-b-2 border-transparent hover:border-white"
+                className="border-0 border-b-2 pt-1 px-1 border-transparent hover:border-white focus:outline-none focus:border-white active:text-green-500 active:border-green-500"
               >
                 {translate(text)}
               </a>

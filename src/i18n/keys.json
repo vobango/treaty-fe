@@ -123,6 +123,10 @@
 	"register": {
 		"en": "Sign up"
 	},
+	"registerNow": {
+		"en": "Register now",
+		"et": "Registreeru kohe"
+	},
 	"repeatPassword": {
 		"en": "Repeat password"
 	},
