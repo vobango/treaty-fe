@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
-import {auth} from '../firebase';
 import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
 import entryStyles from './entryStyles';
+import {withFirebase} from "../components/Firebase";
+import * as ROUTES from "../utils/routes"
+import {withRouter} from "react-router-dom";
+import {compose} from "recompose";
 
-const Register = ({changePage}) => {
+const RegisterBase = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
@@ -23,15 +26,22 @@ const Register = ({changePage}) => {
       setError(translate('passwordMatchError'));
       return;
     }
-    try {
-      const {user} = await auth.createUserWithEmailAndPassword(email, password);
-    } catch (error) {
-      setError(translate('generalRegisterError'));
-    }
+    props.firebase
+        .doCreateUserWithEmailAndPassword(email, password)
+        .then(authUser => {
+          setEmail('');
+          setPassword('');
+          setPasswordRepeat('');
+          props.history.push(ROUTES.APP);
+        })
+        .catch(error => {
+          setEmail('');
+          setPassword('');
+          setPasswordRepeat('');
+          setError(error.message);
+        });
+    event.preventDefault();
 
-    setEmail('');
-    setPassword('');
-    setPasswordRepeat('');
   };
   const onChangeHandler = event => {
     const {name, value} = event.currentTarget;
@@ -101,12 +111,17 @@ const Register = ({changePage}) => {
       </div>
       <button
         className="text-xl text-gray-600 font-bold my-8"
-        onClick={() => changePage('entry')}
+        onClick={() => props.changePage('entry')}
       >
         {translate('cancelRegister')}
       </button>
     </div>
   );
 };
+
+const Register = compose(
+    withRouter,
+    withFirebase,
+)(RegisterBase);
 
 export default Register;

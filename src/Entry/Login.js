@@ -1,21 +1,32 @@
 import React, {useState} from 'react';
-import {auth} from '../firebase';
+import * as ROUTES from '../utils/routes';
 import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
 import entryStyles from './entryStyles';
+import {withFirebase} from "../components/Firebase";
+import {withRouter} from "react-router-dom";
+import {compose} from "recompose";
 
-const Login = ({changePage}) => {
+const LoginBase = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const {translate} = useLocale();
 
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
+
+    props.firebase
+        .doSignInWithEmailAndPassword(email, password)
+        .then(() => {
+          props.history.push(ROUTES.APP);
+        })
+        .catch(error => {
+          setEmail("");
+          setPassword("");
+          setError(error.message)
+        });
+
     event.preventDefault();
-    auth.signInWithEmailAndPassword(email, password).catch(error => {
-      setError('Error signing in with password and email!');
-      console.error('Error signing in with password and email', error);
-    });
   };
 
   const onChangeHandler = event => {
@@ -71,12 +82,17 @@ const Login = ({changePage}) => {
       </div>
       <button
         className="text-xl text-gray-600 font-bold my-8"
-        onClick={() => changePage('entry')}
+        onClick={() => props.changePage('entry')}
       >
         {translate('cancelRegister')}
       </button>
     </div>
   );
 };
+
+const Login = compose(
+    withRouter,
+    withFirebase,
+)(LoginBase);
 
 export default Login;
