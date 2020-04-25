@@ -1,43 +1,148 @@
 {
+	"close": {
+		"en": "Close",
+		"et": "Sulge"
+	},
 	"contact": {
-		"en": "Contact"
+		"en": "Contact",
+		"et": "Kontakt"
 	},
 	"error": {
-		"en": "Error"
+		"en": "Error",
+		"et": "Viga"
+	},
+	"forEmployer": {
+		"en": "For employer",
+		"et": "Tööpakkujale"
+	},
+	"forEmployerDesc": {
+		"en": "Lorem ipsum",
+		"et": "Ettevõtted, kes vajavad kiirelt vabu töökäsi"
+	},
+	"forEmployerIntro": {
+		"en": "Lorem ipsum",
+		"et": "Objekt on algamas, aga häid mehi on raske leida?"
+	},
+	"forEmployer-1": {
+		"en": "Lorem ipsum",
+		"et": "Sisesta oma väga konkreetsed soovid, et saaksime hakata otsima Sulle parimat partnerit!"
+	},
+	"forEmployer-2": {
+		"en": "Lorem ipsum",
+		"et": "Vähesed kuid konkreetsed andmed annavad võimaluse suunata tööpakkumine täpselt nendele firmadele, kellel on Sinu vajadustele vastavad spetsialistid ajutiselt üle."
+	},
+	"forEmployer-3": {
+		"en": "Lorem ipsum",
+		"et": "Meie leiame head mehed ilma suurema vaevata Sinu eest."
+	},
+	"forWorker": {
+		"en": "For worker",
+		"et": "Tööotsijale"
+	},
+	"forWorkerDesc": {
+		"en": "Lorem ipsum",
+		"et": "Andmebaasi sisestatakse oma töösoovid ja oskused"
+	},
+	"forWorkerIntro": {
+		"en": "Lorem ipsum",
+		"et": "Töötajad koristavad juba teist nädalat 20m<sup>2</sup> suurust ruumi?"
+	},
+	"forWorker-1": {
+		"en": "Enter your requirements",
+		"et": "Sisesta oma väga konkreetsed soovid, et saaksime hakata otsima Sulle parimat partnerit!"
+	},
+	"forWorker-2": {
+		"en": "Lorem ipsum",
+		"et": "Vähesed kuid konkreetsed andmed annavad võimaluse suunata tööpakkumine täpselt nendele firmadele, kellel on Sinu vajadustele vastavad spetsialistid ajutiselt üle."
+	},
+	"forWorker-3": {
+		"en": "Lorem ipsum",
+		"et": "Saada mehed korraks teisele objektile, mille me leiame Sinu eest."
 	},
 	"howItWorks": {
-		"en": "How does it work?"
+		"en": "How does it work?",
+		"et": "Kuidas see töötab?"
+	},
+	"howItWorksDesc": {
+		"en": "Lorem ipsum it works",
+		"et": "COFIND on suunatud ehitussektori peamisele puudusele - töö ja tööjõu\n          leidmise probleemile ja sellele, kui palju aega kulub ükskõik kumma\n          leidmiseks. <br /> See on lahendus, kus väga täpselt suunatud\n          pakkumine leiab kiiresti parima lahenduse. <br /> Ettevõte, kellel on\n          hetkeliselt puudu töökätest või on üle tööjõudu sisestavad oma väga\n          konkreetsed vajadused ning meie teeme ülejäänu. <br /> See on väga\n          täpselt suunatud pakkumise ja nõudluse vajaduse rahuldamine, kus nii\n          tööjõu pakkujad ja töökäte vajajad on võrdsed partnerid, kes tahavad\n          lahendada ühist probleemi - tööhõive probleemi - et keegi ei istuks\n          jõude, kui kusagil objekt põleb."
+	},
+	"howItWorks-1": {
+		"en": "Lorem",
+		"et": "Me otsime ja leiame Sulle parima partneri."
+	},
+	"howItWorks-2": {
+		"en": "ipsum",
+		"et": "Me genereerime Sinu sinu sisestatud parameetritest teate ja saadame selle laiali kõikidele, kes vajavad Sinu tööd või töökäsi."
+	},
+	"howItWorks-3": {
+		"en": "ipsum",
+		"et": "Me teeme Sinu andmetest kuulutuse ja paneme selle oma lehele üles, et ka need saaksid neid näha kelleni Sinu teade ei jõudnud."
 	},
 	"jobOffers": {
-		"en": "Job offers"
+		"en": "Job offers",
+		"et": "Tööpakkumised"
+	},
+	"listings": {
+		"en": "View listings",
+		"et": "Vaata pakkumisi"
+	},
+	"listingsDesc": {
+		"en": "Lorem ipsum",
+		"et": "Parimad erialase töö pakkumised"
+	},
+	"listingsDescLong": {
+		"en": "Lorem ipsum",
+		"et": "Meie andmebaasist leiad parima võimaliku partneri kiiresti ilma, et peaksid ise palju vaeva nägema. Andmebaasis vahetuvad pakkumised põhimõtteliselt onlines, sest meie täpselt suunatud pakkumised aitavad leida parima partneri kiiremini kui keegi teine. Kui baasis Sulle sobivat pakkumist pole hetkel, siis oota natuke ja proovi uuesti. Kui ikka ei leia siis sisesta oma parameetrid ja me saadame Sinu pakkumise täpselt neile, kellel on Sinu tööd vaja."
 	},
 	"loading": {
-		"en": "Loading"
+		"en": "Loading",
+		"et": "Laadimine"
 	},
 	"login": {
-		"en": "Login"
+		"en": "Login",
+		"et": "Sisene"
 	},
 	"loginTo": {
 		"en": "Log in to"
 	},
 	"logo": {
-		"en": "Cofind logo",
-		"et": "Cofind logo"
+		"en": "Cofind brings partners together",
+		"et": "Cofind toob partnerid kokku"
+	},
+	"menu": {
+		"en": "Menu",
+		"et": "Menüü"
 	},
 	"offerWork": {
-		"en": "Offer work"
+		"en": "Offer work",
+		"et": "Paku tööd"
 	},
 	"offerWorkers": {
-		"en": "Offer workers"
+		"en": "Offer workers",
+		"et": "Paku tööjõudu"
 	},
 	"password": {
 		"en": "Password"
 	},
+	"readMore": {
+		"en": "Read more",
+		"et": "Vaata lähemalt"
+	},
 	"register": {
-		"en": "Sign up"
+		"en": "Sign up",
+		"et": "Registreeru"
+	},
+	"registerNow": {
+		"en": "Register now",
+		"et": "Registreeru kohe"
 	},
 	"repeatPassword": {
 		"en": "Repeat password"
+	},
+	"slogan": {
+		"en": "brings partners together",
+		"et": "toob partnerid kokku"
 	},
 	"test": {
 		"en": "TEST KEY, DO NOT REMOVE",
@@ -46,7 +151,16 @@
 	"username": {
 		"en": "Username"
 	},
+	"viewJobOffers": {
+		"en": "View job offers",
+		"et": "Vaata tööpakkumisi"
+	},
+	"viewWorkerOffers": {
+		"en": "View worker offers",
+		"et": "Vaata tööjõupakkumisi"
+	},
 	"workerOffers": {
-		"en": "Worker offers"
+		"en": "Worker offers",
+		"et": "Tööjõupakkumised"
 	}
 }

@@ -34,10 +34,6 @@ const Login = () => {
       className="flex flex-col flex-grow items-stretch justify-center h-auto px-3"
       onSubmit={async e => {
         e.preventDefault();
-        if (!formVisible) {
-          setFormVisible('');
-          return true;
-        }
         await refetch();
       }}
     >
