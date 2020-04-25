@@ -1,23 +1,20 @@
 import React from 'react';
 import {ReactQueryConfigProvider} from 'react-query';
-import Entry from './Entry';
+import LandingPage from './LandingPage';
 import {LocaleProvider} from './context/locale';
-import UserProvider from './providers/UserProvider';
 
 const queryConfig = {refetchAllOnWindowFocus: false};
 
 const App = () => {
-  return (
-    <UserProvider>
-      <ReactQueryConfigProvider config={queryConfig}>
-        <LocaleProvider>
-          <div className="text-gray-900 h-screen flex flex-col">
-            <Entry />
-          </div>
-        </LocaleProvider>
-      </ReactQueryConfigProvider>
-    </UserProvider>
-  );
+    return (
+        <ReactQueryConfigProvider config={queryConfig}>
+            <LocaleProvider>
+                <div className="text-gray-900 h-screen flex flex-col">
+                    <LandingPage />
+                </div>
+            </LocaleProvider>
+        </ReactQueryConfigProvider>
+    );
 };
 
 export default App;

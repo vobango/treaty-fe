@@ -9,6 +9,7 @@
     "react-dom": "^16.12.0",
     "react-query": "^1.2.0",
     "react-router-dom": "^5.1.2",
+    "react-responsive": "^8.0.3",
     "react-scripts": "3.4.1"
   },
   "scripts": {
@@ -66,14 +67,6 @@
       "!src/index.js",
       "!src/serviceWorker.js",
       "!src/utils/fetch.js"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 80,
-        "lines": 90,
-        "statements": 80
-      }
-    }
+    ]
   }
 }

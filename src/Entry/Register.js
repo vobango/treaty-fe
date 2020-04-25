@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {auth} from '../firebase';
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
 import entryStyles from './entryStyles';
 
