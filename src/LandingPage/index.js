@@ -79,13 +79,13 @@ export default () => {
         <div className="mt-8">
           <a
             className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 text-lg lg:text-2xl bg-green-500 border-2 border-green-500 hover:bg-green-600 hover:border-green-600 focus:outline-none focus:shadow-outline active:bg-green-700 active:border-green-700"
-            href="/sign-up"
+            href="/entry"
           >
             {translate('register')}
           </a>
           <a
             className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 ml-10 text-lg lg:text-2xl border-2 border-white hover:border-green-500 hover:text-green-500 focus:outline-none focus:shadow-outline active:border-green-700 active:text-green-700"
-            href="/login"
+            href="/entry"
           >
             {translate('login')}
           </a>

@@ -6,7 +6,7 @@ import entryStyles from './entryStyles';
 const EntryPage = ({changePage}) => {
   const {translate} = useLocale();
   return (
-    <div className="flex flex-col flex-grow justify-between h-auto px-8">
+    <div className="flex flex-col flex-grow justify-between h-screen px-8">
       <a href="/" className="flex justify-center">
         <img
           className="w-auto sm:h-24 mt-8"
