@@ -7,11 +7,17 @@ import {screens} from '../utils/constants';
 import job_seeker from '../assets/images/job_seeker.jpg';
 import job_offer from '../assets/images/job_offer.jpg';
 import hero from '../assets/images/landing_1.jpg';
-import contact_us from '../assets/images/contact_us.jpg';
 import {DesktopMenu} from './Menus/desktop';
 import {MobileMenu} from './Menus/mobile';
 import {Icon} from '../components/icons';
 import {ContactForm} from '../components/contactForm';
+import contactPlaceholder from '../assets/images/contact_placeholder.svg';
+import contact_1x from '../assets/images/contact_1x.jpg';
+import contact_2x from '../assets/images/contact_2x.jpg';
+import contact_3x from '../assets/images/contact_3x.jpg';
+import contact_4x from '../assets/images/contact_4x.jpg';
+import contact_5x from '../assets/images/contact_5x.jpg';
+import Img from 'react-cool-img';
 
 export const menuItems = [
   {text: 'howItWorks', to: '#section-how-it-works'},
@@ -276,17 +282,22 @@ export default () => {
       </div>
 
       {/* Contact form */}
-      <div
-        id="section-contact"
-        style={{backgroundImage: `url(${contact_us})`}}
-        className="pt-12 pb-32 lg:pb-48 bg-cover"
-      >
-        <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wider">
+      <div id="section-contact relative">
+        <h3 className="uppercase text-4xl md:text-5xl lg:text-6xl text-white text-center font-bold tracking-wider absolute z-10 w-full pt-16 lg:pt-10">
           Võta ühendust
         </h3>
+        <Img
+          className="w-full relative h-64 lg:h-88 object-cover"
+          placeholder={contactPlaceholder}
+          src={contact_1x}
+          srcSet={`${contact_5x} 3840w,
+          ${contact_4x} 1920w,
+          ${contact_3x} 1023w,
+          ${contact_2x} 767w`}
+        />
       </div>
 
-      <div className="flex justify-center mt-neg-6 lg:-mt-40 mb-32">
+      <div className="flex justify-center mt-neg-6 lg:-mt-40 mb-32 relative z-10">
         <div className="bg-white w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-4 px-6 py-8 shadow-2xl">
           <ContactForm />
         </div>
