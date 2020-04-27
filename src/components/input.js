@@ -24,8 +24,7 @@ export const Input = ({
       {type === 'text' ? (
         <input
           id={inputID}
-          className={`my-1 p-1 w-full sm:w-1/2 border-b-2 bg-${color}-100 border-${color}-400
-          }`}
+          className={`my-1 p-1 w-full sm:w-1/2 border-b-2 bg-${color}-100 border-${color}-400`}
           onFocus={clearError}
         />
       ) : (
