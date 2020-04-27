@@ -7,7 +7,7 @@ import {
   translate
 } from '../../testUtils';
 import fetch from 'jest-fetch-mock';
-import {act, fireEvent, screen} from '@testing-library/react';
+import {fireEvent, screen} from '@testing-library/react';
 import {waitFor} from '@testing-library/dom';
 import faker from 'faker';
 
@@ -28,14 +28,15 @@ describe('Contact form component', function() {
     expect(screen.queryByText(messageError)).not.toBeInTheDocument();
 
     // Submit empty form
-    act(() => {
-      fireEvent.click(screen.getByRole('button'));
-    });
+    await fireEvent.click(screen.getByRole('button'));
 
     await waitFor(() => {
       expect(screen.getByText(nameError)).toBeInTheDocument();
       expect(screen.getByText(emailError)).toBeInTheDocument();
       expect(screen.getByText(messageError)).toBeInTheDocument();
+      expect(
+        screen.queryByText(translate('contactSuccess'))
+      ).not.toBeInTheDocument();
       expect(fetch).not.toHaveBeenCalled();
     });
   });

@@ -7,7 +7,7 @@ export const Input = ({
   clearError,
   id,
   label,
-  type = 'input',
+  type = 'text',
   textareaProps = {}
 }) => {
   if (!label) {
@@ -20,10 +20,10 @@ export const Input = ({
       <label htmlFor={inputID} className="ml-1 font-bold">
         {label}
       </label>
-      {type === 'input' ? (
+      {type === 'text' ? (
         <input
           id={inputID}
-          className={`my-1 p-1 w-1/2 border-b-2 ${
+          className={`my-1 p-1 w-full sm:w-1/2 border-b-2 ${
             error ? 'bg-red-100 border-red-400' : 'bg-gray-100 border-gray-400'
           }`}
           onFocus={clearError}

@@ -12,7 +12,11 @@ function request(endpoint, {body, ...customConfig} = {}) {
     config.body = JSON.stringify(body);
   }
 
-  return fetch(endpoint, config).then(async res => {
+  const sleep = new Promise(r => setTimeout(r, 500));
+  const req = fetch(endpoint, config);
+  // When showing a loader, wait at least 500ms
+  // so a fast API response does not create a flickering UI
+  return Promise.all([sleep, req]).then(async ([, res]) => {
     const data = await res.json();
     if (res.ok) {
       return data;

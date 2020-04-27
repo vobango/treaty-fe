@@ -287,7 +287,7 @@ export default () => {
       </div>
 
       <div className="flex justify-center mt-neg-6 lg:-mt-40 mb-32">
-        <div className="bg-white w-1/3 mx-4 px-6 py-8 shadow-2xl">
+        <div className="bg-white w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-4 px-6 py-8 shadow-2xl">
           <ContactForm />
         </div>
       </div>
