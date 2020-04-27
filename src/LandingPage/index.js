@@ -11,14 +11,14 @@ import contact_us from '../assets/images/contact_us.jpg';
 import {DesktopMenu} from './Menus/desktop';
 import {MobileMenu} from './Menus/mobile';
 import {Icon} from '../components/icons';
-import {useQuery} from 'react-query';
+import {ContactForm} from '../components/contactForm';
 
 export const menuItems = [
   {text: 'howItWorks', to: '#section-how-it-works'},
   {text: 'forWorker', to: '#section-for-worker'},
   {text: 'forEmployer', to: '#section-for-employer'},
   {text: 'listings', to: '#section-listings'},
-  {text: 'contact', to: '#section-footer'}
+  {text: 'contact', to: '#section-contact'}
 ];
 
 const shortcuts = [
@@ -48,32 +48,6 @@ export default () => {
   const {translate} = useLocale();
   const isDesktop = useMediaQuery({
     minWidth: screens.DESKTOP_MIN_WIDTH
-  });
-  const [contactMessage, setMessage] = React.useState('');
-  const onContactFormSubmit = async () => {
-    const nameInput = document.querySelector('#js-contact-name');
-    const mailInput = document.querySelector('#js-contact-email');
-    const messageInput = document.querySelector('#js-contact-message');
-
-    const body = JSON.stringify({
-      contactName: nameInput.value,
-      contactEmail: mailInput.value,
-      message: messageInput.value
-    });
-
-    return await fetch('/.netlify/functions/send-email', {
-      method: 'POST',
-      body
-    }).then(() => {
-      nameInput.value = '';
-      mailInput.value = '';
-      messageInput.value = '';
-      setMessage('success');
-    });
-  };
-  const {isFetching, refetch} = useQuery('contactForm', onContactFormSubmit, {
-    retry: false,
-    manual: true
   });
 
   return (
@@ -303,7 +277,7 @@ export default () => {
 
       {/* Contact form */}
       <div
-        id="section-for-employer"
+        id="section-contact"
         style={{backgroundImage: `url(${contact_us})`}}
         className="pt-12 pb-32 lg:pb-48 bg-cover"
       >
@@ -313,45 +287,9 @@ export default () => {
       </div>
 
       <div className="flex justify-center mt-neg-6 lg:-mt-40 mb-32">
-        <form
-          className="bg-white w-1/3 mx-4 px-6 py-8 shadow-2xl flex flex-col items-start"
-          onSubmit={refetch}
-        >
-          <label htmlFor="js-contact-name" className="ml-1 font-bold">
-            Nimi
-          </label>
-          <input
-            id="js-contact-name"
-            className="my-1 p-1 w-1/2 bg-gray-100 border-b-2 border-gray-400"
-          />
-          <label htmlFor="js-contact-email" className="ml-1 font-bold mt-10">
-            E-mail
-          </label>
-          <input
-            id="js-contact-email"
-            className="my-1 p-1 w-1/2 bg-gray-100 border-b-2 border-gray-400"
-          />
-          <label htmlFor="js-contact-message" className="ml-1 font-bold mt-10">
-            Sõnum
-          </label>
-          <textarea
-            id="js-contact-message"
-            rows={5}
-            wrap="hard"
-            className="my-1 p-1 w-full bg-gray-100 border-b-2 border-gray-400"
-          />
-          <div className="flex items-center mt-8 ml-1">
-            <button className="bg-green-500 rounded-lg px-6 py-3 text-white font-bold hover:bg-green-600 focus:outline-none focus:shadow-outline active:bg-green-700">
-              {isFetching ? 'Laadimine' : 'Saada'}
-            </button>
-            {!!contactMessage && (
-              <div className="ml-10 bg-green-200 text-green-900 py-3 px-6 flex items-center">
-                <Icon.Check className="text-green-700 w-5 mr-2" />
-                {contactMessage}
-              </div>
-            )}
-          </div>
-        </form>
+        <div className="bg-white w-1/3 mx-4 px-6 py-8 shadow-2xl">
+          <ContactForm />
+        </div>
       </div>
 
       {/* Footer */}
