@@ -206,11 +206,6 @@ module.exports = {
       move: 'move',
       'not-allowed': 'not-allowed'
     },
-    extend: {
-      transitionProperty: {
-        height: 'height'
-      }
-    },
     fill: {
       current: 'currentColor'
     },
