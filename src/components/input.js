@@ -14,6 +14,7 @@ export const Input = ({
     throw new Error('Input label must be specified!');
   }
   const inputID = id || faker.random.uuid();
+  const color = error ? 'red' : 'gray';
 
   return (
     <>
@@ -23,15 +24,14 @@ export const Input = ({
       {type === 'text' ? (
         <input
           id={inputID}
-          className={`my-1 p-1 w-full sm:w-1/2 border-b-2 ${
-            error ? 'bg-red-100 border-red-400' : 'bg-gray-100 border-gray-400'
+          className={`my-1 p-1 w-full sm:w-1/2 border-b-2 bg-${color}-100 border-${color}-400
           }`}
           onFocus={clearError}
         />
       ) : (
         <textarea
           id={inputID}
-          className="my-1 p-1 w-full bg-gray-100 border-b-2 border-gray-400"
+          className={`my-1 p-1 w-full bg-${color}-100 border-b-2 border-${color}-400`}
           onFocus={clearError}
           {...textareaProps}
         />
