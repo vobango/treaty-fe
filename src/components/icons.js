@@ -27,11 +27,29 @@ const Calendar = props => (
   </svg>
 );
 
+const Check = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M12 20C7.59 20 4 16.41 4 12S7.59 4 12 4 20 7.59 20 12 16.41 20 12 20M16.59 7.58L10 14.17L7.41 11.59L6 13L10 17L18 9L16.59 7.58Z"
+    />
+  </svg>
+);
+
 const Close = props => (
   <svg {...props} viewBox="0 0 24 24">
     <path
       fill="currentColor"
       d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+    />
+  </svg>
+);
+
+const Cross = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z"
     />
   </svg>
 );
@@ -42,6 +60,47 @@ const ListPoint = props => (
       fill="currentColor"
       d="M17,12L12,17V14H8V10H12V7L17,12M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z"
     />
+  </svg>
+);
+
+const Loader = props => (
+  <svg {...props} viewBox="0 0 38 38">
+    <defs>
+      <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
+        <stop stopColor="currentColor" stopOpacity="0" offset="0%" />
+        <stop stopColor="currentColor" stopOpacity=".631" offset="63.146%" />
+        <stop stopColor="currentColor" offset="100%" />
+      </linearGradient>
+    </defs>
+    <g fill="none" fillRule="evenodd">
+      <g transform="translate(1 1)">
+        <path
+          d="M36 18c0-9.94-8.06-18-18-18"
+          id="Oval-2"
+          stroke="url(#a)"
+          strokeWidth="2"
+        >
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 18 18"
+            to="360 18 18"
+            dur="0.9s"
+            repeatCount="indefinite"
+          />
+        </path>
+        <circle fill="currentColor" cx="36" cy="18" r="1">
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 18 18"
+            to="360 18 18"
+            dur="0.9s"
+            repeatCount="indefinite"
+          />
+        </circle>
+      </g>
+    </g>
   </svg>
 );
 
@@ -106,8 +165,11 @@ const Tools = props => (
 export const Icon = {
   Arrow,
   Calendar,
+  Check,
   Close,
+  Cross,
   ListPoint,
+  Loader,
   Menu,
   Number,
   Search,
