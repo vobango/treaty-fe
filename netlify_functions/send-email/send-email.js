@@ -25,14 +25,17 @@ exports.handler = async event => {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      body: 'Method Not Allowed',
+      body: JSON.stringify({error: 'Method Not Allowed'}),
       headers: {Allow: 'POST'}
     };
   }
 
   const data = JSON.parse(event.body);
   if (!data.message || !data.contactName || !data.contactEmail) {
-    return {statusCode: 422, body: 'Name, email, and message are required.'};
+    return {
+      statusCode: 422,
+      body: JSON.stringify({error: 'Name, email, and message are required.'})
+    };
   }
 
   const mailgunData = {
@@ -43,12 +46,9 @@ exports.handler = async event => {
     text: `Name: ${data.contactName}\nE-mail: ${data.contactEmail}\nMessage: ${data.message}`
   };
   return sendEmail(mailgunData)
-    .then(() => ({
-      statusCode: 200,
-      body: "Your message was sent successfully! We'll be in touch."
-    }))
+    .then(() => ({statusCode: 200, body: JSON.stringify({success: true})}))
     .catch(error => ({
       statusCode: 422,
-      body: `Error: ${error}`
+      body: JSON.stringify({error})
     }));
 };
