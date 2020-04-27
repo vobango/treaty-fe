@@ -10,6 +10,7 @@ import hero from '../assets/images/landing_1.jpg';
 import {DesktopMenu} from './Menus/desktop';
 import {MobileMenu} from './Menus/mobile';
 import {Icon} from '../components/icons';
+import {Link} from 'react-router-dom';
 
 export const menuItems = [
   {text: 'howItWorks', to: '#section-how-it-works'},
@@ -77,18 +78,24 @@ export default () => {
           {translate('slogan')}
         </p>
         <div className="mt-8">
-          <a
+          <Link
             className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 text-lg lg:text-2xl bg-green-500 border-2 border-green-500 hover:bg-green-600 hover:border-green-600 focus:outline-none focus:shadow-outline active:bg-green-700 active:border-green-700"
-            href="/entry"
+            to={{
+              pathname: '/entry',
+              state: {subPath: 'register'}
+            }}
           >
             {translate('register')}
-          </a>
-          <a
+          </Link>
+          <Link
             className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 ml-10 text-lg lg:text-2xl border-2 border-white hover:border-green-500 hover:text-green-500 focus:outline-none focus:shadow-outline active:border-green-700 active:text-green-700"
-            href="/entry"
+            to={{
+              pathname: '/entry',
+              state: {subPath: 'login'}
+            }}
           >
             {translate('login')}
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -182,12 +189,15 @@ export default () => {
               </p>
             </li>
           </ul>
-          <a
-            href="/sign-up"
+          <Link
+            to={{
+              pathname: '/entry',
+              state: {subPath: 'register'}
+            }}
             className="bg-green-500 rounded-lg px-6 py-3 mt-3 mb-2 mx-auto text-white font-bold hover:bg-green-600 focus:outline-none focus:shadow-outline active:bg-green-700"
           >
             {translate('registerNow')}
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -234,12 +244,15 @@ export default () => {
               </p>
             </li>
           </ul>
-          <a
-            href="/sign-up"
+          <Link
+            to={{
+              pathname: '/entry',
+              state: {subPath: 'register'}
+            }}
             className="bg-blue-500 rounded-lg px-6 py-3 mt-3 mb-2 mx-auto text-white font-bold hover:bg-blue-600 focus:outline-none focus:shadow-outline active:bg-blue-700"
           >
             {translate('registerNow')}
-          </a>
+          </Link>
         </div>
       </div>
 
