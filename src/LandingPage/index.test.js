@@ -3,6 +3,7 @@ import {screen} from '@testing-library/react';
 import {renderWithLocale} from '../testUtils';
 import LandingPage from './index';
 import {screens} from '../utils/constants';
+import {BrowserRouter} from 'react-router-dom';
 
 const err = console.error;
 beforeAll(function() {
@@ -13,7 +14,12 @@ afterAll(function() {
 });
 
 describe('Landing page component', function() {
-  const renderLandingPage = () => renderWithLocale(<LandingPage />);
+  const renderLandingPage = () =>
+    renderWithLocale(
+      <BrowserRouter>
+        <LandingPage />
+      </BrowserRouter>
+    );
 
   it('should render without crashing', function() {
     renderLandingPage();

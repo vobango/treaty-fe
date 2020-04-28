@@ -144,7 +144,8 @@
 		"et": "Sisene"
 	},
 	"loginTo": {
-		"en": "Log in to"
+		"en": "Log in to",
+		"et": "Logi sisse"
 	},
 	"logo": {
 		"en": "Cofind brings partners together",
@@ -163,7 +164,8 @@
 		"et": "Paku tööjõudu"
 	},
 	"password": {
-		"en": "Password"
+		"en": "Password",
+		"et": "Parool"
 	},
 	"readMore": {
 		"en": "Read more",
@@ -178,7 +180,8 @@
 		"et": "Registreeru kohe"
 	},
 	"repeatPassword": {
-		"en": "Repeat password"
+		"en": "Repeat password",
+		"et": "Korda parooli"
 	},
 	"slogan": {
 		"en": "brings partners together",
@@ -189,7 +192,8 @@
 		"et": "KONTROLLVÕTI, MITTE EEMALDADA"
 	},
 	"username": {
-		"en": "Username"
+		"en": "Username",
+		"et": "Kasutajanimi"
 	},
 	"viewJobOffers": {
 		"en": "View job offers",
@@ -202,5 +206,32 @@
 	"workerOffers": {
 		"en": "Worker offers",
 		"et": "Tööjõupakkumised"
+	},
+	"entryText": {
+		"en": "To start, make a choice",
+		"et": "Alustamiseks tee oma valik"
+	},
+	"newAccount": {
+		"en": "Register a new account",
+		"et": "Registeeri uus konto"
+	},
+	"email": {
+		"en": "Email",
+		"et": "Email"
+	},
+	"cancelRegister": {
+		"en": "cancel",
+		"et": "katkesta"
+	},
+	"passwordMatchError": {
+		"en": "Passwords do not match!",
+		"et": "Paroolid ei kattu!"
+	},
+	"generalRegisterError": {
+		"en": "Error Signing up with email and password"
+	},
+	"loginText": {
+		"en": "Login to your account",
+		"et": "Logi sisse"
 	}
 }

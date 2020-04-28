@@ -11,7 +11,7 @@ const LocaleModifierContext = React.createContext(undefined);
 
 // Provider for consuming and setting locale
 function LocaleProvider({children}) {
-  const [state, setState] = React.useState(locales.ET);
+  const [state, setState] = React.useState(locales.EN);
   return (
     <LocaleStateContext.Provider value={state}>
       <LocaleModifierContext.Provider value={setState}>
