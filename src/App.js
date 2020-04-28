@@ -9,6 +9,8 @@ import Navigation from './components/Navigation/index';
 const queryConfig = {refetchAllOnWindowFocus: false};
 
 const App = () => {
+  if (!window.IntersectionObserver) require('intersection-observer');
+
   return (
     <Router>
       <ReactQueryConfigProvider config={queryConfig}>

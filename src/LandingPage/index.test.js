@@ -5,6 +5,14 @@ import LandingPage from './index';
 import {screens} from '../utils/constants';
 import {BrowserRouter} from 'react-router-dom';
 
+const err = console.error;
+beforeAll(function() {
+  console.error = jest.fn();
+});
+afterAll(function() {
+  console.error = err;
+});
+
 describe('Landing page component', function() {
   const renderLandingPage = () =>
     renderWithLocale(
