@@ -1,17 +1,14 @@
 import React from 'react';
-import logo from '../assets/images/Cofind_logo_roh_neg.png';
-import centerLogo from '../assets/images/Cofind_logo_roh_pos.png';
+import logo from '../assets/images/logo_neg.svg';
+import centerLogo from '../assets/images/logo_pos.svg';
 import {useLocale} from '../context/locale';
 import {useMediaQuery} from 'react-responsive';
 import {screens} from '../utils/constants';
-import job_seeker from '../assets/images/job_seeker.jpg';
-import job_offer from '../assets/images/job_offer.jpg';
-import hero from '../assets/images/landing_1.jpg';
-import contact_us from '../assets/images/contact_us.jpg';
 import {DesktopMenu} from './Menus/desktop';
 import {MobileMenu} from './Menus/mobile';
 import {Icon} from '../components/icons';
 import {ContactForm} from '../components/contactForm';
+import Image from './images';
 
 export const menuItems = [
   {text: 'howItWorks', to: '#section-how-it-works'},
@@ -54,51 +51,44 @@ export default () => {
     <div className="w-full relative">
       {/* Navbar */}
       <div className="w-full py-6 px-4 lg:px-16 absolute z-10 flex items-end justify-between bg-black-75">
-        <img
-          className="w-auto h-20 lg:h-24"
-          src={logo}
-          alt={translate('logo')}
-        />
+        <img className="h-20 lg:h-24" src={logo} alt={translate('logo')} />
         {isDesktop && <DesktopMenu />}
         {!isDesktop && <MobileMenu />}
       </div>
 
       {/* Hero */}
-      <div
-        className="text-white w-full h-96 lg:h-128 bg-cover flex flex-col items-center justify-center"
-        style={{backgroundImage: `url(${hero}`}}
-      >
-        <div className="flex items-center z-10 relative">
-          <Icon.Arrow className="h-8 lg:h-16" direction="right" />
-          <h1 className="mx-4 text-4xl lg:text-6xl font-bold uppercase">
-            Cofind
-          </h1>
-          <Icon.Arrow className="h-8 lg:h-16" direction="left" />
+      <div className="h-106 lg:h-128">
+        <div className="absolute z-10 text-white w-full flex flex-col items-center justify-center pt-12 lg:pt-0 h-106 lg:h-128">
+          <div className="flex items-center justify-center">
+            <Icon.Arrow className="h-8 lg:h-16" direction="right" />
+            <h1 className="mx-4 text-4xl lg:text-6xl font-bold uppercase">
+              Cofind
+            </h1>
+            <Icon.Arrow className="h-8 lg:h-16" direction="left" />
+          </div>
+          <p className="text-3xl lg:text-5xl mt-4 tracking-wider">
+            {translate('slogan')}
+          </p>
+          <div className="mt-8">
+            <a
+              className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 text-lg lg:text-2xl bg-green-500 border-2 border-green-500 hover:bg-green-600 hover:border-green-600 focus:outline-none focus:shadow-outline active:bg-green-700 active:border-green-700"
+              href="/sign-up"
+            >
+              {translate('register')}
+            </a>
+            <a
+              className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 ml-10 text-lg lg:text-2xl border-2 border-white hover:border-green-500 hover:text-green-500 focus:outline-none focus:shadow-outline active:border-green-700 active:text-green-700"
+              href="/login"
+            >
+              {translate('login')}
+            </a>
+          </div>
         </div>
-        <p className="text-3xl lg:text-5xl mt-4 tracking-wider">
-          {translate('slogan')}
-        </p>
-        <div className="mt-8">
-          <a
-            className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 text-lg lg:text-2xl bg-green-500 border-2 border-green-500 hover:bg-green-600 hover:border-green-600 focus:outline-none focus:shadow-outline active:bg-green-700 active:border-green-700"
-            href="/sign-up"
-          >
-            {translate('register')}
-          </a>
-          <a
-            className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 ml-10 text-lg lg:text-2xl border-2 border-white hover:border-green-500 hover:text-green-500 focus:outline-none focus:shadow-outline active:border-green-700 active:text-green-700"
-            href="/login"
-          >
-            {translate('login')}
-          </a>
-        </div>
+        <Image.Hero className="w-full relative h-full object-cover" />
       </div>
 
       {/* Shortcuts */}
-      <div
-        className="z-20 flex flex-col items-center lg:justify-center"
-        style={{marginTop: '-120px'}}
-      >
+      <div className="relative z-20 flex flex-col items-center lg:justify-center -mt-10 lg:-mt-32">
         <div className="bg-white max-w-xs lg:max-w-full lg:pb-12 lg:pt-10 shadow-2xl lg:flex lg:justify-center">
           {shortcuts.map(({icon, headerKey, contentKey, to}, i) => {
             return (
@@ -148,17 +138,14 @@ export default () => {
       </div>
 
       {/* Description 1 */}
-      <div
-        id="section-for-worker"
-        style={{backgroundImage: `url(${job_seeker})`}}
-        className="pt-12 pb-32 lg:pb-48 bg-cover"
-      >
-        <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wider">
+      <div id="section-for-worker">
+        <h3 className="uppercase text-4xl md:text-5xl lg:text-6xl text-white text-center font-bold tracking-wider absolute z-10 w-full pt-16">
           {translate('forWorker')}
         </h3>
+        <Image.Jobseeker className="w-full relative h-64 lg:h-88 object-cover" />
       </div>
 
-      <div className="flex justify-center mt-neg-6 lg:mt-neg-10">
+      <div className="flex justify-center -mt-24 lg:-mt-40 mb-32 relative z-10">
         <div className="bg-white max-w-3xl mx-4 p-6 shadow-2xl flex flex-col items-start">
           <p
             className="font-bold"
@@ -194,7 +181,7 @@ export default () => {
       </div>
 
       {/* Divider/logo */}
-      <div className="py-24 lg:py-40">
+      <div className="pb-32 lg:pb-48" aria-hidden>
         <img
           className="h-20 lg:h-32 mx-auto"
           src={centerLogo}
@@ -203,17 +190,14 @@ export default () => {
       </div>
 
       {/* Description 2 */}
-      <div
-        id="section-for-employer"
-        style={{backgroundImage: `url(${job_offer})`}}
-        className="pt-12 pb-32 lg:pb-48 bg-cover"
-      >
-        <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wider">
+      <div id="section-for-employer">
+        <h3 className="uppercase text-4xl md:text-5xl lg:text-6xl text-white text-center font-bold tracking-wider absolute z-10 w-full pt-16">
           {translate('forEmployer')}
         </h3>
+        <Image.Joboffer className="w-full relative h-64 lg:h-88 object-cover" />
       </div>
 
-      <div className="flex justify-center mt-neg-6 lg:mt-neg-10">
+      <div className="flex justify-center -mt-24 lg:-mt-40 mb-32 relative z-10">
         <div className="bg-white max-w-3xl mx-4 p-6 shadow-2xl flex flex-col items-start">
           <p className="font-bold">{translate('forEmployerIntro')}</p>
           <ul>
@@ -276,17 +260,14 @@ export default () => {
       </div>
 
       {/* Contact form */}
-      <div
-        id="section-contact"
-        style={{backgroundImage: `url(${contact_us})`}}
-        className="pt-12 pb-32 lg:pb-48 bg-cover"
-      >
-        <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wider">
+      <div id="section-contact relative">
+        <h3 className="uppercase text-4xl md:text-5xl lg:text-6xl text-white text-center font-bold tracking-wider absolute z-10 w-full pt-16">
           Võta ühendust
         </h3>
+        <Image.Contact className="w-full relative h-64 lg:h-88 object-cover" />
       </div>
 
-      <div className="flex justify-center mt-neg-6 lg:-mt-40 mb-32">
+      <div className="flex justify-center -mt-24 lg:-mt-40 mb-32 relative z-10">
         <div className="bg-white w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-4 px-6 py-8 shadow-2xl">
           <ContactForm />
         </div>
@@ -298,6 +279,7 @@ export default () => {
         className="p-6 bg-gray-800 text-white flex flex-col-reverse lg:flex-row"
       >
         <img
+          aria-hidden
           className="w-auto h-20 mx-auto lg:mx-0"
           src={logo}
           alt={translate('logo')}

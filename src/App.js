@@ -6,6 +6,8 @@ import {LocaleProvider} from './context/locale';
 const queryConfig = {refetchAllOnWindowFocus: false};
 
 const App = () => {
+  if (!window.IntersectionObserver) require('intersection-observer');
+
   return (
     <ReactQueryConfigProvider config={queryConfig}>
       <LocaleProvider>

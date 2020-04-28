@@ -4,6 +4,14 @@ import {renderWithLocale} from '../testUtils';
 import LandingPage from './index';
 import {screens} from '../utils/constants';
 
+const err = console.error;
+beforeAll(function() {
+  console.error = jest.fn();
+});
+afterAll(function() {
+  console.error = err;
+});
+
 describe('Landing page component', function() {
   const renderLandingPage = () => renderWithLocale(<LandingPage />);
 
