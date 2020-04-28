@@ -43,44 +43,14 @@
 	font-display:auto;font-style:normal;font-weight:900;
 }
 
-@responsive {
-	.h-96 {
-		height: 36rem;
-	}
-
-	.h-128 {
-		height: 48rem;
-	}
-
-	.h-156 {
-		height: 56rem;
-	}
-
-	.mt-neg-6 {
-		margin-top: -6rem;
-	}
-
-	.mt-neg-10 {
-		margin-top: -10rem;
-	}
-}
-
 html {
 	font-family: co-text, sans-serif;
-}
-
-.bg-hero-img {
-	background: url("../assets/images/landing_1.jpg");
-	background-size: contain;
-}
-
-.content-image {
-    filter: contrast(40%);
 }
 
 .bg-black-75 {
     background: rgba(0, 0, 0, 0.75);
 }
+
 .font-gothic {
 	font-family: "bernhard-gothic-urw", sans-serif;
 }
