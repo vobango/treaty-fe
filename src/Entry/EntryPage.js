@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
-import entryStyles from './entryStyles';
 
 const EntryPage = ({changePage}) => {
   const {translate} = useLocale();
@@ -15,15 +14,15 @@ const EntryPage = ({changePage}) => {
         />
       </a>
       <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
-        <h1 className={entryStyles.headerText}>{translate('entryText')}</h1>
+        <h1 className="header-text">{translate('entryText')}</h1>
         <button
-          className={entryStyles.entryButton}
+          className="entry-button"
           onClick={() => changePage('login')}
         >
           {translate('login')}
         </button>
         <button
-          className={entryStyles.entryButton}
+          className="entry-button"
           onClick={() => changePage('register')}
         >
           {translate('register')}

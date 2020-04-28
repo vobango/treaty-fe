@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
-import entryStyles from './entryStyles';
 import {withFirebase} from "../components/Firebase";
 import * as ROUTES from "../utils/routes"
 import {withRouter} from "react-router-dom";
@@ -12,7 +11,6 @@ const RegisterBase = (props) => {
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
   const [error, setError] = useState(null);
-  const [inputTypePassword, setInputTypePassword] = useState('input');
 
   const {translate} = useLocale();
   const createUserWithEmailAndPasswordHandler = async (
@@ -63,12 +61,12 @@ const RegisterBase = (props) => {
           alt={translate('logo')}
         />
       </a>
-      <h1 className={entryStyles.headerText}>{translate('newAccount')}</h1>
+      <h1 className="header-text">{translate('newAccount')}</h1>
       <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
         <form className="md:w-1/3">
           <input
             type="email"
-            className={entryStyles.inputBox}
+            className="input-box"
             name="userEmail"
             value={email}
             placeholder={translate('email')}
@@ -77,7 +75,7 @@ const RegisterBase = (props) => {
           />
           <input
             type="password"
-            className={entryStyles.inputBox}
+            className="input-box"
             name="userPassword"
             value={password}
             placeholder={translate('password')}
@@ -86,7 +84,7 @@ const RegisterBase = (props) => {
           />
           <input
             type="password"
-            className={entryStyles.inputBox}
+            className="input-box"
             name="userRepeatPassword"
             value={passwordRepeat}
             placeholder={translate('repeatPassword')}
@@ -96,7 +94,7 @@ const RegisterBase = (props) => {
           {error ? <h1 className="text-red-600">{error}</h1> : null}
         </form>
         <button
-          className={entryStyles.entryButton}
+          className="entry-button"
           onClick={event => {
             createUserWithEmailAndPasswordHandler(
               event,

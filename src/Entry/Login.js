@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import * as ROUTES from '../utils/routes';
 import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
-import entryStyles from './entryStyles';
 import {withFirebase} from "../components/Firebase";
 import {withRouter} from "react-router-dom";
 import {compose} from "recompose";
@@ -48,12 +47,12 @@ const LoginBase = (props) => {
           alt={translate('logo')}
         />
       </a>
-      <h1 className={entryStyles.headerText}>{translate('loginText')}</h1>
+      <h1 className="header-text">{translate('loginText')}</h1>
       <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
         <form className="md:w-1/3">
           <input
             type="email"
-            className={entryStyles.inputBox}
+            className="input-box"
             name="userEmail"
             value={email}
             placeholder={translate('email')}
@@ -62,7 +61,7 @@ const LoginBase = (props) => {
           />
           <input
             type="password"
-            className={entryStyles.inputBox}
+            className="input-box"
             name="userPassword"
             value={password}
             placeholder={translate('password')}
@@ -72,7 +71,7 @@ const LoginBase = (props) => {
           {error ? <h1 className="text-red-600">{error}</h1> : null}
         </form>
         <button
-          className={entryStyles.entryButton}
+          className="entry-button"
           onClick={event =>
             signInWithEmailAndPasswordHandler(event, email, password)
           }
