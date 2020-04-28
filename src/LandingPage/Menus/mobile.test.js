@@ -4,6 +4,14 @@ import {MobileMenu} from './mobile';
 import {renderWithLocale} from '../../testUtils';
 
 describe('Mobile menu component', function() {
+  const err = console.error;
+  beforeAll(() => {
+    console.error = jest.fn();
+  });
+  afterAll(() => {
+    console.error = err;
+  });
+
   it('should render without crashing', async function() {
     renderWithLocale(<MobileMenu />);
   });

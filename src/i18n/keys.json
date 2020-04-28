@@ -19,6 +19,10 @@
 		"en": "Something went wrong. Try again!",
 		"et": "Midagi läks valesti. Proovi uuesti!"
 	},
+	"contactHeader": {
+		"en": "Get in touch",
+		"et": "Võta ühendust"
+	},
 	"contactMessage": {
 		"en": "Message",
 		"et": "Sõnum"

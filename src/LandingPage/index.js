@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from '../assets/images/logo_neg.svg';
-import centerLogo from '../assets/images/logo_pos.svg';
 import {useLocale} from '../context/locale';
 import {useMediaQuery} from 'react-responsive';
 import {screens} from '../utils/constants';
@@ -51,11 +49,7 @@ export default () => {
     <div className="w-full relative">
       {/* Navbar */}
       <div className="w-full py-6 px-4 lg:px-16 absolute z-20 flex items-start sm:items-end justify-between bg-black-75">
-        <img
-          className="h-16 sm:h-20 lg:h-24"
-          src={logo}
-          alt={translate('logo')}
-        />
+        <Image.Logo className="h-16 sm:h-20 lg:h-24" alt={translate('logo')} />
         {isDesktop && <DesktopMenu />}
         {!isDesktop && <MobileMenu />}
       </div>
@@ -186,10 +180,10 @@ export default () => {
 
       {/* Divider/logo */}
       <div className="pb-32 lg:pb-48" aria-hidden>
-        <img
+        <Image.Logo
           className="h-20 lg:h-32 mx-auto"
-          src={centerLogo}
           alt={translate('logo')}
+          type="positive"
         />
       </div>
 
@@ -266,7 +260,7 @@ export default () => {
       {/* Contact form */}
       <div id="section-contact relative">
         <h3 className="uppercase text-4xl md:text-5xl lg:text-6xl text-white text-center font-bold tracking-wider absolute z-10 w-full pt-16">
-          Võta ühendust
+          {translate('contactHeader')}
         </h3>
         <Image.Contact className="w-full relative h-64 lg:h-88 object-cover" />
       </div>
@@ -282,10 +276,9 @@ export default () => {
         id="section-footer"
         className="p-6 bg-gray-800 text-white flex flex-col-reverse lg:flex-row"
       >
-        <img
+        <Image.Logo
           aria-hidden
           className="w-auto h-20 mx-auto lg:mx-0"
-          src={logo}
           alt={translate('logo')}
         />
         <div className="ml-8">Kontaktandmed jm</div>
