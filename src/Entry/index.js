@@ -17,16 +17,22 @@ const Entry = props => {
     setCurrentPage(subPath ? subPath : 'entry');
   }, []);
 
+  const PageRender = () => {
+    switch (currentPage) {
+      case 'login':
+        return <Login changePage={changePage} />;
+      case 'register':
+        return <Register changePage={changePage} />;
+      case 'resetPassword':
+        return <PasswordReset changePage={changePage} />;
+      default:
+        return <EntryPage changePage={changePage} />;
+    }
+  };
+
   return (
     <>
-      {currentPage === 'entry' ? <EntryPage changePage={changePage} /> : ''}
-      {currentPage === 'login' ? <Login changePage={changePage} /> : ''}
-      {currentPage === 'register' ? <Register changePage={changePage} /> : ''}
-      {currentPage === 'resetPassword' ? (
-        <PasswordReset changePage={changePage} />
-      ) : (
-        ''
-      )}
+      <PageRender />
     </>
   );
 };
