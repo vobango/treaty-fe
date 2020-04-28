@@ -3,7 +3,7 @@ import React from 'react';
 import Portal from '../../Portal';
 import {menuItems} from '../index';
 import {Icon} from '../../components/icons';
-import logo from '../../assets/images/Cofind_logo_roh_pos.png';
+import logo from '../../assets/images/logo_pos.svg';
 
 export const MobileMenu = () => {
   const {translate} = useLocale();
@@ -25,9 +25,9 @@ export const MobileMenu = () => {
       {menuVisible ? (
         <Portal id="menu">
           <div className="bg-white fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center">
-            <div className="absolute top-0 flex items-end w-full justify-between px-4 lg:px-16 py-6">
+            <div className="absolute top-0 flex items-center sm:items-end w-full justify-between px-4 lg:px-16 py-6">
               <img
-                className="h-20 lg:h-24"
+                className="h-16 sm:h-20 lg:h-24"
                 src={logo}
                 alt={translate('logo')}
               />

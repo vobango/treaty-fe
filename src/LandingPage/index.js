@@ -51,8 +51,12 @@ export default () => {
   return (
     <div className="w-full relative">
       {/* Navbar */}
-      <div className="w-full py-6 px-4 lg:px-16 absolute z-10 flex items-end justify-between bg-black-75">
-        <img className="h-20 lg:h-24" src={logo} alt={translate('logo')} />
+      <div className="w-full py-6 px-4 lg:px-16 absolute z-20 flex items-start sm:items-end justify-between bg-black-75">
+        <img
+          className="h-16 sm:h-20 lg:h-24"
+          src={logo}
+          alt={translate('logo')}
+        />
         {isDesktop && <DesktopMenu />}
         {!isDesktop && <MobileMenu />}
       </div>
