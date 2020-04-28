@@ -1,0 +1,7 @@
+[build]
+  command = "CI=true npm run test && npm run build"
+  publish = "build"
+  functions = "netlify_functions"
+
+[dev]
+  command = "react-scripts start"

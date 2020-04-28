@@ -7,17 +7,19 @@ import {screens} from '../utils/constants';
 import job_seeker from '../assets/images/job_seeker.jpg';
 import job_offer from '../assets/images/job_offer.jpg';
 import hero from '../assets/images/landing_1.jpg';
+import contact_us from '../assets/images/contact_us.jpg';
 import {DesktopMenu} from './Menus/desktop';
 import {MobileMenu} from './Menus/mobile';
 import {Icon} from '../components/icons';
 import {Link} from 'react-router-dom';
+import {ContactForm} from '../components/contactForm';
 
 export const menuItems = [
   {text: 'howItWorks', to: '#section-how-it-works'},
   {text: 'forWorker', to: '#section-for-worker'},
   {text: 'forEmployer', to: '#section-for-employer'},
   {text: 'listings', to: '#section-listings'},
-  {text: 'contact', to: '#section-footer'}
+  {text: 'contact', to: '#section-contact'}
 ];
 
 const shortcuts = [
@@ -259,7 +261,7 @@ export default () => {
       {/* Listings */}
       <div
         id="section-listings"
-        className="my-24 mx-4 sm:mx-auto max-w-lg lg:max-w-3xl"
+        className="my-40 mx-4 sm:mx-auto max-w-lg lg:max-w-3xl"
       >
         <h3 className="text-center text-3xl lg:text-5xl mb-4">
           {translate('listings')}
@@ -283,6 +285,23 @@ export default () => {
               className="w-8 text-blue-500 ml-2"
             />{' '}
           </a>
+        </div>
+      </div>
+
+      {/* Contact form */}
+      <div
+        id="section-contact"
+        style={{backgroundImage: `url(${contact_us})`}}
+        className="pt-12 pb-32 lg:pb-48 bg-cover"
+      >
+        <h3 className="uppercase text-4xl lg:text-6xl text-white text-center font-bold tracking-wider">
+          Võta ühendust
+        </h3>
+      </div>
+
+      <div className="flex justify-center mt-neg-6 lg:-mt-40 mb-32">
+        <div className="bg-white w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mx-4 px-6 py-8 shadow-2xl">
+          <ContactForm />
         </div>
       </div>
 

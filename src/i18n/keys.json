@@ -7,6 +7,42 @@
 		"en": "Contact",
 		"et": "Kontakt"
 	},
+	"contactEmail": {
+		"en": "E-mail",
+		"et": "E-mail"
+	},
+	"contactEmailEmpty": {
+		"en": "E-mail is required",
+		"et": "E-mail peab olema täidetud"
+	},
+	"contactError": {
+		"en": "Something went wrong. Try again!",
+		"et": "Midagi läks valesti. Proovi uuesti!"
+	},
+	"contactMessage": {
+		"en": "Message",
+		"et": "Sõnum"
+	},
+	"contactMessageEmpty": {
+		"en": "Message is required",
+		"et": "Sõnum peab olema täidetud"
+	},
+	"contactName": {
+		"en": "Name",
+		"et": "Nimi"
+	},
+	"contactNameEmpty": {
+		"en": "Name is required",
+		"et": "Nimi peab olema täidetud"
+	},
+	"contactSend": {
+		"en": "Send",
+		"et": "Saada"
+	},
+	"contactSuccess": {
+		"en": "Message sent!",
+		"et": "Sõnum saadetud!"
+	},
 	"error": {
 		"en": "Error",
 		"et": "Viga"
