@@ -3,10 +3,12 @@ import {fireEvent, screen} from '@testing-library/react';
 import {renderWithLocale} from '../testUtils';
 import Entry from './index';
 import {BrowserRouter} from 'react-router-dom';
+import {translator} from "../i18n";
 
 // // TODO: Uncomment tests, reimplement with new components
 // // TODO: Localization tests. https://testing-library.com/docs/example-react-intl
 describe('Entry component', function() {
+  const translate = translator('et');
   const renderLogin = () => {
     renderWithLocale(
       <BrowserRouter>
@@ -21,9 +23,9 @@ describe('Entry component', function() {
 
   it('should render neccesary components', function() {
     renderLogin();
-    expect(screen.getByText('Login'));
-    expect(screen.getByText('Sign up'));
-    expect(screen.getByText('To start, make a choice'));
+    expect(screen.getByText(translate('login')));
+    expect(screen.getByText(translate('register')));
+    expect(screen.getByText(translate('entryText')));
     expect(screen.getByText('EST'));
   });
 
@@ -32,13 +34,13 @@ describe('Entry component', function() {
       renderLogin();
 
       // Choose login form
-      await fireEvent.click(screen.getByText('Login'));
+      await fireEvent.click(screen.getByText(translate('login')));
 
-      expect(screen.getByText('Login to your account')).toBeInTheDocument();
-      expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
-      expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
-      expect(screen.getByText('Login')).toBeInTheDocument();
-      expect(screen.getByText('cancel')).toBeInTheDocument();
+      expect(screen.getByText(translate('loginText'))).toBeInTheDocument();
+      expect(screen.getByPlaceholderText(translate('email'))).toBeInTheDocument();
+      expect(screen.getByPlaceholderText(translate('password'))).toBeInTheDocument();
+      expect(screen.getByText(translate('login'))).toBeInTheDocument();
+      expect(screen.getByText(translate('cancelRegister'))).toBeInTheDocument();
     });
     // it('should display an error message when login fails', async function() {
 
@@ -46,11 +48,11 @@ describe('Entry component', function() {
       renderLogin();
 
       // Choose register form
-      await fireEvent.click(screen.getByText('Login'));
+      await fireEvent.click(screen.getByText(translate('login')));
 
-      await fireEvent.click(screen.getByText('cancel'));
+      await fireEvent.click(screen.getByText(translate('cancelRegister')));
 
-      expect(screen.getByText('To start, make a choice'));
+      expect(screen.getByText(translate('entryText')));
     });
   });
 
@@ -59,27 +61,27 @@ describe('Entry component', function() {
       renderLogin();
 
       // Choose register form
-      await fireEvent.click(screen.getByText('Sign up'));
+      await fireEvent.click(screen.getByText(translate('register')));
 
-      expect(screen.getByText('Register a new account')).toBeInTheDocument();
-      expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
-      expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
+      expect(screen.getByText(translate("newAccount"))).toBeInTheDocument();
+      expect(screen.getByPlaceholderText(translate('email'))).toBeInTheDocument();
+      expect(screen.getByPlaceholderText(translate('password'))).toBeInTheDocument();
       expect(
-        screen.getByPlaceholderText('Repeat password')
+        screen.getByPlaceholderText(translate("repeatPassword"))
       ).toBeInTheDocument();
-      expect(screen.getByText('Sign up')).toBeInTheDocument();
-      expect(screen.getByText('cancel')).toBeInTheDocument();
+      expect(screen.getByText(translate('register'))).toBeInTheDocument();
+      expect(screen.getByText(translate('cancelRegister'))).toBeInTheDocument();
     });
 
     it('should be able to switch to entry form from register', async function() {
       renderLogin();
 
       // Choose register form
-      await fireEvent.click(screen.getByText('Sign up'));
+      await fireEvent.click(screen.getByText(translate('register')));
 
-      await fireEvent.click(screen.getByText('cancel'));
+      await fireEvent.click(screen.getByText(translate('cancelRegister')));
 
-      expect(screen.getByText('To start, make a choice'));
+      expect(screen.getByText(translate("entryText")));
     });
 
     // it('should attempt to register account registration', async function() {
