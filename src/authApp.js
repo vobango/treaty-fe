@@ -10,7 +10,7 @@ const AppAuth = ({firebase}) => {
     console.log(addPost);
     if (addPost.length > 0) {
       console.log('here');
-      firebase.doCreatePost(addPost);
+      firebase.doAddPost(addPost);
     }
   };
   return (

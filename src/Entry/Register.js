@@ -26,15 +26,7 @@ const RegisterBase = props => {
     }
     props.firebase
       .doCreateUserWithEmailAndPassword(email, password)
-      .then(authUser => {
-        return this.props.firebase.user(authUser.user.uid).set({
-          email
-        });
-      })
       .then(() => {
-        setEmail('');
-        setPassword('');
-        setPasswordRepeat('');
         props.history.push(ROUTES.APP);
       })
       .catch(error => {

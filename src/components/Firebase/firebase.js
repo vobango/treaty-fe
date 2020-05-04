@@ -29,7 +29,7 @@ class Firebase {
   doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
   // *** Post API ***
-  doCreatePost = post => {
+  doAddPost = post => {
     console.log(this.auth.currentUser);
     this.db
       .collection('posts')
@@ -73,7 +73,5 @@ class Firebase {
       });
     });
   };
-
-  doUpdatePost = () => {};
 }
 export default Firebase;
