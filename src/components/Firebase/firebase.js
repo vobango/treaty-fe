@@ -35,14 +35,45 @@ class Firebase {
       .collection('posts')
       .add({
         post: post,
-        email: this.auth.currentUser.email
+        email: this.auth.currentUser.email,
+        created: new Date()
       })
-      .then(function(docRef) {
-        console.log('Document written with ID: ', docRef.id);
-      })
+      .then(
+        function(docRef) {
+          // adds the posts reference to the current users posts
+          const userRef = this.db
+            .collection('users')
+            .doc(this.auth.currentUser.email);
+          userRef.get().then(docSnapshot => {
+            if (docSnapshot.exists) {
+              userRef.update({
+                posts: app.firestore.FieldValue.arrayUnion(docRef.id)
+              });
+            } else {
+              this.db
+                .collection('users')
+                .doc(this.auth.currentUser.email)
+                .set({
+                  posts: [docRef.id],
+                  created: new Date()
+                });
+            }
+          });
+        }.bind(this)
+      )
       .catch(function(error) {
         console.error('Error adding document: ', error);
       });
   };
+
+  doGetPosts = () => {
+    this.db.get().then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        console.log(doc.id, doc.data);
+      });
+    });
+  };
+
+  doUpdatePost = () => {};
 }
 export default Firebase;
