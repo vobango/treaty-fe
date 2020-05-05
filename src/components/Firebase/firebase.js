@@ -30,13 +30,12 @@ class Firebase {
 
   // *** Post API ***
   doAddPost = post => {
-    console.log(this.auth.currentUser);
     this.db
       .collection('posts')
       .add({
         post: post,
         email: this.auth.currentUser.email,
-        created: new Date()
+        created: new Date().getTime()
       })
       .then(
         function(docRef) {
@@ -55,7 +54,7 @@ class Firebase {
                 .doc(this.auth.currentUser.email)
                 .set({
                   posts: [docRef.id],
-                  created: new Date()
+                  created: new Date().getTime()
                 });
             }
           });
@@ -66,12 +65,33 @@ class Firebase {
       });
   };
 
-  doGetPosts = () => {
-    this.db.get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        console.log(doc.id, doc.data);
-      });
-    });
+  doGetReference = (created, user, collection) => {
+    let query = this.db.collection(collection);
+    query = query.where('email', '==', user);
+    query = query.where('created', '==', created);
+    return query
+      .get()
+      .then(snapshot => {
+        let id = '';
+        snapshot.forEach(doc => {
+          //console.log(doc.id, '=>', doc.data());
+          id = doc.id;
+        });
+        return id;
+      })
+      .catch(err => console.log('error', err));
+  };
+
+  doDeletePost = async (created, user) => {
+    // check if user contains
+    const referenceId = await this.doGetReference(created, user, 'posts');
+    if (referenceId) {
+      this.db
+        .collection('posts')
+        .doc(referenceId)
+        .delete()
+        .then();
+    }
   };
 }
 export default Firebase;
