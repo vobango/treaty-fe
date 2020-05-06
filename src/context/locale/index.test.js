@@ -11,7 +11,7 @@ describe('Locale context', function() {
     return (
       <div>
         <div>{locale}</div>
-        <button onClick={() => setLocale(locales.ET)}>Change locale</button>
+        <button onClick={() => setLocale(locales.EN)}>Change locale</button>
         <p>{translate('test')}</p>
       </div>
     );
@@ -30,7 +30,7 @@ describe('Locale context', function() {
 
       await fireEvent.click(screen.getByText(/change locale/i));
 
-      expect(screen.getByText(locales.ET)).toBeDefined();
+      expect(screen.getByText(locales.EN)).toBeDefined();
     });
 
     it('should return a function to translate keys with given locale', function() {
