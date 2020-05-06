@@ -22,7 +22,7 @@ describe('Locale context', function() {
       renderWithLocale(<Component />);
 
       // Assume EN is the default locale
-      expect(screen.getByText(locales.EN)).toBeDefined();
+      expect(screen.getByText(locales.ET)).toBeDefined();
     });
 
     it('should return a function to update locale', async function() {

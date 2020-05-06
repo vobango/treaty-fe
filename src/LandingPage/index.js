@@ -78,21 +78,21 @@ export default () => {
             <Link
               className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 text-lg lg:text-2xl bg-green-500 border-2 border-green-500 hover:bg-green-600 hover:border-green-600 focus:outline-none focus:shadow-outline active:bg-green-700 active:border-green-700"
               to={{
-              pathname: '/entry',
-              state: {subPath: 'register'}
-            }}
+                pathname: '/entry',
+                state: {subPath: 'register'}
+              }}
             >
               {translate('register')}
             </Link>
             <Link
               className="rounded-lg px-6 lg:px-8 py-3 lg:py-4 ml-10 text-lg lg:text-2xl border-2 border-white hover:border-green-500 hover:text-green-500 focus:outline-none focus:shadow-outline active:border-green-700 active:text-green-700"
               to={{
-              pathname: '/entry',
-              state: {subPath: 'login'}
-            }}
+                pathname: '/entry',
+                state: {subPath: 'login'}
+              }}
             >
-            {translate('login')}
-          </Link>
+              {translate('login')}
+            </Link>
           </div>
         </div>
         <Image.Hero className="w-full relative h-full object-cover" />

@@ -7,7 +7,7 @@ export const renderWithLocale = child => {
   return render(<LocaleProvider>{child}</LocaleProvider>);
 };
 
-export const translate = key => translator('en')(key);
+export const translate = key => translator('et')(key);
 
 export const successResponse = () =>
   Promise.resolve(JSON.stringify({ok: true}));

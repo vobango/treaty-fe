@@ -2,28 +2,27 @@ import React, {useState} from 'react';
 import * as ROUTES from '../utils/routes';
 import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
-import {withFirebase} from "../components/Firebase";
-import {withRouter} from "react-router-dom";
-import {compose} from "recompose";
+import {withFirebase} from '../components/Firebase';
+import {withRouter} from 'react-router-dom';
+import {compose} from 'recompose';
 
-const LoginBase = (props) => {
+const LoginBase = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const {translate} = useLocale();
 
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
-
     props.firebase
-        .doSignInWithEmailAndPassword(email, password)
-        .then(() => {
-          props.history.push(ROUTES.APP);
-        })
-        .catch(error => {
-          setEmail("");
-          setPassword("");
-          setError(error.message)
-        });
+      .doSignInWithEmailAndPassword(email, password)
+      .then(() => {
+        props.history.push(ROUTES.HOME);
+      })
+      .catch(error => {
+        setEmail('');
+        setPassword('');
+        setError(error.message);
+      });
 
     event.preventDefault();
   };
@@ -89,9 +88,6 @@ const LoginBase = (props) => {
   );
 };
 
-const Login = compose(
-    withRouter,
-    withFirebase,
-)(LoginBase);
+const Login = compose(withRouter, withFirebase)(LoginBase);
 
 export default Login;
