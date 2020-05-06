@@ -1,5 +1,23 @@
 import React from 'react';
 
+const AddBuilding = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M17 14h2v3h3v2h-3v3h-2v-3h-3v-2h3v-3M11.5 1L21 6v2H2V6l9.5-5m4.5 9h3v2.08L18 12c-.7 0-1.37.12-2 .34V10M2 22v-3h10.08c.19 1.14.71 2.17 1.45 3H2m8-12h3v4.68c-.46.69-.78 1.47-.92 2.32H10v-7m-6 0h3v7H4v-7z"
+    />
+  </svg>
+);
+
+const AddWorker = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M15 14c-2.67 0-8 1.33-8 4v2h16v-2c0-2.67-5.33-4-8-4m-9-4V7H4v3H1v2h3v3h2v-3h3v-2m6 2a4 4 0 004-4 4 4 0 00-4-4 4 4 0 00-4 4 4 4 0 004 4z"
+    />
+  </svg>
+);
+
 const Arrow = ({className, direction}) => {
   return direction === 'right' ? (
     <svg className={className} viewBox="0 0 24 24">
@@ -17,6 +35,15 @@ const Arrow = ({className, direction}) => {
     </svg>
   );
 };
+
+const Building = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M11.5,1L2,6V8H21V6M16,10V17H19V10M2,22H21V19H2M10,10V17H13V10M4,10V17H7V10H4Z"
+    />
+  </svg>
+);
 
 const Calendar = props => (
   <svg {...props} viewBox="0 0 24 24">
@@ -153,6 +180,15 @@ const Search = props => (
   </svg>
 );
 
+const Settings = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M12 15.5A3.5 3.5 0 018.5 12 3.5 3.5 0 0112 8.5a3.5 3.5 0 013.5 3.5 3.5 3.5 0 01-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0014 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1 0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66z"
+    />
+  </svg>
+);
+
 const Tools = props => (
   <svg {...props} viewBox="0 0 24 24">
     <path
@@ -162,8 +198,29 @@ const Tools = props => (
   </svg>
 );
 
+const User = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M12 2A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2M7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.5.88 4.93 1.78A7.893 7.893 0 0112 20c-1.86 0-3.57-.64-4.93-1.72m11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.928 7.928 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.5-1.64 4.83M12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6m0 5a1.5 1.5 0 01-1.5-1.5A1.5 1.5 0 0112 8a1.5 1.5 0 011.5 1.5A1.5 1.5 0 0112 11z"
+    />
+  </svg>
+);
+
+const Worker = props => (
+  <svg {...props} viewBox="0 0 24 24">
+    <path
+      fill="currentColor"
+      d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"
+    />
+  </svg>
+);
+
 export const Icon = {
+  AddBuilding,
+  AddWorker,
   Arrow,
+  Building,
   Calendar,
   Check,
   Close,
@@ -173,5 +230,8 @@ export const Icon = {
   Menu,
   Number,
   Search,
-  Tools
+  Settings,
+  Tools,
+  User,
+  Worker
 };
