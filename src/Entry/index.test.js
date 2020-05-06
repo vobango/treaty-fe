@@ -3,7 +3,7 @@ import {fireEvent, screen} from '@testing-library/react';
 import {renderWithLocale} from '../testUtils';
 import Entry from './index';
 import {BrowserRouter} from 'react-router-dom';
-import {translator} from "../i18n";
+import {translator} from '../i18n';
 
 // // TODO: Uncomment tests, reimplement with new components
 // // TODO: Localization tests. https://testing-library.com/docs/example-react-intl
@@ -37,8 +37,12 @@ describe('Entry component', function() {
       await fireEvent.click(screen.getByText(translate('login')));
 
       expect(screen.getByText(translate('loginText'))).toBeInTheDocument();
-      expect(screen.getByPlaceholderText(translate('email'))).toBeInTheDocument();
-      expect(screen.getByPlaceholderText(translate('password'))).toBeInTheDocument();
+      expect(
+        screen.getByPlaceholderText(translate('email'))
+      ).toBeInTheDocument();
+      expect(
+        screen.getByPlaceholderText(translate('password'))
+      ).toBeInTheDocument();
       expect(screen.getByText(translate('login'))).toBeInTheDocument();
       expect(screen.getByText(translate('cancelRegister'))).toBeInTheDocument();
     });
@@ -63,11 +67,15 @@ describe('Entry component', function() {
       // Choose register form
       await fireEvent.click(screen.getByText(translate('register')));
 
-      expect(screen.getByText(translate("newAccount"))).toBeInTheDocument();
-      expect(screen.getByPlaceholderText(translate('email'))).toBeInTheDocument();
-      expect(screen.getByPlaceholderText(translate('password'))).toBeInTheDocument();
+      expect(screen.getByText(translate('newAccount'))).toBeInTheDocument();
       expect(
-        screen.getByPlaceholderText(translate("repeatPassword"))
+        screen.getByPlaceholderText(translate('email'))
+      ).toBeInTheDocument();
+      expect(
+        screen.getByPlaceholderText(translate('password'))
+      ).toBeInTheDocument();
+      expect(
+        screen.getByPlaceholderText(translate('repeatPassword'))
       ).toBeInTheDocument();
       expect(screen.getByText(translate('register'))).toBeInTheDocument();
       expect(screen.getByText(translate('cancelRegister'))).toBeInTheDocument();
@@ -81,7 +89,7 @@ describe('Entry component', function() {
 
       await fireEvent.click(screen.getByText(translate('cancelRegister')));
 
-      expect(screen.getByText(translate("entryText")));
+      expect(screen.getByText(translate('entryText')));
     });
 
     // it('should attempt to register account registration', async function() {
