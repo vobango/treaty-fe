@@ -33,7 +33,14 @@ class Firebase {
     this.db
       .collection('posts')
       .add({
-        post: post,
+        post: post.post,
+        workerCount: post.workersNeeded,
+        workArea: post.workArea,
+        workField: post.workField,
+        dateRange: [
+          new Date(post.dateRange[0]).getTime(),
+          new Date(post.dateRange[1]).getTime()
+        ],
         email: this.auth.currentUser.email,
         created: new Date().getTime()
       })

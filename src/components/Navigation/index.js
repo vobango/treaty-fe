@@ -18,7 +18,6 @@ const Navigation = () => {
       <Route exact path={ROUTES.APP} component={AppAuth} />
       <Route exact path={ROUTES.HOME} component={Home} />
       <Route path="/add" component={OfferWork} />
-
       <Route path="/listings" component={ViewWork} />
       <Route path="/settings">
         <Layout>
