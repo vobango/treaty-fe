@@ -1,24 +1,24 @@
-import React, { Component, createContext } from "react";
-import { auth } from "../components/Firebase/firebase";
+import React, {Component, createContext} from 'react';
+import {auth} from '../components/Firebase/firebase';
 
-export const UserContext = createContext({ user: null });
+export const UserContext = createContext({user: null});
 class UserProvider extends Component {
-    state = {
-        user: null
-    };
+  state = {
+    user: null
+  };
 
-    componentDidMount = () => {
-        auth.onAuthStateChanged(userAuth => {
-            this.setState({ user: userAuth});
-        });
-    };
+  componentDidMount = () => {
+    auth.onAuthStateChanged(userAuth => {
+      this.setState({user: userAuth});
+    });
+  };
 
-    render() {
-        return (
-            <UserContext.Provider value={this.state.user}>
-                {this.props.children}
-            </UserContext.Provider>
-        );
-    }
+  render() {
+    return (
+      <UserContext.Provider value={this.state.user}>
+        {this.props.children}
+      </UserContext.Provider>
+    );
+  }
 }
 export default UserProvider;
