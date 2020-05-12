@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {withAuthorization} from './components/Session';
 import {withFirebase} from './components/Firebase';
+import {condition} from './components/Session/withAuthorization';
 
 // this is a mock page to show case protected routes, where app should be
 const AppAuth = ({firebase}) => {
@@ -67,7 +68,5 @@ const AppAuth = ({firebase}) => {
     </div>
   );
 };
-
-const condition = authUser => !!authUser;
 
 export default withFirebase(withAuthorization(condition)(AppAuth));

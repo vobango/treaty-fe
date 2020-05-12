@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Layout from '../components/layout';
 import {withFirebase} from '../components/Firebase';
 import {withAuthorization} from '../components/Session';
+import {condition} from '../components/Session/withAuthorization';
 
 const ViewWork = ({firebase}) => {
   const [posts, setPosts] = useState([]);
@@ -53,7 +54,5 @@ const ViewWork = ({firebase}) => {
     </Layout>
   );
 };
-
-const condition = authUser => !!authUser;
 
 export default withFirebase(withAuthorization(condition)(ViewWork));

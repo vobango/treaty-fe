@@ -4,6 +4,7 @@ import {withFirebase} from '../components/Firebase';
 import {withAuthorization} from '../components/Session';
 import {useLocale} from '../context/locale';
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
+import {condition} from '../components/Session/withAuthorization';
 
 const OfferWork = ({firebase}) => {
   const {translate} = useLocale();
@@ -81,7 +82,5 @@ const OfferWork = ({firebase}) => {
     </Layout>
   );
 };
-
-const condition = authUser => !!authUser;
 
 export default withFirebase(withAuthorization(condition)(OfferWork));
