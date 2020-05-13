@@ -233,5 +233,25 @@
 	"loginText": {
 		"en": "Login to your account",
 		"et": "Logi sisse"
+	},
+	"addListing": {
+		"en": "Save listing",
+		"et": "Lisa kuulutus"
+	},
+	"otherInfo": {
+		"en": "More information",
+		"et": "Muu info"
+	},
+	"countWorkersNeeded": {
+		"en": "How many workers are needed (1-99)",
+		"et": "Töötajate arv keda vajad (1-99)"
+	},
+	"chooseField": {
+		"en": "Choose a field",
+		"et": "Vali valdkond"
+	},
+	"chooseArea": {
+		"en": "Choose working area",
+		"et": "Vali piirkond"
 	}
 }
