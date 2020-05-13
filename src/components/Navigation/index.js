@@ -7,6 +7,8 @@ import Entry from '../../Entry';
 import AppAuth from '../../authApp';
 import Home from '../home';
 import Layout from '../layout';
+import OfferWork from '../../Pages/OfferWork';
+import ViewWork from '../../Pages/ViewWork';
 
 const Navigation = () => {
   return (
@@ -15,16 +17,8 @@ const Navigation = () => {
       <Route exact path={ROUTES.ENTRY} component={Entry} />
       <Route exact path={ROUTES.APP} component={AppAuth} />
       <Route exact path={ROUTES.HOME} component={Home} />
-      <Route path="/add">
-        <Layout>
-          <div>Kuulutuse lisamine</div>
-        </Layout>
-      </Route>
-      <Route path="/listings">
-        <Layout>
-          <div>Kuulutuste vaatamine</div>
-        </Layout>
-      </Route>
+      <Route path="/add" component={OfferWork} />
+      <Route path="/listings" component={ViewWork} />
       <Route path="/settings">
         <Layout>
           <div>Kasutaja seaded</div>

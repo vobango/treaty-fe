@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
-import {withFirebase} from "../components/Firebase";
-import * as ROUTES from "../utils/routes"
-import {withRouter} from "react-router-dom";
-import {compose} from "recompose";
+import {withFirebase} from '../components/Firebase';
+import * as ROUTES from '../utils/routes';
+import {withRouter} from 'react-router-dom';
+import {compose} from 'recompose';
 
-const RegisterBase = (props) => {
+const RegisterBase = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
@@ -25,21 +25,17 @@ const RegisterBase = (props) => {
       return;
     }
     props.firebase
-        .doCreateUserWithEmailAndPassword(email, password)
-        .then(authUser => {
-          setEmail('');
-          setPassword('');
-          setPasswordRepeat('');
-          props.history.push(ROUTES.APP);
-        })
-        .catch(error => {
-          setEmail('');
-          setPassword('');
-          setPasswordRepeat('');
-          setError(error.message);
-        });
+      .doCreateUserWithEmailAndPassword(email, password)
+      .then(() => {
+        props.history.push(ROUTES.APP);
+      })
+      .catch(error => {
+        setEmail('');
+        setPassword('');
+        setPasswordRepeat('');
+        setError(error.message);
+      });
     event.preventDefault();
-
   };
   const onChangeHandler = event => {
     const {name, value} = event.currentTarget;
@@ -117,9 +113,6 @@ const RegisterBase = (props) => {
   );
 };
 
-const Register = compose(
-    withRouter,
-    withFirebase,
-)(RegisterBase);
+const Register = compose(withRouter, withFirebase)(RegisterBase);
 
 export default Register;
