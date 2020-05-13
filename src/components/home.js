@@ -4,7 +4,7 @@ import Layout from './layout';
 import {Icon} from './icons';
 
 const Home = () => {
-  const iconClasses = 'h-6 mb-2 text-green-200';
+  const iconClasses = 'h-4 mr-2 opacity-75';
   const links = [
     {
       text: 'Paku tööd',
@@ -29,17 +29,22 @@ const Home = () => {
     {
       text: 'Seaded',
       icon: <Icon.Settings className={iconClasses} />,
-      to: '/settings'
+      to: '/settings',
+      type: 'secondary'
     }
   ];
   return (
     <Layout>
-      <div className="w-full sm:max-w-xl grid grid-cols-2 gap-6 sm:gap-8">
-        {links.map(({to, text, icon}) => {
+      <div className="w-full sm:max-w-xl grid grid-cols-1 gap-6 sm:gap-8">
+        {links.map(({to, text, icon, type = 'primary'}) => {
+          const className =
+            type === 'primary'
+              ? 'text-white bg-green-500'
+              : 'text-gray-800 bg-gray-300';
           return (
             <Link
               key={text}
-              className="flex flex-col items-center justify-center py-4 rounded-lg text-white bg-green-500 hover:bg-green-400 active:bg-green-700"
+              className={`flex items-center justify-center py-4 rounded-lg hover:bg-green-400 active:bg-green-700 ${className}`}
               to={to}
             >
               {icon} {text}

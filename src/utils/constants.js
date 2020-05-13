@@ -1,3 +1,3 @@
 export const screens = {
-  DESKTOP_MIN_WIDTH: 1660
+  DESKTOP_MIN_WIDTH: 1445
 };
