@@ -50,7 +50,7 @@ export default () => {
     <div className="w-full relative">
       {/* Navbar */}
       <div className="w-full py-6 px-4 lg:px-16 absolute z-20 flex items-start sm:items-end justify-between bg-black-75">
-        <Image.Logo className="h-16 sm:h-20 lg:h-24" alt={translate('logo')} />
+        <Image.Logo className="h-16 sm:h-20 xl:h-24" alt={translate('logo')} />
         {isDesktop && <DesktopMenu />}
         {!isDesktop && <MobileMenu />}
       </div>
