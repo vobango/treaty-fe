@@ -253,5 +253,13 @@
 	"chooseArea": {
 		"en": "Choose working area",
 		"et": "Vali piirkond"
+	},
+	"eulaAgreement": {
+		"en": "I agree to EULA",
+		"et": "Nõustun privaatsustingimustega"
+	},
+	"eulaError": {
+		"en": "You must agree to the EULA",
+		"et": "Registeerimiseks peab nõustuma privaatustingimustega"
 	}
 }

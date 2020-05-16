@@ -3,7 +3,7 @@ import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
 import {withFirebase} from '../components/Firebase';
 import * as ROUTES from '../utils/routes';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {compose} from 'recompose';
 
 const RegisterBase = props => {
@@ -11,6 +11,7 @@ const RegisterBase = props => {
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
   const [error, setError] = useState(null);
+  const [eula, setEula] = useState(false);
 
   const {translate} = useLocale();
   const createUserWithEmailAndPasswordHandler = async (
@@ -22,6 +23,10 @@ const RegisterBase = props => {
     event.preventDefault();
     if (password !== passwordRepeat) {
       setError(translate('passwordMatchError'));
+      return;
+    }
+    if (!eula) {
+      setError(translate('eulaError'));
       return;
     }
     props.firebase
@@ -47,6 +52,13 @@ const RegisterBase = props => {
       setPasswordRepeat(value);
     }
   };
+
+  const handleEulaToggle = () => {
+    console.log(eula);
+    setEula(!eula);
+  };
+
+  const eulaText = translate('eulaAgreement');
 
   return (
     <div className="flex flex-col flex-grow justify-between h-screen px-8">
@@ -87,6 +99,12 @@ const RegisterBase = props => {
             id="userPassword"
             onChange={event => onChangeHandler(event)}
           />
+          <lable>
+            <input type="checkbox" onChange={() => handleEulaToggle()} />
+            {eulaText.substring(0, eulaText.lastIndexOf(' ')) + ' '}
+            <Link to="/eula">{eulaText.split(' ').splice(-1)[0]}</Link>
+          </lable>
+
           {error ? <h1 className="text-red-600">{error}</h1> : null}
         </form>
         <button

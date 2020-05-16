@@ -14,6 +14,14 @@
 	@apply my-1 p-1 w-full border-b-2;
 }
 
+.eula-header {
+    @apply text-3xl py-8 text-center w-full;
+}
+
+.eula-li-styles {
+    @apply ml-32 py-8;
+}
+
 @screen md {
 	.entry-button {
 		@apply  w-full max-w-xl;
