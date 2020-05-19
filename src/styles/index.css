@@ -15,11 +15,11 @@
 }
 
 .eula-header {
-    @apply text-3xl py-8 text-center w-full;
+    @apply text-3xl py-4 text-center w-full;
 }
 
 .eula-li-styles {
-    @apply ml-32 py-8;
+    @apply pl-4 py-4;
 }
 
 @screen md {

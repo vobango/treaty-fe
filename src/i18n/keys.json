@@ -213,7 +213,7 @@
 	},
 	"newAccount": {
 		"en": "Register a new account",
-		"et": "Registeeri uus konto"
+		"et": "Registreeri uus konto"
 	},
 	"email": {
 		"en": "Email",
@@ -260,6 +260,6 @@
 	},
 	"eulaError": {
 		"en": "You must agree to the EULA",
-		"et": "Registeerimiseks peab nõustuma privaatustingimustega"
+		"et": "Registreerimiseks peab nõustuma privaatustingimustega"
 	}
 }

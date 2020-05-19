@@ -54,7 +54,6 @@ const RegisterBase = props => {
   };
 
   const handleEulaToggle = () => {
-    console.log(eula);
     setEula(!eula);
   };
 
@@ -100,9 +99,15 @@ const RegisterBase = props => {
             onChange={event => onChangeHandler(event)}
           />
           <lable>
-            <input type="checkbox" onChange={() => handleEulaToggle()} />
+            <input
+              type="checkbox"
+              className="mr-4"
+              onChange={() => handleEulaToggle()}
+            />
             {eulaText.substring(0, eulaText.lastIndexOf(' ')) + ' '}
-            <Link to="/eula">{eulaText.split(' ').splice(-1)[0]}</Link>
+            <Link to="/eula" className="underline text-blue-600">
+              {eulaText.split(' ').splice(-1)[0]}
+            </Link>
           </lable>
 
           {error ? <h1 className="text-red-600">{error}</h1> : null}

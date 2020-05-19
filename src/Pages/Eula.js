@@ -1,12 +1,14 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import Layout from '../components/layout';
 
 const Eula = () => {
   return (
     <Layout>
-      <div className="flex flex-col p-8">
-        <button>Go back</button>
+      <div className="flex flex-col px-16 xl:px-72 md:px-48 ">
+        <Link to="/" className="underline">
+          Tagasi esilehele
+        </Link>
         <h1 className="eula-header">Privaatsustingimused</h1>
         <p>Kehtivad alates XX.XX.XXXX</p>
         <p>
