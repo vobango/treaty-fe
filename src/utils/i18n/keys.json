@@ -171,6 +171,10 @@
 		"en": "Password",
 		"et": "Parool"
 	},
+	"pickDateRange": {
+		"en": "Date range",
+		"et": "Vali töö aeg"
+	},
 	"readMore": {
 		"en": "Read more",
 		"et": "Vaata lähemalt"
