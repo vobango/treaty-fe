@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Icon} from './icons';
 import {useMutation} from 'react-query';
-import {useLocale} from '../context/locale';
+import {useLocale} from '../providers/locale';
 import Input from './input';
 import request from '../utils/request';
 

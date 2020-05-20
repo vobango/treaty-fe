@@ -1,8 +1,8 @@
 import * as React from 'react';
 import logo from '../assets/images/logo_small.png';
 import {Icon} from './icons';
-import {useLocale} from '../context/locale';
-import {withAuthorization} from './Session';
+import {useLocale} from '../providers/locale';
+import {withAuthorization} from './session';
 import {Link} from 'react-router-dom';
 
 const Layout = ({children, user}) => {

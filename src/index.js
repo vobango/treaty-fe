@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/tailwind.css';
 import App from './App';
-import Firebase, { FirebaseContext } from './components/Firebase'
 import * as serviceWorker from './serviceWorker';
+import {Providers} from './providers';
 
 ReactDOM.render(
   <React.StrictMode>
-      <FirebaseContext.Provider value={new Firebase()}>
-          <App />
-      </FirebaseContext.Provider>
+    <Providers>
+      <App />
+    </Providers>
   </React.StrictMode>,
   document.getElementById('root')
 );

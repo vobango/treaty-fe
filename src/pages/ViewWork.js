@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {withAuthorization} from './components/session';
-import {withFirebase} from './providers/firebase';
-import {condition} from './components/session/withAuthorization';
+import React, {useEffect, useState} from 'react';
+import Layout from '../components/layout';
+import {withFirebase} from '../providers/firebase';
+import {withAuthorization} from '../components/session';
+import {condition} from '../components/session/withAuthorization';
 
-// this is a mock page to show case protected routes, where app should be
-const AppAuth = ({firebase}) => {
-  const [addPost, setAddPost] = useState('');
+const ViewWork = ({firebase}) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -24,22 +23,8 @@ const AppAuth = ({firebase}) => {
     };
   }, [firebase]);
 
-  const sendPost = () => {
-    if (addPost.length > 0) {
-      firebase.doAddPost(addPost);
-    }
-  };
   return (
-    <div>
-      <h1>Auth protected page</h1>
-      <button type="button" onClick={firebase.doSignOut}>
-        Sign Out
-      </button>
-      <div>
-        <h1>Add post</h1>
-        <input value={addPost} onChange={e => setAddPost(e.target.value)} />
-        <button onClick={() => sendPost()}>Send post</button>
-      </div>
+    <Layout>
       <div>
         <h1>See all other user posts</h1>
         <h1>Currently you can only delete the last one</h1>
@@ -53,6 +38,7 @@ const AppAuth = ({firebase}) => {
               </p>
             )}
             <button
+              className="entry-button"
               onClick={() =>
                 firebase.doDeletePost(
                   el.created,
@@ -60,13 +46,13 @@ const AppAuth = ({firebase}) => {
                 )
               }
             >
-              DELETE
+              DELETE POST
             </button>
           </div>
         ))}
       </div>
-    </div>
+    </Layout>
   );
 };
 
-export default withFirebase(withAuthorization(condition)(AppAuth));
+export default withFirebase(withAuthorization(condition)(ViewWork));
