@@ -5,7 +5,7 @@ import * as ROUTES from '../utils/routes';
 import LandingPage from '../pages/LandingPage';
 import Entry from '../pages/Entry';
 import AppAuth from '../authApp';
-import Home from './home';
+import Home from '../pages/Home';
 import Layout from './layout';
 import OfferWork from '../pages/OfferWork';
 import ViewWork from '../pages/ViewWork';

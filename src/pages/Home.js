@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import Layout from './layout';
-import {Icon} from './icons';
+import Layout from '../components/layout';
+import {Icon} from '../components/icons';
 
 const Home = () => {
   const iconClasses = 'h-4 mr-2 opacity-75';

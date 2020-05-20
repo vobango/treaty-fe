@@ -151,6 +151,10 @@
 		"en": "Cofind brings partners together",
 		"et": "Cofind toob partnerid kokku"
 	},
+	"logout": {
+		"en": "Log out",
+		"et": "Logi välja"
+	},
 	"menu": {
 		"en": "Menu",
 		"et": "Menüü"
