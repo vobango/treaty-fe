@@ -3,7 +3,7 @@ import logo from '../assets/images/Cofind_logo_roh_pos.png';
 import {useLocale} from '../context/locale';
 import {withFirebase} from '../components/Firebase';
 import * as ROUTES from '../utils/routes';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {compose} from 'recompose';
 
 const RegisterBase = props => {
@@ -11,6 +11,7 @@ const RegisterBase = props => {
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
   const [error, setError] = useState(null);
+  const [eula, setEula] = useState(false);
 
   const {translate} = useLocale();
   const createUserWithEmailAndPasswordHandler = async (
@@ -22,6 +23,10 @@ const RegisterBase = props => {
     event.preventDefault();
     if (password !== passwordRepeat) {
       setError(translate('passwordMatchError'));
+      return;
+    }
+    if (!eula) {
+      setError(translate('eulaError'));
       return;
     }
     props.firebase
@@ -48,14 +53,16 @@ const RegisterBase = props => {
     }
   };
 
+  const handleEulaToggle = () => {
+    setEula(!eula);
+  };
+
+  const eulaText = translate('eulaAgreement');
+
   return (
     <div className="flex flex-col flex-grow justify-between h-screen px-8">
       <a href="/" className="flex justify-center">
-        <img
-          className="w-auto sm:h-24 mt-8"
-          src={logo}
-          alt={translate('logo')}
-        />
+        <img className="h-24 mt-8" src={logo} alt={translate('logo')} />
       </a>
       <h1 className="header-text">{translate('newAccount')}</h1>
       <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
@@ -87,6 +94,18 @@ const RegisterBase = props => {
             id="userPassword"
             onChange={event => onChangeHandler(event)}
           />
+          <lable>
+            <input
+              type="checkbox"
+              className="mr-4"
+              onChange={() => handleEulaToggle()}
+            />
+            {eulaText.substring(0, eulaText.lastIndexOf(' ')) + ' '}
+            <Link to="/eula" className="underline text-blue-600">
+              {eulaText.split(' ').splice(-1)[0]}
+            </Link>
+          </lable>
+
           {error ? <h1 className="text-red-600">{error}</h1> : null}
         </form>
         <button

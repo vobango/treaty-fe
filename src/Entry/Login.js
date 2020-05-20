@@ -40,11 +40,7 @@ const LoginBase = props => {
   return (
     <div className="flex flex-col flex-grow justify-between h-screen px-8">
       <a href="/" className="flex justify-center">
-        <img
-          className="w-auto sm:h-24 mt-8"
-          src={logo}
-          alt={translate('logo')}
-        />
+        <img className="h-24 mt-8" src={logo} alt={translate('logo')} />
       </a>
       <h1 className="header-text">{translate('loginText')}</h1>
       <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
