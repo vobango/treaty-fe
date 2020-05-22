@@ -1,4 +1,12 @@
 {
+	"addListing": {
+		"en": "Save listing",
+		"et": "Lisa kuulutus"
+	},
+	"cancelRegister": {
+		"en": "cancel",
+		"et": "katkesta"
+	},
 	"close": {
 		"en": "Close",
 		"et": "Sulge"
@@ -47,9 +55,77 @@
 		"en": "Message sent!",
 		"et": "Sõnum saadetud!"
 	},
+	"countyHarju": {
+		"en": "Harju county",
+		"et": "Harju maakond"
+	},
+	"countyHiiu": {
+		"en": "Hiiu county",
+		"et": "Hiiu maakond"
+	},
+	"countyIdaViru": {
+		"en": "Ida-Viru county",
+		"et": "Ida-Viru maakond"
+	},
+	"countyJarva": {
+		"en": "Järva county",
+		"et": "Järva maakond"
+	},
+	"countyJogeva": {
+		"en": "Jõgeva county",
+		"et": "Jõgeva maakond"
+	},
+	"countyLaane": {
+		"en": "Lääne county",
+		"et": "Lääne maakond"
+	},
+	"countyLaaneViru": {
+		"en": "Lääne-Viru county",
+		"et": "Lääne-Viru maakond"
+	},
+	"countyParnu": {
+		"en": "Pärnu county",
+		"et": "Pärnu maakond"
+	},
+	"countyPolva": {
+		"en": "Põlva county",
+		"et": "Põlva maakond"
+	},
+	"countyRapla": {
+		"en": "Rapla county",
+		"et": "Rapla maakond"
+	},
+	"countySaare": {
+		"en": "Saare county",
+		"et": "Saare maakond"
+	},
+	"countyTartu": {
+		"en": "Tartu county",
+		"et": "Tartu maakond"
+	},
+	"countyValga": {
+		"en": "Valga county",
+		"et": "Valga maakond"
+	},
+	"countyViljandi": {
+		"en": "Viljandi county",
+		"et": "Viljandi maakond"
+	},
+	"countyVoru": {
+		"en": "Võru county",
+		"et": "Võru maakond"
+	},
 	"error": {
 		"en": "Error",
 		"et": "Viga"
+	},
+	"europe": {
+		"en": "Europe",
+		"et": "Euroopa"
+	},
+	"finland": {
+		"en": "Finland",
+		"et": "Soome"
 	},
 	"forEmployer": {
 		"en": "For employer",
@@ -159,6 +235,10 @@
 		"en": "Menu",
 		"et": "Menüü"
 	},
+	"norway": {
+		"en": "Norway",
+		"et": "Norra"
+	},
 	"offerWork": {
 		"en": "Offer work",
 		"et": "Paku tööd"
@@ -195,9 +275,113 @@
 		"en": "brings partners together",
 		"et": "toob partnerid kokku"
 	},
+	"sweden": {
+		"en": "Sweden",
+		"et": "Rootsi"
+	},
+	"tallinn": {
+		"en": "Tallinn",
+		"et": "Tallinn"
+	},
+	"tartu": {
+		"en": "Tartu",
+		"et": "Tartu linn"
+	},
 	"test": {
 		"en": "TEST KEY, DO NOT REMOVE",
 		"et": "KONTROLLVÕTI, MITTE EEMALDADA"
+	},
+	"typeAirConditioning":{
+		"en": "Air conditioning",
+		"et": "Kütte- ja jahutussüsteemitöö"
+	},
+	"typeAssembly": {
+		"en": "Assembly job",
+		"et": "Montaažitöö"
+	},
+	"typeConcrete": {
+		"en": "Concrete job",
+		"et": "Betoonitöö"
+	},
+	"typeDemolition": {
+		"en": "Demolition job",
+		"et": "Lammutustöö"
+	},
+	"typeElectricity": {
+		"en": "Electical job",
+		"et": "Elektritöö"
+	},
+	"typeFlatRoof": {
+		"en": "Flat roof job",
+		"et": "Lamekatusetöö"
+	},
+	"typeFlooring": {
+		"en": "Flooring",
+		"et": "Põrandatöö"
+	},
+	"typeGeneralConstruction": {
+		"en": "General construction",
+		"et": "Üldehitustöö"
+	},
+	"typeHelp": {
+		"en": "Additional job",
+		"et": "Abitöö"
+	},
+	"typeInteriorDecoration": {
+		"en": "Interior decoration",
+		"et": "Siseviimistlus"
+	},
+	"typeObjectManagement": {
+		"en": "Object management",
+		"et": "Objektijuhtimine"
+	},
+	"typePlaster": {
+		"en": "Plastering job",
+		"et": "Krohvitöö"
+	},
+	"typePlumbing": {
+		"en": "Plumbing job",
+		"et": "Veevärgitöö"
+	},
+	"typeProjectManagement": {
+		"en": "Project management",
+		"et": "Projektijuhtimine"
+	},
+	"typeRestoration": {
+		"en": "Restoration",
+		"et": "Restaureerimine"
+	},
+	"typeSlantedRoof": {
+		"en": "Slanted roof job",
+		"et": "Kaldkatusetöö"
+	},
+	"typeTiling": {
+		"en": "Tiling job",
+		"et": "Plaatimistöö"
+	},
+	"typeTin": {
+		"en": "Tin job",
+		"et": "Plektiöö"
+	},
+	"typeVentilation": {
+		"en": "Ventilation",
+		"et": "Ventilatsioonitöö"
+	},
+	"typeWall": {
+		"en": "Brick wall job",
+		"et": "Müüritöö"
+	},
+	"typeWeakCurrent": {
+		"en": "Weak current job",
+		"et": "Nõrkvoolutöö"
+	},
+	"typeWoodwork": {
+		"en": "Woodworking",
+		"et": "Puusepatöö"
+	},
+	"typeWorkManagement": {
+		"en": "Work management",
+		"et": "Tööjuhtimine"
 	},
 	"username": {
 		"en": "Username",
@@ -227,10 +411,6 @@
 		"en": "Email",
 		"et": "Email"
 	},
-	"cancelRegister": {
-		"en": "cancel",
-		"et": "katkesta"
-	},
 	"passwordMatchError": {
 		"en": "Passwords do not match!",
 		"et": "Paroolid ei kattu!"
@@ -241,10 +421,6 @@
 	"loginText": {
 		"en": "Login to your account",
 		"et": "Logi sisse"
-	},
-	"addListing": {
-		"en": "Save listing",
-		"et": "Lisa kuulutus"
 	},
 	"otherInfo": {
 		"en": "More information",

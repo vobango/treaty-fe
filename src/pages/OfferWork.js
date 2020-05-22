@@ -5,6 +5,7 @@ import {withAuthorization} from '../components/session';
 import {useLocale} from '../providers/locale';
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import {condition} from '../components/session/withAuthorization';
+import {jobTypes, workAreas} from '../utils/constants';
 
 const OfferWork = ({firebase}) => {
   const {translate} = useLocale();
@@ -13,6 +14,18 @@ const OfferWork = ({firebase}) => {
   const [dateRange, setDateRange] = useState([new Date(), new Date()]);
   const [workField, setWorkField] = useState('');
   const [workArea, setWorkArea] = useState('');
+  const jobs = jobTypes.map(translate);
+  jobs.sort((a, b) => a.localeCompare(b));
+  const areas = {
+    cities: workAreas.cities.map(translate),
+    counties: workAreas.counties.map(translate),
+    countries: workAreas.countries.map(translate)
+  };
+  let mappedAreas = [];
+  Object.values(areas).forEach(group => {
+    group.sort((a, b) => a.localeCompare(b));
+    mappedAreas = mappedAreas.concat(group);
+  });
 
   const sendPost = () => {
     firebase.doAddPost({
@@ -52,8 +65,11 @@ const OfferWork = ({firebase}) => {
               id="fields"
               onChange={event => setWorkField(event.target.value)}
             >
-              <option value="test1">Ehitus</option>
-              <option value="test2">test2</option>
+              {jobs.map(job => (
+                <option key={job} value={job}>
+                  {job}
+                </option>
+              ))}
             </select>
           </label>
           <label className="my-8">
@@ -62,8 +78,11 @@ const OfferWork = ({firebase}) => {
               id="area"
               onChange={event => setWorkArea(event.target.value)}
             >
-              <option value="tartu">Tartu</option>
-              <option value="tallinn">Tallinn</option>
+              {mappedAreas.map(area => (
+                <option key={area} value={area}>
+                  {area}
+                </option>
+              ))}
             </select>
           </label>
           <label className="my-8">
