@@ -3,32 +3,32 @@
 @tailwind components;
 
 .entry-button {
-	@apply bg-green-500 mt-4 p-4 text-3xl text-white rounded-lg;
+  @apply bg-green-500 mt-4 p-4 text-3xl text-white rounded-lg;
 }
 
 .header-text {
-	@apply text-lg  text-gray-600 font-bold text-center px-8 mb-8;
+  @apply text-lg  text-gray-600 font-bold text-center px-8 mb-8;
 }
 
 .input-box {
-	@apply my-1 p-1 w-full border-b-2;
+  @apply my-1 p-1 w-full border-b-2;
 }
 
 .eula-header {
-    @apply text-3xl py-4 text-center w-full;
+  @apply text-3xl py-4 text-center w-full;
 }
 
 .eula-li-styles {
-    @apply pl-4 py-4;
+  @apply pl-4 py-4;
 }
 
 @screen md {
-	.entry-button {
-		@apply  w-full max-w-xl;
-	}
-	.header-text {
-		@apply text-3xl;
-	}
+  .entry-button {
+    @apply w-full max-w-xl;
+  }
+  .header-text {
+    @apply text-3xl;
+  }
 }
 /* purgecss end ignore */
 
@@ -128,4 +128,8 @@ html {
 
 .font-co-headline {
   font-family: 'co-headline', sans-serif;
+}
+
+.react-daterange-picker .react-daterange-picker__wrapper {
+  border: none;
 }
