@@ -9,6 +9,7 @@ import Home from '../pages/Home';
 import Layout from './layout';
 import OfferWork from '../pages/OfferWork';
 import ViewWork from '../pages/ViewWork';
+import Eula from '../pages/Eula';
 
 const Navigation = () => {
   return (
@@ -17,9 +18,10 @@ const Navigation = () => {
       <Route exact path={ROUTES.ENTRY} component={Entry} />
       <Route exact path={ROUTES.APP} component={AppAuth} />
       <Route exact path={ROUTES.HOME} component={Home} />
-      <Route path="/add" component={OfferWork} />
-      <Route path="/listings" component={ViewWork} />
-      <Route path="/settings">
+      <Route exact path={ROUTES.EULA} component={Eula} />
+      <Route path={ROUTES.ADD} component={OfferWork} />
+      <Route path={ROUTES.LISTINGS} component={ViewWork} />
+      <Route path={ROUTES.SETTINGS}>
         <Layout>
           <div>Kasutaja seaded</div>
         </Layout>

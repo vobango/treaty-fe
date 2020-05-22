@@ -405,7 +405,7 @@
 	},
 	"newAccount": {
 		"en": "Register a new account",
-		"et": "Registeeri uus konto"
+		"et": "Registreeri uus konto"
 	},
 	"email": {
 		"en": "Email",
@@ -437,5 +437,13 @@
 	"chooseArea": {
 		"en": "Choose working area",
 		"et": "Vali piirkond"
+	},
+	"eulaAgreement": {
+		"en": "I agree to EULA",
+		"et": "Nõustun privaatsustingimustega"
+	},
+	"eulaError": {
+		"en": "You must agree to the EULA",
+		"et": "Registreerimiseks peab nõustuma privaatustingimustega"
 	}
 }
