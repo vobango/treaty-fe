@@ -235,6 +235,10 @@
 		"en": "Menu",
 		"et": "Menüü"
 	},
+	"nextPage": {
+		"en": "Continue",
+		"et": "Edasi"
+	},
 	"norway": {
 		"en": "Norway",
 		"et": "Norra"
@@ -255,6 +259,10 @@
 		"en": "Date range",
 		"et": "Vali töö aeg"
 	},
+	"previousPage": {
+		"en": "Back",
+		"et": "Tagasi"
+	},
 	"readMore": {
 		"en": "Read more",
 		"et": "Vaata lähemalt"
@@ -274,6 +282,10 @@
 	"slogan": {
 		"en": "brings partners together",
 		"et": "toob partnerid kokku"
+	},
+	"submitNewListing": {
+		"en": "Submit",
+		"et": "Postita kuulutus"
 	},
 	"sweden": {
 		"en": "Sweden",
@@ -423,12 +435,16 @@
 		"et": "Logi sisse"
 	},
 	"otherInfo": {
-		"en": "More information",
-		"et": "Muu info"
+		"en": "Additional information",
+		"et": "Lisainfo"
+	},
+	"otherInfoCondition": {
+		"en": "(max. 100 characters)",
+		"et": "(kuni 100 tähemärki)"
 	},
 	"countWorkersNeeded": {
-		"en": "How many workers are needed (1-99)",
-		"et": "Töötajate arv keda vajad (1-99)"
+		"en": "Workers needed (1-99)",
+		"et": "Töötajate arv (1-99)"
 	},
 	"chooseField": {
 		"en": "Choose a field",
