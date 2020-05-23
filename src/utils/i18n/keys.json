@@ -1,0 +1,449 @@
+{
+	"addListing": {
+		"en": "Save listing",
+		"et": "Lisa kuulutus"
+	},
+	"cancelRegister": {
+		"en": "cancel",
+		"et": "katkesta"
+	},
+	"close": {
+		"en": "Close",
+		"et": "Sulge"
+	},
+	"contact": {
+		"en": "Contact",
+		"et": "Kontakt"
+	},
+	"contactEmail": {
+		"en": "E-mail",
+		"et": "E-mail"
+	},
+	"contactEmailEmpty": {
+		"en": "E-mail is required",
+		"et": "E-mail peab olema täidetud"
+	},
+	"contactError": {
+		"en": "Something went wrong. Try again!",
+		"et": "Midagi läks valesti. Proovi uuesti!"
+	},
+	"contactHeader": {
+		"en": "Get in touch",
+		"et": "Võta ühendust"
+	},
+	"contactMessage": {
+		"en": "Message",
+		"et": "Sõnum"
+	},
+	"contactMessageEmpty": {
+		"en": "Message is required",
+		"et": "Sõnum peab olema täidetud"
+	},
+	"contactName": {
+		"en": "Name",
+		"et": "Nimi"
+	},
+	"contactNameEmpty": {
+		"en": "Name is required",
+		"et": "Nimi peab olema täidetud"
+	},
+	"contactSend": {
+		"en": "Send",
+		"et": "Saada"
+	},
+	"contactSuccess": {
+		"en": "Message sent!",
+		"et": "Sõnum saadetud!"
+	},
+	"countyHarju": {
+		"en": "Harju county",
+		"et": "Harju maakond"
+	},
+	"countyHiiu": {
+		"en": "Hiiu county",
+		"et": "Hiiu maakond"
+	},
+	"countyIdaViru": {
+		"en": "Ida-Viru county",
+		"et": "Ida-Viru maakond"
+	},
+	"countyJarva": {
+		"en": "Järva county",
+		"et": "Järva maakond"
+	},
+	"countyJogeva": {
+		"en": "Jõgeva county",
+		"et": "Jõgeva maakond"
+	},
+	"countyLaane": {
+		"en": "Lääne county",
+		"et": "Lääne maakond"
+	},
+	"countyLaaneViru": {
+		"en": "Lääne-Viru county",
+		"et": "Lääne-Viru maakond"
+	},
+	"countyParnu": {
+		"en": "Pärnu county",
+		"et": "Pärnu maakond"
+	},
+	"countyPolva": {
+		"en": "Põlva county",
+		"et": "Põlva maakond"
+	},
+	"countyRapla": {
+		"en": "Rapla county",
+		"et": "Rapla maakond"
+	},
+	"countySaare": {
+		"en": "Saare county",
+		"et": "Saare maakond"
+	},
+	"countyTartu": {
+		"en": "Tartu county",
+		"et": "Tartu maakond"
+	},
+	"countyValga": {
+		"en": "Valga county",
+		"et": "Valga maakond"
+	},
+	"countyViljandi": {
+		"en": "Viljandi county",
+		"et": "Viljandi maakond"
+	},
+	"countyVoru": {
+		"en": "Võru county",
+		"et": "Võru maakond"
+	},
+	"error": {
+		"en": "Error",
+		"et": "Viga"
+	},
+	"europe": {
+		"en": "Europe",
+		"et": "Euroopa"
+	},
+	"finland": {
+		"en": "Finland",
+		"et": "Soome"
+	},
+	"forEmployer": {
+		"en": "For employer",
+		"et": "Tööpakkujale"
+	},
+	"forEmployerDesc": {
+		"en": "Lorem ipsum",
+		"et": "Ettevõtted, kes vajavad kiirelt vabu töökäsi"
+	},
+	"forEmployerIntro": {
+		"en": "Lorem ipsum",
+		"et": "Objekt on algamas, aga häid mehi on raske leida?"
+	},
+	"forEmployer-1": {
+		"en": "Lorem ipsum",
+		"et": "Sisesta oma väga konkreetsed soovid, et saaksime hakata otsima Sulle parimat partnerit!"
+	},
+	"forEmployer-2": {
+		"en": "Lorem ipsum",
+		"et": "Vähesed kuid konkreetsed andmed annavad võimaluse suunata tööpakkumine täpselt nendele firmadele, kellel on Sinu vajadustele vastavad spetsialistid ajutiselt üle."
+	},
+	"forEmployer-3": {
+		"en": "Lorem ipsum",
+		"et": "Meie leiame head mehed ilma suurema vaevata Sinu eest."
+	},
+	"forWorker": {
+		"en": "For worker",
+		"et": "Tööotsijale"
+	},
+	"forWorkerDesc": {
+		"en": "Lorem ipsum",
+		"et": "Andmebaasi sisestatakse oma töösoovid ja oskused"
+	},
+	"forWorkerIntro": {
+		"en": "Lorem ipsum",
+		"et": "Töötajad koristavad juba teist nädalat 20m<sup>2</sup> suurust ruumi?"
+	},
+	"forWorker-1": {
+		"en": "Enter your requirements",
+		"et": "Sisesta oma väga konkreetsed soovid, et saaksime hakata otsima Sulle parimat partnerit!"
+	},
+	"forWorker-2": {
+		"en": "Lorem ipsum",
+		"et": "Vähesed kuid konkreetsed andmed annavad võimaluse suunata tööpakkumine täpselt nendele firmadele, kellel on Sinu vajadustele vastavad spetsialistid ajutiselt üle."
+	},
+	"forWorker-3": {
+		"en": "Lorem ipsum",
+		"et": "Saada mehed korraks teisele objektile, mille me leiame Sinu eest."
+	},
+	"howItWorks": {
+		"en": "How does it work?",
+		"et": "Kuidas see töötab?"
+	},
+	"howItWorksDesc": {
+		"en": "Lorem ipsum it works",
+		"et": "COFIND on suunatud ehitussektori peamisele puudusele - töö ja tööjõu\n          leidmise probleemile ja sellele, kui palju aega kulub ükskõik kumma\n          leidmiseks. <br /> See on lahendus, kus väga täpselt suunatud\n          pakkumine leiab kiiresti parima lahenduse. <br /> Ettevõte, kellel on\n          hetkeliselt puudu töökätest või on üle tööjõudu sisestavad oma väga\n          konkreetsed vajadused ning meie teeme ülejäänu. <br /> See on väga\n          täpselt suunatud pakkumise ja nõudluse vajaduse rahuldamine, kus nii\n          tööjõu pakkujad ja töökäte vajajad on võrdsed partnerid, kes tahavad\n          lahendada ühist probleemi - tööhõive probleemi - et keegi ei istuks\n          jõude, kui kusagil objekt põleb."
+	},
+	"howItWorks-1": {
+		"en": "Lorem",
+		"et": "Me otsime ja leiame Sulle parima partneri."
+	},
+	"howItWorks-2": {
+		"en": "ipsum",
+		"et": "Me genereerime Sinu sinu sisestatud parameetritest teate ja saadame selle laiali kõikidele, kes vajavad Sinu tööd või töökäsi."
+	},
+	"howItWorks-3": {
+		"en": "ipsum",
+		"et": "Me teeme Sinu andmetest kuulutuse ja paneme selle oma lehele üles, et ka need saaksid neid näha kelleni Sinu teade ei jõudnud."
+	},
+	"jobOffers": {
+		"en": "Job offers",
+		"et": "Tööpakkumised"
+	},
+	"listings": {
+		"en": "View listings",
+		"et": "Vaata pakkumisi"
+	},
+	"listingsDesc": {
+		"en": "Lorem ipsum",
+		"et": "Parimad erialase töö pakkumised"
+	},
+	"listingsDescLong": {
+		"en": "Lorem ipsum",
+		"et": "Meie andmebaasist leiad parima võimaliku partneri kiiresti ilma, et peaksid ise palju vaeva nägema. Andmebaasis vahetuvad pakkumised põhimõtteliselt onlines, sest meie täpselt suunatud pakkumised aitavad leida parima partneri kiiremini kui keegi teine. Kui baasis Sulle sobivat pakkumist pole hetkel, siis oota natuke ja proovi uuesti. Kui ikka ei leia siis sisesta oma parameetrid ja me saadame Sinu pakkumise täpselt neile, kellel on Sinu tööd vaja."
+	},
+	"loading": {
+		"en": "Loading",
+		"et": "Laadimine"
+	},
+	"login": {
+		"en": "Login",
+		"et": "Sisene"
+	},
+	"loginTo": {
+		"en": "Log in to",
+		"et": "Logi sisse"
+	},
+	"logo": {
+		"en": "Cofind brings partners together",
+		"et": "Cofind toob partnerid kokku"
+	},
+	"logout": {
+		"en": "Log out",
+		"et": "Logi välja"
+	},
+	"menu": {
+		"en": "Menu",
+		"et": "Menüü"
+	},
+	"norway": {
+		"en": "Norway",
+		"et": "Norra"
+	},
+	"offerWork": {
+		"en": "Offer work",
+		"et": "Paku tööd"
+	},
+	"offerWorkers": {
+		"en": "Offer workers",
+		"et": "Paku tööjõudu"
+	},
+	"password": {
+		"en": "Password",
+		"et": "Parool"
+	},
+	"pickDateRange": {
+		"en": "Date range",
+		"et": "Vali töö aeg"
+	},
+	"readMore": {
+		"en": "Read more",
+		"et": "Vaata lähemalt"
+	},
+	"register": {
+		"en": "Sign up",
+		"et": "Registreeru"
+	},
+	"registerNow": {
+		"en": "Register now",
+		"et": "Registreeru kohe"
+	},
+	"repeatPassword": {
+		"en": "Repeat password",
+		"et": "Korda parooli"
+	},
+	"slogan": {
+		"en": "brings partners together",
+		"et": "toob partnerid kokku"
+	},
+	"sweden": {
+		"en": "Sweden",
+		"et": "Rootsi"
+	},
+	"tallinn": {
+		"en": "Tallinn",
+		"et": "Tallinn"
+	},
+	"tartu": {
+		"en": "Tartu",
+		"et": "Tartu linn"
+	},
+	"test": {
+		"en": "TEST KEY, DO NOT REMOVE",
+		"et": "KONTROLLVÕTI, MITTE EEMALDADA"
+	},
+	"typeAirConditioning":{
+		"en": "Air conditioning",
+		"et": "Kütte- ja jahutussüsteemitöö"
+	},
+	"typeAssembly": {
+		"en": "Assembly job",
+		"et": "Montaažitöö"
+	},
+	"typeConcrete": {
+		"en": "Concrete job",
+		"et": "Betoonitöö"
+	},
+	"typeDemolition": {
+		"en": "Demolition job",
+		"et": "Lammutustöö"
+	},
+	"typeElectricity": {
+		"en": "Electical job",
+		"et": "Elektritöö"
+	},
+	"typeFlatRoof": {
+		"en": "Flat roof job",
+		"et": "Lamekatusetöö"
+	},
+	"typeFlooring": {
+		"en": "Flooring",
+		"et": "Põrandatöö"
+	},
+	"typeGeneralConstruction": {
+		"en": "General construction",
+		"et": "Üldehitustöö"
+	},
+	"typeHelp": {
+		"en": "Additional job",
+		"et": "Abitöö"
+	},
+	"typeInteriorDecoration": {
+		"en": "Interior decoration",
+		"et": "Siseviimistlus"
+	},
+	"typeObjectManagement": {
+		"en": "Object management",
+		"et": "Objektijuhtimine"
+	},
+	"typePlaster": {
+		"en": "Plastering job",
+		"et": "Krohvitöö"
+	},
+	"typePlumbing": {
+		"en": "Plumbing job",
+		"et": "Veevärgitöö"
+	},
+	"typeProjectManagement": {
+		"en": "Project management",
+		"et": "Projektijuhtimine"
+	},
+	"typeRestoration": {
+		"en": "Restoration",
+		"et": "Restaureerimine"
+	},
+	"typeSlantedRoof": {
+		"en": "Slanted roof job",
+		"et": "Kaldkatusetöö"
+	},
+	"typeTiling": {
+		"en": "Tiling job",
+		"et": "Plaatimistöö"
+	},
+	"typeTin": {
+		"en": "Tin job",
+		"et": "Plektiöö"
+	},
+	"typeVentilation": {
+		"en": "Ventilation",
+		"et": "Ventilatsioonitöö"
+	},
+	"typeWall": {
+		"en": "Brick wall job",
+		"et": "Müüritöö"
+	},
+	"typeWeakCurrent": {
+		"en": "Weak current job",
+		"et": "Nõrkvoolutöö"
+	},
+	"typeWoodwork": {
+		"en": "Woodworking",
+		"et": "Puusepatöö"
+	},
+	"typeWorkManagement": {
+		"en": "Work management",
+		"et": "Tööjuhtimine"
+	},
+	"username": {
+		"en": "Username",
+		"et": "Kasutajanimi"
+	},
+	"viewJobOffers": {
+		"en": "View job offers",
+		"et": "Vaata tööpakkumisi"
+	},
+	"viewWorkerOffers": {
+		"en": "View worker offers",
+		"et": "Vaata tööjõupakkumisi"
+	},
+	"workerOffers": {
+		"en": "Worker offers",
+		"et": "Tööjõupakkumised"
+	},
+	"entryText": {
+		"en": "To start, make a choice",
+		"et": "Alustamiseks tee oma valik"
+	},
+	"newAccount": {
+		"en": "Register a new account",
+		"et": "Registreeri uus konto"
+	},
+	"email": {
+		"en": "Email",
+		"et": "Email"
+	},
+	"passwordMatchError": {
+		"en": "Passwords do not match!",
+		"et": "Paroolid ei kattu!"
+	},
+	"generalRegisterError": {
+		"en": "Error Signing up with email and password"
+	},
+	"loginText": {
+		"en": "Login to your account",
+		"et": "Logi sisse"
+	},
+	"otherInfo": {
+		"en": "More information",
+		"et": "Muu info"
+	},
+	"countWorkersNeeded": {
+		"en": "How many workers are needed (1-99)",
+		"et": "Töötajate arv keda vajad (1-99)"
+	},
+	"chooseField": {
+		"en": "Choose a field",
+		"et": "Vali valdkond"
+	},
+	"chooseArea": {
+		"en": "Choose working area",
+		"et": "Vali piirkond"
+	},
+	"eulaAgreement": {
+		"en": "I agree to EULA",
+		"et": "Nõustun privaatsustingimustega"
+	},
+	"eulaError": {
+		"en": "You must agree to the EULA",
+		"et": "Registreerimiseks peab nõustuma privaatustingimustega"
+	}
+}

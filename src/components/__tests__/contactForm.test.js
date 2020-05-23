@@ -5,7 +5,7 @@ import {
   renderWithLocale,
   successResponse,
   translate
-} from '../../testUtils';
+} from '../../utils/forTests';
 import fetch from 'jest-fetch-mock';
 import {fireEvent, screen} from '@testing-library/react';
 import {waitFor} from '@testing-library/dom';

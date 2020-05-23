@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {withAuthorization} from './components/Session';
-import {withFirebase} from './components/Firebase';
-import {condition} from './components/Session/withAuthorization';
+import {withAuthorization} from './components/session';
+import {withFirebase} from './providers/firebase';
+import {condition} from './components/session/withAuthorization';
 
 // this is a mock page to show case protected routes, where app should be
 const AppAuth = ({firebase}) => {
