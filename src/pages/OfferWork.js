@@ -29,8 +29,10 @@ const OfferWork = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
-        <h1 className="text-3xl">{translate('offerWork')}</h1>
+      <div className="flex flex-col h-auto w-full md:items-center px-4">
+        <h1 className="text-2xl md:text-3xl text-center">
+          {translate('offerWork')}
+        </h1>
         <div className="md:w-1/3 lg:w-1/4">
           <div className="flex justify-between px-4 my-6 w-full">
             {[1, 2, 3].map(step => (
@@ -39,19 +41,19 @@ const OfferWork = () => {
                 className={`flex items-center ${step < 3 && 'w-full'}`}
               >
                 <div
-                  className={`py-2 px-4 rounded-full text-sm ${
+                  className={`h-8 w-8 flex items-center justify-center rounded-full border-2 text-xs sm:text-base ${
                     step === currentStep
-                      ? 'bg-yellow-200 font-bold'
+                      ? 'bg-white text-green-600 border-green-500 font-bold'
                       : step < currentStep
-                      ? 'bg-green-200'
-                      : 'bg-gray-200'
+                      ? 'bg-green-200 border-green-200 text-green-700'
+                      : 'bg-gray-200 border-gray-200 text-gray-600'
                   }`}
                 >
                   {step}
                 </div>
                 {step < 3 && (
                   <span
-                    className={`block h-0 w-full border-b-2 ${
+                    className={`block h-0 flex-grow border-b-2 ${
                       step < currentStep
                         ? 'border-green-200'
                         : 'border-gray-200'

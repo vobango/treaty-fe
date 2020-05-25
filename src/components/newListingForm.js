@@ -12,19 +12,19 @@ export default function NewListingForm() {
 
   return (
     <form className="flex flex-col">
-      <label className="mt-12 mb-2" htmlFor="worker-count">
+      <label className="mt-4 mb-1 text-gray-700" htmlFor="worker-count">
         {translate('countWorkersNeeded')}
       </label>
       <input
         id="worker-count"
-        className="border-b-2 mr-auto p-2"
+        className="border-b-2 mr-auto p-1"
         value={state.workerCount}
         type="number"
         min="1"
         max="99"
         onChange={handleChange('workerCount')}
       />
-      <label className="mt-12 mb-2" htmlFor="date-range">
+      <label className="mt-8 mb-1 text-gray-700" htmlFor="date-range">
         {translate('pickDateRange')}
       </label>
       <DateRangePicker
@@ -33,7 +33,7 @@ export default function NewListingForm() {
         value={state.dateRange}
         onChange={dates => update('dateRange')(dates)}
       />
-      <label className="mt-12 mb-2" htmlFor="job-type">
+      <label className="mt-8 mb-1 text-gray-700" htmlFor="job-type">
         {translate('chooseField')}
       </label>
       <select
@@ -48,7 +48,7 @@ export default function NewListingForm() {
           </option>
         ))}
       </select>
-      <label className="mt-12 mb-2" htmlFor="work-area">
+      <label className="mt-8 mb-1 text-gray-700" htmlFor="work-area">
         {translate('chooseArea')}
       </label>
       <select
@@ -63,7 +63,7 @@ export default function NewListingForm() {
           </option>
         ))}
       </select>
-      <label className="mt-12 mb-2" htmlFor="additional-info">
+      <label className="mt-8 mb-1 text-gray-700" htmlFor="additional-info">
         {translate('otherInfo')}{' '}
         <span className="text-sm text-gray-600">
           {translate('otherInfoCondition')}

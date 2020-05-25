@@ -256,8 +256,8 @@
 		"et": "Parool"
 	},
 	"pickDateRange": {
-		"en": "Date range",
-		"et": "Vali töö aeg"
+		"en": "Work start and end dates",
+		"et": "Töö algus- ja lõpuaeg"
 	},
 	"previousPage": {
 		"en": "Back",
@@ -448,11 +448,11 @@
 	},
 	"chooseField": {
 		"en": "Choose a field",
-		"et": "Vali valdkond"
+		"et": "Töö valdkond"
 	},
 	"chooseArea": {
 		"en": "Choose working area",
-		"et": "Vali piirkond"
+		"et": "Töö piirkond"
 	},
 	"eulaAgreement": {
 		"en": "I agree to EULA",
