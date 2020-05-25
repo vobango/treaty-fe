@@ -11,6 +11,14 @@
 		"en": "Close",
 		"et": "Sulge"
 	},
+	"companyName": {
+		"en": "Company name",
+		"et": "Ettevõtte nimi"
+	},
+	"companyNameInvalid": {
+		"en": "Name must be filled",
+		"et": "Nimi peab olema täidetud"
+	},
 	"contact": {
 		"en": "Contact",
 		"et": "Kontakt"
@@ -46,6 +54,30 @@
 	"contactNameEmpty": {
 		"en": "Name is required",
 		"et": "Nimi peab olema täidetud"
+	},
+	"contactPersonEmail": {
+		"en": "Contact person e-mail",
+		"et": "Kontaktisiku e-mail"
+	},
+	"contactPersonEmailInvalid": {
+		"en": "E-mail must be filled",
+		"et": "E-mail peab olema täidetud"
+	},
+	"contactPersonName": {
+		"en": "Contact person name",
+		"et": "Kontaktisiku nimi"
+	},
+	"contactPersonNameInvalid": {
+		"en": "Name must be filled",
+		"et": "Nimi peab olema täidetud"
+	},
+	"contactPersonPhone": {
+		"en": "Contact person phone number",
+		"et": "Kontaktisiku telefoninumber"
+	},
+	"contactPersonPhoneInvalid": {
+		"en": "Phone number must be filled",
+		"et": "Number peab olema täidetud"
 	},
 	"contactSend": {
 		"en": "Send",

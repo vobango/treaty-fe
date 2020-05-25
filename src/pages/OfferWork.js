@@ -5,6 +5,7 @@ import {withAuthorization} from '../components/session';
 import {useLocale} from '../providers/locale';
 import {useListingForm} from '../providers/newListing';
 import NewListingForm from '../components/newListingForm';
+import ContactInfo from '../components/newListingContactInfo';
 
 const OfferWork = () => {
   const {translate} = useLocale();
@@ -13,7 +14,12 @@ const OfferWork = () => {
     dateRange,
     workField,
     workArea,
-    additionalInfo
+    additionalInfo,
+    contactName,
+    contactEmail,
+    contactPhone,
+    companyName,
+    update
   } = useListingForm();
   const firebase = useFirebase();
   const sendPost = () => {
@@ -22,10 +28,23 @@ const OfferWork = () => {
       dateRange,
       workField,
       workArea,
-      post: additionalInfo
+      post: additionalInfo,
+      contactName,
+      contactEmail,
+      contactPhone,
+      companyName
     });
   };
-  const [currentStep, setStep] = React.useState(1);
+  const [currentStep, setStep] = React.useState(2);
+  const setValidation = state => update('formValid')(state);
+  const validateContactForm = () => {
+    if (!companyName || !contactName || !contactPhone || !contactEmail) {
+      setValidation(false);
+    } else {
+      setValidation(true);
+      setStep(3);
+    }
+  };
 
   return (
     <Layout>
@@ -63,6 +82,7 @@ const OfferWork = () => {
               </div>
             ))}
           </div>
+
           {currentStep === 1 && (
             <>
               <NewListingForm />
@@ -76,12 +96,21 @@ const OfferWork = () => {
           )}
           {currentStep === 2 && (
             <>
-              <div>Kontaktandmete vorm</div>
+              <ContactInfo />
               <div className="mt-16 grid grid-cols-2 col-gap-4">
-                <button className="button ghost" onClick={() => setStep(1)}>
+                <button
+                  className="button ghost"
+                  onClick={() => {
+                    setValidation(true);
+                    setStep(1);
+                  }}
+                >
                   {translate('previousPage')}
                 </button>
-                <button className="button primary" onClick={() => setStep(3)}>
+                <button
+                  className="button primary"
+                  onClick={validateContactForm}
+                >
                   {translate('nextPage')}
                 </button>
               </div>

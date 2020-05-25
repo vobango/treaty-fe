@@ -42,6 +42,11 @@ function ListingStateProvider({children}) {
     workField: jobs[0],
     workArea: areas[0],
     additionalInfo: '',
+    contactName: '',
+    contactEmail: '',
+    contactPhone: '',
+    companyName: '',
+    formValid: true,
     jobs,
     areas
   };
