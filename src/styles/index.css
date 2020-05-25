@@ -2,12 +2,35 @@
 @tailwind base;
 @tailwind components;
 
-.entry-button {
-  @apply bg-green-500 mt-4 p-4 text-3xl text-white rounded-lg;
+.button {
+  @apply p-4 text-2xl rounded-lg w-full border-2 border-transparent;
+}
+.button:focus {
+  @apply outline-none shadow-outline;
+}
+
+.primary {
+  @apply bg-green-500 text-white border-green-500 button;
+}
+.primary:hover {
+  @apply bg-green-600 border-green-600;
+}
+.primary:active {
+  @apply: bg-green-700 border-green-700;
+}
+
+.ghost {
+  @apply bg-white text-gray-700 border-gray-700;
+}
+.ghost:hover {
+  @apply text-gray-800 border-gray-800;
+}
+.ghost:active {
+  @apply: text-gray-900 border-gray-900;
 }
 
 .header-text {
-  @apply text-lg  text-gray-600 font-bold text-center px-8 mb-8;
+  @apply text-lg text-gray-600 font-bold text-center px-8 mb-8;
 }
 
 .input-box {

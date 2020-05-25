@@ -66,19 +66,22 @@ const OfferWork = () => {
           {currentStep === 1 && (
             <>
               <NewListingForm />
-              <button className="mt-16 entry-button" onClick={() => setStep(2)}>
+              <button
+                className="mt-16 button primary"
+                onClick={() => setStep(2)}
+              >
                 {translate('nextPage')}
               </button>
             </>
           )}
           {currentStep === 2 && (
             <>
-              <div>Kontaktandmed</div>
-              <div>
-                <button onClick={() => setStep(1)}>
+              <div>Kontaktandmete vorm</div>
+              <div className="mt-16 grid grid-cols-2 col-gap-4">
+                <button className="button ghost" onClick={() => setStep(1)}>
                   {translate('previousPage')}
                 </button>
-                <button onClick={() => setStep(3)}>
+                <button className="button primary" onClick={() => setStep(3)}>
                   {translate('nextPage')}
                 </button>
               </div>
@@ -87,11 +90,14 @@ const OfferWork = () => {
           {currentStep === 3 && (
             <>
               <div>Eelvaade</div>
-              <div>
-                <button onClick={() => setStep(2)}>
+              <div className="mt-16 grid grid-cols-2 col-gap-4">
+                <button
+                  className="button ghost text-xl"
+                  onClick={() => setStep(2)}
+                >
                   {translate('previousPage')}
                 </button>
-                <button onClick={sendPost}>
+                <button className="button primary text-xl" onClick={sendPost}>
                   {translate('submitNewListing')}
                 </button>
               </div>
