@@ -3,7 +3,7 @@ import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import {useLocale} from '../providers/locale';
 import {useListingForm} from '../providers/newListing';
 
-export default function NewListingForm() {
+export default function NewListingForm({onSubmit}) {
   const {translate} = useLocale();
   const {state, update} = useListingForm();
   const handleChange = key => event => {
@@ -11,16 +11,16 @@ export default function NewListingForm() {
   };
 
   return (
-    <form className="flex flex-col">
+    <form className="flex flex-col" onSubmit={onSubmit}>
       <label className="mt-4 mb-1 text-gray-700" htmlFor="worker-count">
-        {translate('workerCount')}
+        {translate('workerCount')}{' '}
         <span className="text-sm text-gray-600">
           {translate('workerCountCondition')}
         </span>
       </label>
       <input
         id="worker-count"
-        className="border-b-2 mr-auto p-1"
+        className="input"
         value={state.workerCount}
         type="number"
         min="1"
@@ -32,7 +32,7 @@ export default function NewListingForm() {
       </label>
       <DateRangePicker
         id="date-range"
-        className="mr-auto border-0 border-b-2"
+        className="border-0 input"
         value={state.dateRange}
         onChange={dates => update('dateRange')(dates)}
       />
@@ -41,7 +41,7 @@ export default function NewListingForm() {
       </label>
       <select
         id="job-type"
-        className="mr-auto bg-white border-b-2 p-2 pl-0"
+        className="input bg-white p-2 pl-0"
         value={state.workField}
         onChange={handleChange('workField')}
       >
@@ -56,7 +56,7 @@ export default function NewListingForm() {
       </label>
       <select
         id="work-area"
-        className="mr-auto bg-white border-b-2 p-2 pl-0"
+        className="input bg-white p-2 pl-0"
         onChange={handleChange('workArea')}
         value={state.workArea}
       >
@@ -74,11 +74,12 @@ export default function NewListingForm() {
       </label>
       <input
         id="additional-info"
-        className="input-box"
+        className="input w-full"
         value={state.additionalInfo}
         maxLength={100}
         onChange={handleChange('additionalInfo')}
       />
+      <input type="submit" className="hidden" />
     </form>
   );
 }

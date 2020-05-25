@@ -41,7 +41,8 @@ const OfferWork = () => {
   };
   const [currentStep, setStep] = React.useState(1);
   const setValidation = state => update('formValid')(state);
-  const validateContactForm = () => {
+  const validateContactForm = event => {
+    event.preventDefault();
     if (!companyName || !contactName || !contactPhone || !contactEmail) {
       setValidation(false);
     } else {
@@ -89,7 +90,12 @@ const OfferWork = () => {
 
           {currentStep === 1 && (
             <>
-              <NewListingForm />
+              <NewListingForm
+                onSubmit={e => {
+                  e.preventDefault();
+                  setStep(2);
+                }}
+              />
               <button
                 className="mt-16 button primary"
                 onClick={() => setStep(2)}
@@ -100,7 +106,7 @@ const OfferWork = () => {
           )}
           {currentStep === 2 && (
             <>
-              <ContactInfo />
+              <ContactInfo onSubmit={validateContactForm} />
               <div className="mt-16 grid grid-cols-2 col-gap-4">
                 <button
                   className="button ghost"

@@ -11,7 +11,7 @@
 }
 
 .primary {
-  @apply bg-green-500 text-white border-green-500 button;
+  @apply bg-green-500 text-white border-green-500 .button;
 }
 .primary:hover {
   @apply bg-green-600 border-green-600;
@@ -28,6 +28,10 @@
 }
 .ghost:active {
   @apply: text-gray-900 border-gray-900;
+}
+
+.input {
+  @apply border-b-2 mr-auto p-1;
 }
 
 .header-text {
@@ -47,23 +51,18 @@
 }
 
 .error {
-  @apply border-b-2 border-red-400
+  @apply border-b-2 border-red-400;
 }
 .error::placeholder {
-    @apply text-red-300;
+  @apply text-red-300;
 }
 
 @screen md {
-  .entry-button {
-    @apply w-full max-w-xl;
-  }
   .header-text {
     @apply text-3xl;
   }
 }
 /* purgecss end ignore */
-
-
 
 @import url('https://p.typekit.net/p.css?s=1&k=nqt7qup&ht=tk&f=9727.9729.9732.9733.11775.11776.11777.11778.11779.11780&a=19786632&app=typekit&e=css');
 
