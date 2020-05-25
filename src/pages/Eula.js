@@ -1,13 +1,19 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import Layout from '../components/layout';
+import logo from '../assets/images/logo_small.png';
+import {useLocale} from '../providers/locale';
 
 const Eula = () => {
+  const {translate} = useLocale();
   return (
-    <Layout>
+    <div>
       <div className="flex flex-col px-16 xl:px-72 md:px-48 ">
-        <Link to="/" className="underline">
+        <Link
+          to="/"
+          className="underline flex items-center w-full justify-center mt-4"
+        >
           Tagasi esilehele
+          <img className="h-16 pl-64" src={logo} alt={translate('logo')} />
         </Link>
         <h1 className="eula-header">Privaatsustingimused</h1>
         <p>Kehtivad alates XX.XX.XXXX</p>
@@ -181,7 +187,7 @@ const Eula = () => {
           XXX@XXX.com.
         </p>
       </div>
-    </Layout>
+    </div>
   );
 };
 
