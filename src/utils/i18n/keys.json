@@ -231,6 +231,10 @@
 		"en": "Job offers",
 		"et": "Tööpakkumised"
 	},
+	"listingAddedTime": {
+		"en": "Added",
+		"et": "Lisatud"
+	},
 	"listingPreview": {
 		"en": "Listing preview",
 		"et": "Kuulutuse eelvaade"
@@ -446,6 +450,10 @@
 	"workerOffers": {
 		"en": "Worker offers",
 		"et": "Tööjõupakkumised"
+	},
+	"workStartsIn": {
+		"en": "Starts in",
+		"et": "Algab"
 	},
 	"entryText": {
 		"en": "To start, make a choice",

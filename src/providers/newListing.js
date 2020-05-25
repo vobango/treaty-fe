@@ -36,8 +36,8 @@ function ListingStateProvider({children}) {
   const initialState = {
     workerCount: 1,
     dateRange: [
-      new Date(),
-      new Date(new Date().setDate(new Date().getDate() + 1))
+      new Date(new Date().setDate(new Date().getDate() + 1)),
+      new Date(new Date().setDate(new Date().getDate() + 2))
     ],
     workField: jobs[0],
     workArea: areas[0],

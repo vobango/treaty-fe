@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useLocale} from '../providers/locale';
 import {useListingForm} from '../providers/newListing';
+import {formatDate} from '../utils/helpers';
 
 function ListingPreview() {
   const {translate} = useLocale();
@@ -19,15 +20,7 @@ function ListingPreview() {
     {key: 'workerCount', value: workerCount},
     {
       key: 'pickDateRange',
-      value: dateRange
-        .map(d =>
-          new Intl.DateTimeFormat('en-GB', {
-            year: '2-digit',
-            month: '2-digit',
-            day: '2-digit'
-          }).format(d)
-        )
-        .join(' - ')
+      value: dateRange.map(d => formatDate(d)).join(' - ')
     },
     {key: 'chooseField', value: workField},
     {key: 'chooseArea', value: workArea},

@@ -4,11 +4,13 @@ import {withFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
 import {Icon} from '../components/icons';
 import {Link} from 'react-router-dom';
+import {useLocale} from '../providers/locale';
+import {formatDate, formatRelative} from '../utils/helpers';
 
 const ViewWork = ({firebase}) => {
+  const {translate, locale} = useLocale();
   const [posts, setPosts] = useState([]);
-  const format = date =>
-    new Intl.DateTimeFormat('en-GB').format(new Date(date));
+  const format = date => formatDate(date);
 
   useEffect(() => {
     // Live updates
@@ -32,15 +34,14 @@ const ViewWork = ({firebase}) => {
   return (
     <Layout>
       <div>
-        <h1 className="text-3xl">Kuulutused</h1>
+        <h1 className="text-3xl">{translate('listings')}</h1>
         {posts.map((post, i) => {
-          console.log(post);
           const {
             created,
             workArea,
+            workField,
             workerCount,
-            dateRange = [],
-            post: info
+            dateRange = []
           } = post;
           const [from, to] = dateRange;
           const itemClasses = 'flex items-center mr-3';
@@ -51,9 +52,9 @@ const ViewWork = ({firebase}) => {
               key={created}
               className="shadow-lg rounded-lg bg-green-100 p-6 my-8"
             >
-              <h2 className="text-xl">{info || `Kuulutus ${i + 1}`}</h2>
+              <h2 className="text-xl">{workField}</h2>
               <div className="text-gray-600 text-sm mb-6">
-                Lisatud {format(created)}
+                {translate('workStartsIn')} {formatRelative(locale)(from)}
               </div>
               <div className="flex">
                 {!!workArea && (
