@@ -21,24 +21,34 @@ const RegisterBase = props => {
     passwordRepeat
   ) => {
     event.preventDefault();
+    setError(null);
+    if (email.length === 0) {
+      setError('missingEmail');
+      return;
+    }
+    if (password.length === 0 || passwordRepeat.length === 0) {
+      setError('missingPassword');
+      return;
+    }
     if (password !== passwordRepeat) {
-      setError(translate('passwordMatchError'));
+      setError('passwordMatchError');
       return;
     }
     if (!eula) {
-      setError(translate('eulaError'));
+      setError('eulaError');
       return;
     }
+
     props.firebase
       .doCreateUserWithEmailAndPassword(email, password)
       .then(() => {
-        props.history.push(ROUTES.APP);
+        props.history.push(ROUTES.HOME);
       })
       .catch(error => {
         setEmail('');
         setPassword('');
         setPasswordRepeat('');
-        setError(error.message);
+        setError(translate(error.code));
       });
     event.preventDefault();
   };
@@ -69,7 +79,14 @@ const RegisterBase = props => {
         <form className="md:w-1/3">
           <input
             type="email"
-            className="input-box"
+            className={`input-box ${
+              error &&
+              (email.length === 0 ||
+                error === 'auth/invalid-email' ||
+                error === 'auth/email-already-in-use')
+                ? 'error'
+                : ''
+            }`}
             name="userEmail"
             value={email}
             placeholder={translate('email')}
@@ -78,7 +95,14 @@ const RegisterBase = props => {
           />
           <input
             type="password"
-            className="input-box"
+            className={`input-box ${
+              error &&
+              (password.length === 0 ||
+                error === 'auth/weak-password' ||
+                error === 'passwordMatchError')
+                ? 'error'
+                : ''
+            }`}
             name="userPassword"
             value={password}
             placeholder={translate('password')}
@@ -87,7 +111,12 @@ const RegisterBase = props => {
           />
           <input
             type="password"
-            className="input-box"
+            className={`input-box ${
+              error &&
+              (passwordRepeat.length === 0 || error === 'passwordMatchError')
+                ? 'error'
+                : ''
+            }`}
             name="userRepeatPassword"
             value={passwordRepeat}
             placeholder={translate('repeatPassword')}
@@ -106,7 +135,7 @@ const RegisterBase = props => {
             </Link>
           </lable>
 
-          {error ? <h1 className="text-red-600">{error}</h1> : null}
+          {error ? <h1 className="text-red-600">{translate(error)}</h1> : null}
         </form>
         <button
           className="entry-button"

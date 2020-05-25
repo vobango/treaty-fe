@@ -1,6 +1,7 @@
 /* purgecss start ignore */
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 .entry-button {
 	@apply bg-green-500 mt-4 p-4 text-3xl text-white rounded-lg;
@@ -22,6 +23,13 @@
     @apply pl-4 py-4;
 }
 
+.error {
+  @apply border-b-2 border-red-400
+}
+.error::placeholder {
+    @apply text-red-300;
+}
+
 @screen md {
 	.entry-button {
 		@apply  w-full max-w-xl;
@@ -32,7 +40,7 @@
 }
 /* purgecss end ignore */
 
-@tailwind utilities;
+
 
 @import url('https://p.typekit.net/p.css?s=1&k=nqt7qup&ht=tk&f=9727.9729.9732.9733.11775.11776.11777.11778.11779.11780&a=19786632&app=typekit&e=css');
 
