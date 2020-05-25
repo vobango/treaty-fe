@@ -11,6 +11,14 @@
 		"en": "Close",
 		"et": "Sulge"
 	},
+	"companyName": {
+		"en": "Company name",
+		"et": "Ettevõtte nimi"
+	},
+	"companyNameInvalid": {
+		"en": "Name must be filled",
+		"et": "Nimi peab olema täidetud"
+	},
 	"contact": {
 		"en": "Contact",
 		"et": "Kontakt"
@@ -46,6 +54,30 @@
 	"contactNameEmpty": {
 		"en": "Name is required",
 		"et": "Nimi peab olema täidetud"
+	},
+	"contactPersonEmail": {
+		"en": "Contact person e-mail",
+		"et": "Kontaktisiku e-mail"
+	},
+	"contactPersonEmailInvalid": {
+		"en": "E-mail must be filled",
+		"et": "E-mail peab olema täidetud"
+	},
+	"contactPersonName": {
+		"en": "Contact person name",
+		"et": "Kontaktisiku nimi"
+	},
+	"contactPersonNameInvalid": {
+		"en": "Name must be filled",
+		"et": "Nimi peab olema täidetud"
+	},
+	"contactPersonPhone": {
+		"en": "Contact person phone number",
+		"et": "Kontaktisiku telefoninumber"
+	},
+	"contactPersonPhoneInvalid": {
+		"en": "Phone number must be filled",
+		"et": "Number peab olema täidetud"
 	},
 	"contactSend": {
 		"en": "Send",
@@ -199,6 +231,14 @@
 		"en": "Job offers",
 		"et": "Tööpakkumised"
 	},
+	"listingAddedTime": {
+		"en": "Added",
+		"et": "Lisatud"
+	},
+	"listingPreview": {
+		"en": "Listing preview",
+		"et": "Kuulutuse eelvaade"
+	},
 	"listings": {
 		"en": "View listings",
 		"et": "Vaata pakkumisi"
@@ -235,6 +275,10 @@
 		"en": "Menu",
 		"et": "Menüü"
 	},
+	"nextPage": {
+		"en": "Continue",
+		"et": "Edasi"
+	},
 	"norway": {
 		"en": "Norway",
 		"et": "Norra"
@@ -252,8 +296,12 @@
 		"et": "Parool"
 	},
 	"pickDateRange": {
-		"en": "Date range",
-		"et": "Vali töö aeg"
+		"en": "Work start and end dates",
+		"et": "Töö algus- ja lõpuaeg"
+	},
+	"previousPage": {
+		"en": "Back",
+		"et": "Tagasi"
 	},
 	"readMore": {
 		"en": "Read more",
@@ -274,6 +322,10 @@
 	"slogan": {
 		"en": "brings partners together",
 		"et": "toob partnerid kokku"
+	},
+	"submitNewListing": {
+		"en": "Submit",
+		"et": "Postita kuulutus"
 	},
 	"sweden": {
 		"en": "Sweden",
@@ -399,6 +451,10 @@
 		"en": "Worker offers",
 		"et": "Tööjõupakkumised"
 	},
+	"workStartsIn": {
+		"en": "Starts in",
+		"et": "Algab"
+	},
 	"entryText": {
 		"en": "To start, make a choice",
 		"et": "Alustamiseks tee oma valik"
@@ -423,20 +479,28 @@
 		"et": "Logi sisse"
 	},
 	"otherInfo": {
-		"en": "More information",
-		"et": "Muu info"
+		"en": "Additional information",
+		"et": "Lisainfo"
 	},
-	"countWorkersNeeded": {
-		"en": "How many workers are needed (1-99)",
-		"et": "Töötajate arv keda vajad (1-99)"
+	"otherInfoCondition": {
+		"en": "(max. 100 characters)",
+		"et": "(kuni 100 tähemärki)"
+	},
+	"workerCount": {
+		"en": "Workers needed",
+		"et": "Töötajate arv"
+	},
+	"workerCountCondition": {
+		"en": "(1-99)",
+		"et": "(1-99)"
 	},
 	"chooseField": {
 		"en": "Choose a field",
-		"et": "Vali valdkond"
+		"et": "Töö valdkond"
 	},
 	"chooseArea": {
 		"en": "Choose working area",
-		"et": "Vali piirkond"
+		"et": "Töö piirkond"
 	},
 	"eulaAgreement": {
 		"en": "I agree to EULA",

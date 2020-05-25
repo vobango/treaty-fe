@@ -34,7 +34,7 @@ class Firebase {
       .collection('posts')
       .add({
         post: post.post,
-        workerCount: post.workersNeeded,
+        workerCount: post.workerCount,
         workArea: post.workArea,
         workField: post.workField,
         dateRange: [
@@ -42,7 +42,11 @@ class Firebase {
           new Date(post.dateRange[1]).getTime()
         ],
         email: this.auth.currentUser.email,
-        created: new Date().getTime()
+        created: new Date().getTime(),
+        contactEmail: post.contactEmail,
+        contactName: post.contactName,
+        contactPhone: post.contactPhone,
+        companyName: post.companyName
       })
       .then(
         function(docRef) {

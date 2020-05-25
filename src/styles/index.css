@@ -3,44 +3,66 @@
 @tailwind components;
 @tailwind utilities;
 
-.entry-button {
-	@apply bg-green-500 mt-4 p-4 text-3xl text-white rounded-lg;
+.button {
+  @apply p-4 text-2xl rounded-lg w-full border-2 border-transparent;
+}
+.button:focus {
+  @apply outline-none shadow-outline;
+}
+
+.primary {
+  @apply bg-green-500 text-white border-green-500 .button;
+}
+.primary:hover {
+  @apply bg-green-600 border-green-600;
+}
+.primary:active {
+  @apply: bg-green-700 border-green-700;
+}
+
+.ghost {
+  @apply bg-white text-gray-700 border-gray-700;
+}
+.ghost:hover {
+  @apply text-gray-800 border-gray-800;
+}
+.ghost:active {
+  @apply: text-gray-900 border-gray-900;
+}
+
+.input {
+  @apply border-b-2 mr-auto p-1;
 }
 
 .header-text {
-	@apply text-lg  text-gray-600 font-bold text-center px-8 mb-8;
+  @apply text-lg text-gray-600 font-bold text-center px-8 mb-8;
 }
 
 .input-box {
-	@apply my-1 p-1 w-full border-b-2;
+  @apply my-1 p-1 w-full border-b-2;
 }
 
 .eula-header {
-    @apply text-3xl py-4 text-center w-full;
+  @apply text-3xl py-4 text-center w-full;
 }
 
 .eula-li-styles {
-    @apply pl-4 py-4;
+  @apply pl-4 py-4;
 }
 
 .error {
-  @apply border-b-2 border-red-400
+  @apply border-b-2 border-red-400;
 }
 .error::placeholder {
-    @apply text-red-300;
+  @apply text-red-300;
 }
 
 @screen md {
-	.entry-button {
-		@apply  w-full max-w-xl;
-	}
-	.header-text {
-		@apply text-3xl;
-	}
+  .header-text {
+    @apply text-3xl;
+  }
 }
 /* purgecss end ignore */
-
-
 
 @import url('https://p.typekit.net/p.css?s=1&k=nqt7qup&ht=tk&f=9727.9729.9732.9733.11775.11776.11777.11778.11779.11780&a=19786632&app=typekit&e=css');
 
@@ -136,4 +158,8 @@ html {
 
 .font-co-headline {
   font-family: 'co-headline', sans-serif;
+}
+
+.react-daterange-picker .react-daterange-picker__wrapper {
+  border: none;
 }

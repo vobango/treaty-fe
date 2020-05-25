@@ -45,9 +45,7 @@ const Layout = ({children}) => {
           </div>
         )}
       </div>
-      <div className="w-full h-full flex items-center justify-center p-4">
-        {children}
-      </div>
+      <div className="w-full h-full flex justify-center p-4">{children}</div>
     </div>
   );
 };

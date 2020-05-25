@@ -1,105 +1,151 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {useHistory} from 'react-router-dom';
 import Layout from '../components/layout';
-import {withFirebase} from '../providers/firebase';
+import {useFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
 import {useLocale} from '../providers/locale';
-import DateRangePicker from '@wojtekmaj/react-daterange-picker';
-import {condition} from '../components/session/withAuthorization';
-import {jobTypes, workAreas} from '../utils/constants';
+import {useListingForm} from '../providers/newListing';
+import NewListingForm from '../components/newListingForm';
+import ContactInfo from '../components/newListingContactInfo';
+import ListingPreview from '../components/newListingPreview';
 
-const OfferWork = ({firebase}) => {
+const OfferWork = () => {
   const {translate} = useLocale();
-  const [addPost, setAddPost] = useState('');
-  const [workersNeeded, setWorkersNeeded] = useState(1);
-  const [dateRange, setDateRange] = useState([new Date(), new Date()]);
-  const [workField, setWorkField] = useState('');
-  const [workArea, setWorkArea] = useState('');
-  const jobs = jobTypes.map(translate);
-  jobs.sort((a, b) => a.localeCompare(b));
-  const areas = {
-    cities: workAreas.cities.map(translate),
-    counties: workAreas.counties.map(translate),
-    countries: workAreas.countries.map(translate)
-  };
-  let mappedAreas = [];
-  Object.values(areas).forEach(group => {
-    group.sort((a, b) => a.localeCompare(b));
-    mappedAreas = mappedAreas.concat(group);
-  });
-
+  const {
+    workerCount,
+    dateRange,
+    workField,
+    workArea,
+    additionalInfo,
+    contactName,
+    contactEmail,
+    contactPhone,
+    companyName,
+    update
+  } = useListingForm();
+  const firebase = useFirebase();
+  const history = useHistory();
   const sendPost = () => {
     firebase.doAddPost({
-      workersNeeded,
+      workerCount,
       dateRange,
       workField,
       workArea,
-      post: addPost
+      post: additionalInfo,
+      contactName,
+      contactEmail,
+      contactPhone,
+      companyName
     });
+    history.push('/home');
   };
+  const [currentStep, setStep] = React.useState(1);
+  const setValidation = state => update('formValid')(state);
+  const validateContactForm = event => {
+    event.preventDefault();
+    if (!companyName || !contactName || !contactPhone || !contactEmail) {
+      setValidation(false);
+    } else {
+      setValidation(true);
+      setStep(3);
+    }
+  };
+
   return (
     <Layout>
-      <div className="flex flex-col h-auto w-full sm:items-stretch md:items-center px-4 mb-16">
-        <h1>{translate('offerWork')}</h1>
-        <form className="md:w-1/3 flex flex-col">
-          <label className="my-8">
-            {translate('countWorkersNeeded')}
-            <input
-              className="input-box"
-              value={workersNeeded}
-              type="number"
-              min="1"
-              max="99"
-              onChange={e => setWorkersNeeded(e.target.value)}
-            />
-          </label>
-          <label className="my-8">
-            {translate('pickDateRange')}
-            <DateRangePicker
-              value={dateRange}
-              onChange={date => setDateRange(date)}
-            />
-          </label>
-          <label className="my-8">
-            {translate('chooseField')}
-            <select
-              id="fields"
-              onChange={event => setWorkField(event.target.value)}
-            >
-              {jobs.map(job => (
-                <option key={job} value={job}>
-                  {job}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="my-8">
-            {translate('chooseArea')}
-            <select
-              id="area"
-              onChange={event => setWorkArea(event.target.value)}
-            >
-              {mappedAreas.map(area => (
-                <option key={area} value={area}>
-                  {area}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="my-8">
-            {translate('otherInfo')}
-            <input
-              className="input-box"
-              value={addPost}
-              onChange={e => setAddPost(e.target.value)}
-            />
-          </label>
-        </form>
-        <button className="entry-button" onClick={() => sendPost()}>
-          {translate('addListing')}
-        </button>
+      <div className="flex flex-col h-auto w-full md:items-center px-4">
+        <h1 className="text-2xl md:text-3xl text-center">
+          {translate('offerWork')}
+        </h1>
+        <div className="md:w-1/3 lg:w-1/4">
+          <div className="flex justify-between px-4 my-6 w-full">
+            {[1, 2, 3].map(step => (
+              <div
+                key={step}
+                className={`flex items-center ${step < 3 && 'w-full'}`}
+              >
+                <div
+                  className={`h-8 w-8 flex items-center justify-center rounded-full border-2 text-xs sm:text-base ${
+                    step === currentStep
+                      ? 'bg-white text-green-600 border-green-500 font-bold'
+                      : step < currentStep
+                      ? 'bg-green-200 border-green-200 text-green-700'
+                      : 'bg-gray-200 border-gray-200 text-gray-600'
+                  }`}
+                >
+                  {step}
+                </div>
+                {step < 3 && (
+                  <span
+                    className={`block h-0 flex-grow border-b-2 ${
+                      step < currentStep
+                        ? 'border-green-200'
+                        : 'border-gray-200'
+                    }`}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {currentStep === 1 && (
+            <>
+              <NewListingForm
+                onSubmit={e => {
+                  e.preventDefault();
+                  setStep(2);
+                }}
+              />
+              <button
+                className="mt-16 button primary"
+                onClick={() => setStep(2)}
+              >
+                {translate('nextPage')}
+              </button>
+            </>
+          )}
+          {currentStep === 2 && (
+            <>
+              <ContactInfo onSubmit={validateContactForm} />
+              <div className="mt-16 grid grid-cols-2 col-gap-4">
+                <button
+                  className="button ghost"
+                  onClick={() => {
+                    setValidation(true);
+                    setStep(1);
+                  }}
+                >
+                  {translate('previousPage')}
+                </button>
+                <button
+                  className="button primary"
+                  onClick={validateContactForm}
+                >
+                  {translate('nextPage')}
+                </button>
+              </div>
+            </>
+          )}
+          {currentStep === 3 && (
+            <>
+              <ListingPreview />
+              <div className="mt-16 grid grid-cols-2 col-gap-4">
+                <button
+                  className="button ghost text-xl"
+                  onClick={() => setStep(2)}
+                >
+                  {translate('previousPage')}
+                </button>
+                <button className="button primary text-xl" onClick={sendPost}>
+                  {translate('submitNewListing')}
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </Layout>
   );
 };
 
-export default withFirebase(withAuthorization(condition)(OfferWork));
+export default withAuthorization()(OfferWork);
