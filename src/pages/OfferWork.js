@@ -1,4 +1,5 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import Layout from '../components/layout';
 import {useFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
@@ -6,6 +7,7 @@ import {useLocale} from '../providers/locale';
 import {useListingForm} from '../providers/newListing';
 import NewListingForm from '../components/newListingForm';
 import ContactInfo from '../components/newListingContactInfo';
+import ListingPreview from '../components/newListingPreview';
 
 const OfferWork = () => {
   const {translate} = useLocale();
@@ -22,9 +24,10 @@ const OfferWork = () => {
     update
   } = useListingForm();
   const firebase = useFirebase();
+  const history = useHistory();
   const sendPost = () => {
     firebase.doAddPost({
-      workersNeeded: workerCount,
+      workerCount,
       dateRange,
       workField,
       workArea,
@@ -34,8 +37,9 @@ const OfferWork = () => {
       contactPhone,
       companyName
     });
+    history.push('/home');
   };
-  const [currentStep, setStep] = React.useState(2);
+  const [currentStep, setStep] = React.useState(1);
   const setValidation = state => update('formValid')(state);
   const validateContactForm = () => {
     if (!companyName || !contactName || !contactPhone || !contactEmail) {
@@ -118,7 +122,7 @@ const OfferWork = () => {
           )}
           {currentStep === 3 && (
             <>
-              <div>Eelvaade</div>
+              <ListingPreview />
               <div className="mt-16 grid grid-cols-2 col-gap-4">
                 <button
                   className="button ghost text-xl"

@@ -13,7 +13,10 @@ export default function NewListingForm() {
   return (
     <form className="flex flex-col">
       <label className="mt-4 mb-1 text-gray-700" htmlFor="worker-count">
-        {translate('countWorkersNeeded')}
+        {translate('workerCount')}
+        <span className="text-sm text-gray-600">
+          {translate('workerCountCondition')}
+        </span>
       </label>
       <input
         id="worker-count"

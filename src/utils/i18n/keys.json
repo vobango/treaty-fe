@@ -231,6 +231,10 @@
 		"en": "Job offers",
 		"et": "Tööpakkumised"
 	},
+	"listingPreview": {
+		"en": "Listing preview",
+		"et": "Kuulutuse eelvaade"
+	},
 	"listings": {
 		"en": "View listings",
 		"et": "Vaata pakkumisi"
@@ -474,9 +478,13 @@
 		"en": "(max. 100 characters)",
 		"et": "(kuni 100 tähemärki)"
 	},
-	"countWorkersNeeded": {
-		"en": "Workers needed (1-99)",
-		"et": "Töötajate arv (1-99)"
+	"workerCount": {
+		"en": "Workers needed",
+		"et": "Töötajate arv"
+	},
+	"workerCountCondition": {
+		"en": "(1-99)",
+		"et": "(1-99)"
 	},
 	"chooseField": {
 		"en": "Choose a field",
