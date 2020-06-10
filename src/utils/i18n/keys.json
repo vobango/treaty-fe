@@ -1,7 +1,7 @@
 {
 	"abort": {
-		"en": "Cancel",
-		"et": "Katkesta"
+		"en": "cancel",
+		"et": "katkesta"
 	},
 	"addListing": {
 		"en": "Save listing",

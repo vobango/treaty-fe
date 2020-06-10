@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import Layout from '../components/layout';
 import {useFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
@@ -9,6 +9,7 @@ import NewListingForm from '../components/newListingForm';
 import ContactInfo from '../components/newListingContactInfo';
 import ListingPreview from '../components/newListingPreview';
 import {HOME} from '../utils/routes';
+import Portal from '../components/portal';
 
 const OfferWork = () => {
   const {translate} = useLocale();
@@ -41,7 +42,7 @@ const OfferWork = () => {
       contactPhone,
       companyName
     });
-    history.push('/home');
+    history.push(HOME);
   };
   const [showConfirm, setConfirm] = React.useState(false);
   const handleAbort = () => {
@@ -60,7 +61,7 @@ const OfferWork = () => {
     setConfirm(formHasChanges);
 
     if (!formHasChanges) {
-      history.push('/home');
+      history.push(HOME);
     }
   };
   const [currentStep, setStep] = React.useState(1);
@@ -131,7 +132,12 @@ const OfferWork = () => {
               >
                 {translate('nextPage')}
               </button>
-              <Link to={HOME}>{translate('abort')}</Link>
+              <button
+                className="block mt-10 mx-auto text-2xl text-gray-600"
+                onClick={handleAbort}
+              >
+                {translate('abort')}
+              </button>
             </>
           )}
           {currentStep === 2 && (
@@ -171,6 +177,36 @@ const OfferWork = () => {
                 </button>
               </div>
             </>
+          )}
+          {showConfirm && (
+            <Portal id="form-abort-confirm">
+              <div className="fixed w-full h-full top-0 left-0 flex items-center justify-center">
+                <div className="bg-black opacity-50 w-full h-full absolute top-0 left-0" />
+                <div className="bg-white rounded-lg relative z-10 py-4">
+                  <h1 className="text-xl font-bold mx-4">
+                    Kas soovid lõpetada kuulutuse lisamise?
+                  </h1>
+                  <div className="border-2" />
+                  <p className="mx-4 my-8">
+                    Lõpetades kaovad kõik tehtud muudatused!
+                  </p>
+                  <div className="flex justify-end mx-4">
+                    <button
+                      className="p-1 border-2 border-gray-600 text-gray-700 rounded hover:text-gray-800 hover:border-gray-700"
+                      onClick={() => setConfirm(false)}
+                    >
+                      Jätka kuulutuse lisamist
+                    </button>
+                    <button
+                      className="p-1 border-2 border-gray-600 text-gray-700 rounded hover:text-gray-800 hover:border-gray-700 ml-4"
+                      onClick={() => history.push(HOME)}
+                    >
+                      Lõpeta
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Portal>
           )}
         </div>
       </div>
