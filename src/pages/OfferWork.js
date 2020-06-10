@@ -1,5 +1,5 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import Layout from '../components/layout';
 import {useFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
@@ -29,6 +29,9 @@ const OfferWork = () => {
   } = useListingForm();
   const firebase = useFirebase();
   const history = useHistory();
+  const {search} = useLocation();
+  const searchParams = new URLSearchParams(search);
+  const listingType = searchParams.get('type') || 'job';
   const sendPost = () => {
     firebase.doAddPost({
       workerCount,
@@ -41,7 +44,8 @@ const OfferWork = () => {
       contactName,
       contactEmail,
       contactPhone,
-      companyName
+      companyName,
+      type: listingType
     });
     history.push(HOME);
   };
@@ -65,7 +69,7 @@ const OfferWork = () => {
       history.push(HOME);
     }
   };
-  const [currentStep, setStep] = React.useState(1);
+  const [currentStep, setStep] = React.useState(2);
   const setValidation = state => update('formValid')(state);
   const validateContactForm = event => {
     event.preventDefault();
@@ -91,7 +95,7 @@ const OfferWork = () => {
     <Layout>
       <div className="flex flex-col h-auto w-full md:items-center px-4">
         <h1 className="text-2xl md:text-4xl text-center">
-          {translate('offerWork')}
+          {translate(listingType === 'job' ? 'offerWork' : 'offerWorkers')}
         </h1>
         <div>
           <div className="flex justify-between px-4 my-6 w-full">

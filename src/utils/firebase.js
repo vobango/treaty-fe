@@ -47,7 +47,8 @@ class Firebase {
         contactEmail: post.contactEmail,
         contactName: post.contactName,
         contactPhone: post.contactPhone,
-        companyName: post.companyName
+        companyName: post.companyName,
+        type: post.type
       })
       .then(
         function(docRef) {
