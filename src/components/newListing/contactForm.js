@@ -44,7 +44,7 @@ function ContactInfo({onSubmit}) {
             )}
           </div>
           <input
-            className="input"
+            className="input w-full"
             autoFocus={index === 0}
             id={id}
             value={state[id]}

@@ -69,7 +69,7 @@ const OfferWork = () => {
       history.push(HOME);
     }
   };
-  const [currentStep, setStep] = React.useState(2);
+  const [currentStep, setStep] = React.useState(1);
   const setValidation = state => update('formValid')(state);
   const validateContactForm = event => {
     event.preventDefault();
@@ -97,7 +97,7 @@ const OfferWork = () => {
         <h1 className="text-2xl md:text-4xl text-center">
           {translate(listingType === 'job' ? 'offerWork' : 'offerWorkers')}
         </h1>
-        <div>
+        <div className="w-1/2 max-w-xl">
           <div className="flex justify-between px-4 my-6 w-full">
             {[1, 2, 3].map(step => (
               <div
@@ -165,6 +165,12 @@ const OfferWork = () => {
                   {translate('nextPage')}
                 </button>
               </div>
+              <button
+                className="block mt-10 mx-auto text-2xl text-gray-600"
+                onClick={handleAbort}
+              >
+                {translate('abort')}
+              </button>
             </>
           )}
           {currentStep === 3 && (
@@ -181,6 +187,12 @@ const OfferWork = () => {
                   {translate('submitNewListing')}
                 </button>
               </div>
+              <button
+                className="block mt-10 mx-auto text-2xl text-gray-600"
+                onClick={handleAbort}
+              >
+                {translate('abort')}
+              </button>
             </>
           )}
           {showConfirm && (
