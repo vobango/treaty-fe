@@ -36,10 +36,11 @@ class Firebase {
         post: post.post,
         workerCount: post.workerCount,
         workArea: post.workArea,
-        workField: post.workField,
+        workField1: post.workField1,
+        workField2: post.workField2,
         dateRange: [
-          new Date(post.dateRange[0]).getTime(),
-          new Date(post.dateRange[1]).getTime()
+          new Date(post.startDate).getTime(),
+          new Date(post.endDate).getTime()
         ],
         email: this.auth.currentUser.email,
         created: new Date().getTime(),

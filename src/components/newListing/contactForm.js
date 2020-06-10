@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {useLocale} from '../providers/locale';
-import {useListingForm} from '../providers/newListing';
+import {useLocale} from '../../providers/locale';
+import {useListingForm} from '../../providers/newListing';
 
 function ContactInfo({onSubmit}) {
   const {translate} = useLocale();

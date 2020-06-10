@@ -1,5 +1,5 @@
 export function formatDate(date) {
-  return new Intl.DateTimeFormat('en-GB', {
+  return new Intl.DateTimeFormat('et-EE', {
     year: '2-digit',
     month: '2-digit',
     day: '2-digit'

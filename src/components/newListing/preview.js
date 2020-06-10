@@ -1,15 +1,17 @@
 import * as React from 'react';
-import {useLocale} from '../providers/locale';
-import {useListingForm} from '../providers/newListing';
-import {formatDate} from '../utils/helpers';
+import {useLocale} from '../../providers/locale';
+import {useListingForm} from '../../providers/newListing';
+import {formatDate} from '../../utils/helpers';
 
 function ListingPreview() {
   const {translate} = useLocale();
   const {
     workerCount,
-    dateRange,
+    startDate,
+    endDate,
     workArea,
-    workField,
+    workField1,
+    workField2,
     additionalInfo,
     contactName,
     contactEmail,
@@ -20,9 +22,10 @@ function ListingPreview() {
     {key: 'workerCount', value: workerCount},
     {
       key: 'pickDateRange',
-      value: dateRange.map(d => formatDate(d)).join(' - ')
+      value: `${formatDate(startDate)} - ${formatDate(endDate)}`
     },
-    {key: 'chooseField', value: workField},
+    {key: 'chooseField', label: '1', value: workField1},
+    {key: 'chooseField', label: '2', value: workField2},
     {key: 'chooseArea', value: workArea},
     {key: 'otherInfo', value: additionalInfo},
     {key: 'contactPersonName', value: contactName},
@@ -36,10 +39,13 @@ function ListingPreview() {
       <h2 className="text-xl text-center mt-12 mb-6">
         {translate('listingPreview')}
       </h2>
-      {fields.map(({key, value}) => {
+      {fields.map(({key, label, value}) => {
         return (
           <div key={key} className="my-2">
-            <span className="text-sm text-gray-700">{translate(key)}:</span>
+            <span className="text-sm text-gray-700">
+              {translate(key)}
+              {!!label && ` ${label}`}:
+            </span>
             <span className="ml-3">{value || '-'}</span>
           </div>
         );

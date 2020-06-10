@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {useLocale} from '../providers/locale';
-import {useListingForm} from '../providers/newListing';
+import {useLocale} from '../../providers/locale';
+import {useListingForm} from '../../providers/newListing';
 import DatePicker, {registerLocale, setDefaultLocale} from 'react-datepicker';
 import en from 'date-fns/locale/en-GB';
 import 'react-datepicker/dist/react-datepicker.css';
 registerLocale('en', en);
 setDefaultLocale('en');
 
-export default function NewListingForm({onSubmit}) {
+export default function ListingForm({onSubmit}) {
   const {translate} = useLocale();
   const {state, update, validate} = useListingForm();
   const handleChange = key => event => {

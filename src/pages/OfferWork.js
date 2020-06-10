@@ -5,9 +5,9 @@ import {useFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
 import {useLocale} from '../providers/locale';
 import {useListingForm} from '../providers/newListing';
-import NewListingForm from '../components/newListingForm';
-import ContactInfo from '../components/newListingContactInfo';
-import ListingPreview from '../components/newListingPreview';
+import ListingForm from '../components/newListing/listingForm';
+import ContactInfo from '../components/newListing/contactForm';
+import ListingPreview from '../components/newListing/preview';
 import {HOME} from '../utils/routes';
 import Portal from '../components/portal';
 
@@ -32,7 +32,8 @@ const OfferWork = () => {
   const sendPost = () => {
     firebase.doAddPost({
       workerCount,
-      dateRange: {start: startDate, end: endDate},
+      startDate,
+      endDate,
       workField1,
       workField2,
       workArea,
@@ -125,7 +126,7 @@ const OfferWork = () => {
 
           {currentStep === 1 && (
             <>
-              <NewListingForm onSubmit={validateListingForm} />
+              <ListingForm onSubmit={validateListingForm} />
               <button
                 className="mt-16 button primary"
                 onClick={validateListingForm}
