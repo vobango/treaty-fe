@@ -4,6 +4,22 @@ import {jobTypes, workAreas} from '../utils/constants';
 
 const StateContext = React.createContext(undefined);
 const StateModifierContext = React.createContext(undefined);
+const StateValidationContext = React.createContext(undefined);
+const initialState = {
+  workerCount: '',
+  dateRange: {start: null, end: null},
+  startDate: null,
+  endDate: null,
+  workField1: '',
+  workField2: '',
+  workArea: '',
+  additionalInfo: '',
+  contactName: '',
+  contactEmail: '',
+  contactPhone: '',
+  companyName: '',
+  formValid: true
+};
 
 function reducer(state, action) {
   switch (action.type) {
@@ -22,6 +38,7 @@ function ListingStateProvider({children}) {
   // Translate and sort values alphabetically
   const jobs = jobTypes.map(translate);
   jobs.sort((a, b) => a.localeCompare(b));
+  jobs.unshift('Vali');
   const translatedAreas = {
     cities: workAreas.cities.map(translate),
     counties: workAreas.counties.map(translate),
@@ -32,36 +49,26 @@ function ListingStateProvider({children}) {
     group.sort((a, b) => a.localeCompare(b));
     areas = areas.concat(group);
   });
-  // Listing form fields
-  const initialState = {
-    workerCount: 1,
-    dateRange: [
-      new Date(new Date().setDate(new Date().getDate() + 1)),
-      new Date(new Date().setDate(new Date().getDate() + 2))
-    ],
-    workField: jobs[0],
-    workArea: areas[0],
-    additionalInfo: '',
-    contactName: '',
-    contactEmail: '',
-    contactPhone: '',
-    companyName: '',
-    formValid: true,
+  areas.unshift('Vali');
+  const [state, dispatch] = React.useReducer(reducer, {
+    ...initialState,
     jobs,
     areas
-  };
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  });
   const update = key => value => {
     dispatch({
       type: 'UPDATE',
       payload: {key, value}
     });
   };
+  const validateField = key => !(!state.formValid && !state[key]);
 
   return (
     <StateContext.Provider value={state}>
       <StateModifierContext.Provider value={update}>
-        {children}
+        <StateValidationContext.Provider value={validateField}>
+          {children}
+        </StateValidationContext.Provider>
       </StateModifierContext.Provider>
     </StateContext.Provider>
   );
@@ -70,14 +77,15 @@ function ListingStateProvider({children}) {
 function useListingForm() {
   const state = React.useContext(StateContext);
   const update = React.useContext(StateModifierContext);
+  const validate = React.useContext(StateValidationContext);
 
-  if (!state || !update) {
+  if (!state || !update || !validate) {
     throw new Error(
       'Listing form state used outside of ListingStateProvider component!'
     );
   }
 
-  return {state, ...state, update};
+  return {state, ...state, update, validate};
 }
 
 export {ListingStateProvider, useListingForm};

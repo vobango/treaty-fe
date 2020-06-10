@@ -1,5 +1,5 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import Layout from '../components/layout';
 import {useFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
@@ -8,13 +8,16 @@ import {useListingForm} from '../providers/newListing';
 import NewListingForm from '../components/newListingForm';
 import ContactInfo from '../components/newListingContactInfo';
 import ListingPreview from '../components/newListingPreview';
+import {HOME} from '../utils/routes';
 
 const OfferWork = () => {
   const {translate} = useLocale();
   const {
     workerCount,
-    dateRange,
-    workField,
+    startDate,
+    endDate,
+    workField1,
+    workField2,
     workArea,
     additionalInfo,
     contactName,
@@ -28,8 +31,9 @@ const OfferWork = () => {
   const sendPost = () => {
     firebase.doAddPost({
       workerCount,
-      dateRange,
-      workField,
+      dateRange: {start: startDate, end: endDate},
+      workField1,
+      workField2,
       workArea,
       post: additionalInfo,
       contactName,
@@ -39,25 +43,55 @@ const OfferWork = () => {
     });
     history.push('/home');
   };
+  const [showConfirm, setConfirm] = React.useState(false);
+  const handleAbort = () => {
+    const formHasChanges =
+      workerCount ||
+      startDate ||
+      endDate ||
+      workField1 ||
+      workField2 ||
+      workArea ||
+      additionalInfo ||
+      contactName ||
+      contactEmail ||
+      contactPhone ||
+      companyName;
+    setConfirm(formHasChanges);
+
+    if (!formHasChanges) {
+      history.push('/home');
+    }
+  };
   const [currentStep, setStep] = React.useState(1);
   const setValidation = state => update('formValid')(state);
   const validateContactForm = event => {
     event.preventDefault();
-    if (!companyName || !contactName || !contactPhone || !contactEmail) {
-      setValidation(false);
-    } else {
-      setValidation(true);
+    const isValid = companyName && contactName && contactPhone && contactEmail;
+
+    setValidation(isValid);
+    if (isValid) {
       setStep(3);
+    }
+  };
+  const validateListingForm = event => {
+    event.preventDefault();
+    const isValid =
+      workerCount && startDate && endDate && workField1 && workArea;
+
+    setValidation(isValid);
+    if (isValid) {
+      setStep(2);
     }
   };
 
   return (
     <Layout>
       <div className="flex flex-col h-auto w-full md:items-center px-4">
-        <h1 className="text-2xl md:text-3xl text-center">
+        <h1 className="text-2xl md:text-4xl text-center">
           {translate('offerWork')}
         </h1>
-        <div className="md:w-1/3 lg:w-1/4">
+        <div>
           <div className="flex justify-between px-4 my-6 w-full">
             {[1, 2, 3].map(step => (
               <div
@@ -70,7 +104,7 @@ const OfferWork = () => {
                       ? 'bg-white text-green-600 border-green-500 font-bold'
                       : step < currentStep
                       ? 'bg-green-200 border-green-200 text-green-700'
-                      : 'bg-gray-200 border-gray-200 text-gray-600'
+                      : 'bg-gray-100 border-gray-300 text-gray-600'
                   }`}
                 >
                   {step}
@@ -90,18 +124,14 @@ const OfferWork = () => {
 
           {currentStep === 1 && (
             <>
-              <NewListingForm
-                onSubmit={e => {
-                  e.preventDefault();
-                  setStep(2);
-                }}
-              />
+              <NewListingForm onSubmit={validateListingForm} />
               <button
                 className="mt-16 button primary"
-                onClick={() => setStep(2)}
+                onClick={validateListingForm}
               >
                 {translate('nextPage')}
               </button>
+              <Link to={HOME}>{translate('abort')}</Link>
             </>
           )}
           {currentStep === 2 && (

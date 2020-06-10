@@ -123,7 +123,7 @@ const RegisterBase = props => {
             id="userPassword"
             onChange={event => onChangeHandler(event)}
           />
-          <lable>
+          <label>
             <input
               type="checkbox"
               className="mr-4"
@@ -133,7 +133,7 @@ const RegisterBase = props => {
             <Link to="/eula" className="underline text-blue-600">
               {eulaText.split(' ').splice(-1)[0]}
             </Link>
-          </lable>
+          </label>
 
           {error ? <h1 className="text-red-600">{translate(error)}</h1> : null}
         </form>
