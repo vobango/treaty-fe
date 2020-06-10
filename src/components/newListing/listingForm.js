@@ -22,7 +22,7 @@ export default function ListingForm({onSubmit}) {
       </label>
       <input
         id="worker-count"
-        className="input w-1/2"
+        className="input w-full md:w-1/2"
         value={state.workerCount}
         type="number"
         min="1"
@@ -36,7 +36,7 @@ export default function ListingForm({onSubmit}) {
           {translate('errors.inputEmpty')}
         </span>
       )}
-      <div className="mt-8 grid grid-cols-2 col-gap-3">
+      <div className="mt-8 grid md:grid-cols-2 col-gap-3 row-gap-3">
         <div className="flex flex-col">
           <label className="mb-1 text-gray-700" htmlFor="start-date">
             {translate('dateStart')}
@@ -76,14 +76,14 @@ export default function ListingForm({onSubmit}) {
           )}
         </div>
       </div>
-      <div className="mt-8 grid grid-cols-2 col-gap-3">
+      <div className="mt-8 grid md:grid-cols-2 col-gap-3 row-gap-3">
         <div className="flex flex-col">
           <label className="mb-1 text-gray-700" htmlFor="job-type">
             {translate('chooseField')} 1
           </label>
           <select
             id="job-type"
-            className="input bg-white p-2 pl-0"
+            className="input bg-white p-2 pl-0 w-full md:w-auto"
             required
             value={state.workField1}
             onChange={handleChange('workField1')}
@@ -109,7 +109,7 @@ export default function ListingForm({onSubmit}) {
           </label>
           <select
             id="job-type"
-            className="input bg-white p-2 pl-0"
+            className="input bg-white p-2 pl-0 w-full md:w-auto"
             value={state.workField2}
             onChange={handleChange('workField2')}
           >
@@ -121,7 +121,7 @@ export default function ListingForm({onSubmit}) {
           </select>
         </div>
       </div>
-      <div className="mt-8 w-1/2 pr-1">
+      <div className="mt-8 md:w-1/2 pr-1">
         <label className="mb-1 text-gray-700" htmlFor="work-area">
           {translate('chooseArea')}
         </label>

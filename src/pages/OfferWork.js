@@ -93,11 +93,11 @@ const OfferWork = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col h-auto w-full md:items-center px-4">
+      <div className="flex flex-col h-auto w-full sm:items-center px-4">
         <h1 className="text-2xl md:text-4xl text-center">
           {translate(listingType === 'job' ? 'offerWork' : 'offerWorkers')}
         </h1>
-        <div className="w-1/2 max-w-xl">
+        <div className="lg:w-1/2 max-w-xl">
           <div className="flex justify-between px-4 my-6 w-full">
             {[1, 2, 3].map(step => (
               <div
