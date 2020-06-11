@@ -29,6 +29,7 @@ export default function ListingForm({onSubmit}) {
         max="99"
         placeholder="1-99"
         required
+        autoFocus
         onChange={handleChange('workerCount')}
       />
       {!validate('workerCount') && (

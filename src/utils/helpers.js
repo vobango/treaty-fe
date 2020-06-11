@@ -28,7 +28,7 @@ export const formatRelative = locale => date => {
       ? 'month'
       : dateDiffInWeeks >= 1
       ? 'week'
-      : dateDiffInDays >= 1
+      : dateDiffInDays >= 1 || dateDiffInHours < 0
       ? 'day'
       : 'hour';
   const values = [
@@ -37,7 +37,7 @@ export const formatRelative = locale => date => {
     dateDiffInWeeks,
     dateDiffInMonths
   ].filter(t => t > 0);
-  const value = Math.min(...values);
+  const value = Math.min(...values, 0);
 
   return rtf.format(value, unit);
 };

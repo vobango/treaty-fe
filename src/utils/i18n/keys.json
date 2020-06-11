@@ -262,8 +262,14 @@
 		"et": "Kuulutuse eelvaade"
 	},
 	"listings": {
-		"en": "View listings",
-		"et": "Vaata pakkumisi"
+		"job": {
+			"en": "Job listings",
+			"et": "Tööpakkumised"
+		},
+		"worker": {
+			"en": "Worker listings",
+			"et": "Tööjõupakkumised"
+		}
 	},
 	"listingsDesc": {
 		"en": "Lorem ipsum",

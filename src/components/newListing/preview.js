@@ -39,9 +39,9 @@ function ListingPreview() {
       <h2 className="text-xl text-center mt-12 mb-6">
         {translate('listingPreview')}
       </h2>
-      {fields.map(({key, label, value}) => {
+      {fields.map(({key, label, value}, index) => {
         return (
-          <div key={key} className="my-2">
+          <div key={`${key}-${index}`} className="my-2">
             <span className="text-sm text-gray-700">
               {translate(key)}
               {!!label && ` ${label}`}:
