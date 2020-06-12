@@ -3,7 +3,6 @@ import logo from '../assets/images/logo_small.png';
 import {Icon} from './icons';
 import {useLocale} from '../providers/locale';
 import {withAuthorization} from './session';
-import {Link} from 'react-router-dom';
 import {useAuth} from '../providers/authentication';
 import {useFirebase} from '../providers/firebase';
 
@@ -17,9 +16,7 @@ const Layout = ({children}) => {
   return (
     <div className="w-full h-full" onClick={() => setUserMenu(false)}>
       <div className="py-4 mx-auto flex justify-around items-center max-w-3xl">
-        <Link to="/home">
-          <img className="h-16" src={logo} alt={translate('logo')} />
-        </Link>
+        <img className="h-16" src={logo} alt={translate('logo')} />
         {name && (
           <div className="relative">
             <button

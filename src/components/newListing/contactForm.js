@@ -1,14 +1,13 @@
 import * as React from 'react';
-import {useLocale} from '../providers/locale';
-import {useListingForm} from '../providers/newListing';
+import {useLocale} from '../../providers/locale';
+import {useListingForm} from '../../providers/newListing';
 
 function ContactInfo({onSubmit}) {
   const {translate} = useLocale();
-  const {state, update} = useListingForm();
+  const {state, update, validate} = useListingForm();
   const handleChange = key => event => {
     update(key)(event.target.value);
   };
-  const isInvalid = key => !state.formValid && !state[key];
   const inputs = [
     {
       id: 'contactName',
@@ -40,12 +39,12 @@ function ContactInfo({onSubmit}) {
             <label className="mt-4 mb-1 text-gray-700" htmlFor={id}>
               {label}
             </label>
-            {isInvalid(id) && (
+            {!validate(id) && (
               <span className="ml-2 text-xs text-red-500">{error}</span>
             )}
           </div>
           <input
-            className="input"
+            className="input w-full"
             autoFocus={index === 0}
             id={id}
             value={state[id]}

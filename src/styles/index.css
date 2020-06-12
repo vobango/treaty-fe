@@ -31,7 +31,11 @@
 }
 
 .input {
-  @apply border-b-2 mr-auto p-1;
+  @apply mr-auto p-1 bg-gray-200 rounded;
+}
+
+select:invalid {
+  color: gray;
 }
 
 .header-text {

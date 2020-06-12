@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import data from './keys.json';
 import {locales} from '../../providers/locale';
 
@@ -7,7 +8,7 @@ export const translator = locale => {
     throw new Error(`Locale "${locale}" does not exist in defined locales`);
 
   return key => {
-    const value = translations[key];
+    const value = _.get(translations, key);
 
     if (!value) {
       console.warn(`Unknown key: "${key}"`);

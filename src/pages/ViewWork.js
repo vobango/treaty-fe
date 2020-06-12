@@ -1,45 +1,54 @@
 import React, {useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 import Layout from '../components/layout';
-import {withFirebase} from '../providers/firebase';
+import {useFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
 import {Icon} from '../components/icons';
 import {Link} from 'react-router-dom';
 import {useLocale} from '../providers/locale';
 import {formatDate, formatRelative} from '../utils/helpers';
 
-const ViewWork = ({firebase}) => {
+const ViewWork = () => {
   const {translate, locale} = useLocale();
   const [posts, setPosts] = useState([]);
+  const firebase = useFirebase();
+  const {search} = useLocation();
+  const listingType = new URLSearchParams(search).get('type') || 'job';
   const format = date => formatDate(date);
 
   useEffect(() => {
     // Live updates
-    const unsubscribe = firebase.db.collection('posts').onSnapshot(snapshot => {
-      let readData = [];
+    const collection = firebase.db.collection('posts');
+    const unsubscribe = collection
+      .where('type', '==', listingType)
+      .onSnapshot(snapshot => {
+        let readData = [];
 
-      if (snapshot.size) {
-        snapshot.forEach(doc => readData.push({...doc.data()}));
-      }
+        if (snapshot.size) {
+          snapshot.forEach(doc => readData.push({...doc.data()}));
+        }
 
-      readData.sort((a, b) => {
-        return b.created - a.created;
+        readData.sort((a, b) => {
+          return b.created - a.created;
+        });
+        setPosts(readData);
       });
-      setPosts(readData);
-    });
     return () => {
       unsubscribe();
     };
-  }, [firebase]);
+  }, [firebase, listingType]);
 
   return (
     <Layout>
       <div>
-        <h1 className="text-3xl">{translate('listings')}</h1>
-        {posts.map((post, i) => {
+        <h1 className="text-3xl text-center">
+          {translate(`listings.${listingType}`)}
+        </h1>
+        {posts.map(post => {
           const {
             created,
             workArea,
-            workField,
+            workField1,
             workerCount,
             dateRange = []
           } = post;
@@ -52,7 +61,7 @@ const ViewWork = ({firebase}) => {
               key={created}
               className="shadow-lg rounded-lg bg-green-100 p-6 my-8"
             >
-              <h2 className="text-xl">{workField}</h2>
+              <h2 className="text-xl">{workField1}</h2>
               <div className="text-gray-600 text-sm mb-6">
                 {translate('workStartsIn')} {formatRelative(locale)(from)}
               </div>
@@ -94,4 +103,4 @@ const ViewWork = ({firebase}) => {
   );
 };
 
-export default withFirebase(withAuthorization()(ViewWork));
+export default withAuthorization()(ViewWork);

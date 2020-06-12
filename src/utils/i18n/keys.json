@@ -1,4 +1,8 @@
 {
+	"abort": {
+		"en": "cancel",
+		"et": "katkesta"
+	},
 	"addListing": {
 		"en": "Save listing",
 		"et": "Lisa kuulutus"
@@ -6,6 +10,10 @@
 	"cancelRegister": {
 		"en": "cancel",
 		"et": "katkesta"
+	},
+	"characters": {
+		"en": "characters",
+		"et": "tähemärki"
 	},
 	"close": {
 		"en": "Close",
@@ -147,9 +155,23 @@
 		"en": "Võru county",
 		"et": "Võru maakond"
 	},
+	"dateEnd": {
+		"en": "End date",
+		"et": "Töö lõpp"
+	},
+	"dateStart": {
+		"en": "Start date",
+		"et": "Töö algus"
+	},
 	"error": {
 		"en": "Error",
 		"et": "Viga"
+	},
+	"errors": {
+		"inputEmpty": {
+			"en": "Input must be filled",
+			"et": "Väli peab olema täidetud"
+		}
 	},
 	"europe": {
 		"en": "Europe",
@@ -241,7 +263,15 @@
 	},
 	"listings": {
 		"en": "View listings",
-		"et": "Vaata pakkumisi"
+		"et": "Vaata pakkumisi",
+		"job": {
+			"en": "Job listings",
+			"et": "Tööpakkumised"
+		},
+		"worker": {
+			"en": "Worker listings",
+			"et": "Tööjõupakkumised"
+		}
 	},
 	"listingsDesc": {
 		"en": "Lorem ipsum",
@@ -483,8 +513,8 @@
 		"et": "Lisainfo"
 	},
 	"otherInfoCondition": {
-		"en": "(max. 100 characters)",
-		"et": "(kuni 100 tähemärki)"
+		"en": "(optional)",
+		"et": "(valikuline)"
 	},
 	"workerCount": {
 		"en": "Workers needed",
