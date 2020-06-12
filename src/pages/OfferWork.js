@@ -90,6 +90,14 @@ const OfferWork = () => {
       setStep(2);
     }
   };
+  const CancelButton = () => (
+    <button
+      className="block mt-10 mx-auto text-2xl text-gray-600"
+      onClick={handleAbort}
+    >
+      {translate('abort')}
+    </button>
+  );
 
   return (
     <Layout>
@@ -137,12 +145,7 @@ const OfferWork = () => {
               >
                 {translate('nextPage')}
               </button>
-              <button
-                className="block mt-10 mx-auto text-2xl text-gray-600"
-                onClick={handleAbort}
-              >
-                {translate('abort')}
-              </button>
+              <CancelButton />
             </>
           )}
           {currentStep === 2 && (
@@ -165,12 +168,7 @@ const OfferWork = () => {
                   {translate('nextPage')}
                 </button>
               </div>
-              <button
-                className="block mt-10 mx-auto text-2xl text-gray-600"
-                onClick={handleAbort}
-              >
-                {translate('abort')}
-              </button>
+              <CancelButton />
             </>
           )}
           {currentStep === 3 && (
@@ -187,12 +185,7 @@ const OfferWork = () => {
                   {translate('submitNewListing')}
                 </button>
               </div>
-              <button
-                className="block mt-10 mx-auto text-2xl text-gray-600"
-                onClick={handleAbort}
-              >
-                {translate('abort')}
-              </button>
+              <CancelButton />
             </>
           )}
           {showConfirm && (
