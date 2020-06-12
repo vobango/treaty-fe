@@ -262,6 +262,8 @@
 		"et": "Kuulutuse eelvaade"
 	},
 	"listings": {
+		"en": "View listings",
+		"et": "Vaata pakkumisi",
 		"job": {
 			"en": "Job listings",
 			"et": "Tööpakkumised"
