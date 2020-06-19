@@ -4,7 +4,6 @@ import Layout from '../components/layout';
 import {useFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
 import {useLocale} from '../providers/locale';
-import {formatDate} from '../utils/helpers';
 import Listing from '../components/listing';
 
 const ViewWork = () => {
@@ -23,7 +22,9 @@ const ViewWork = () => {
         let readData = [];
 
         if (snapshot.size) {
-          snapshot.forEach(doc => readData.push({...doc.data()}));
+          snapshot.forEach(doc => {
+            readData.push({id: doc.ref.id, ...doc.data()});
+          });
         }
 
         readData.sort((a, b) => {

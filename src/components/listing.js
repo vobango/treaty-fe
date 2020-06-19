@@ -3,6 +3,9 @@ import {formatDate, formatRelative} from '../utils/helpers';
 import {Icon} from './icons';
 import React, {useState} from 'react';
 import {useLocale} from '../providers/locale';
+import {useFirebase} from '../providers/firebase';
+
+//TODO: should probably be extracted as a dummy component
 
 const Listing = ({post}) => {
   const format = date => formatDate(date);
@@ -12,6 +15,38 @@ const Listing = ({post}) => {
   const itemClasses = 'flex items-center mr-3';
   const iconClasses = 'h-6 w-6 text-gray-600';
   const [showDetails, setShowDetails] = useState(false);
+  const [details, setDetails] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const firebase = useFirebase();
+  const collection = firebase.db.collection('details');
+
+  const fetchDetails = () => {
+    setDetails(firebase.doGetDetails());
+  };
+
+  const handleShowMoreClick = () => {
+    const userHasRights = false;
+    if (userHasRights) {
+      setShowDetails(!showDetails);
+      fetchDetails();
+    } else {
+      setShowModal(true);
+    }
+  };
+
+  const handlePayment = () => {
+    const success = true;
+    if (success) {
+      fetchDetails();
+      setShowDetails(true);
+      setShowModal(false);
+    } else {
+      setShowDetails(false);
+      setShowModal(false);
+    }
+  };
+
   return (
     <motion.div
       key={created}
@@ -42,14 +77,14 @@ const Listing = ({post}) => {
         )}
       </div>
       <button
-        onClick={() => setShowDetails(!showDetails)}
+        onClick={() => handleShowMoreClick()}
         className="flex justify-center items-center py-1 px-3 mt-6 rounded-full border-2 border-green-500 text-gray-800 text-sm w-1/2"
       >
         Vaata lähemalt{' '}
         <Icon.Arrow direction="right" className="w-5 h-5 ml-2 text-gray-600" />
       </button>
       <AnimatePresence>
-        {showDetails && (
+        {showDetails && details && (
           <motion.div
             initial="collapsed"
             animate="open"
@@ -58,22 +93,35 @@ const Listing = ({post}) => {
               open: {opacity: 1, height: 'auto'},
               collapsed: {opacity: 0, height: 0}
             }}
-            transition={{duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98]}}
+            transition={{duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98]}}
           >
             <div>
               <p>
-                Company name: <span>{post.companyName}</span>
+                Company name: <span>{details.companyName}</span>
               </p>
               <p>
-                Email: <span>{post.contactEmail}</span>
+                Email: <span>{details.contactEmail}</span>
               </p>
               <p>
-                Phone number: <span>{post.contactPhone}</span>
+                Phone number: <span>{details.contactPhone}</span>
               </p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+      {showModal && (
+        <div
+          className="absolute center w-1/4 bg-green-300 text-center h-32 flex justify-center items-center rounded"
+          style={{top: '50%'}}
+        >
+          <button
+            onClick={() => handlePayment()}
+            className="border-2 p-4 rounded"
+          >
+            Buy more
+          </button>
+        </div>
+      )}
     </motion.div>
   );
 };
