@@ -118,14 +118,14 @@ class Firebase {
   };
 
   doGetDetails = async postId => {
-    this.db
+    if (!postId) return;
+    return this.db
       .collection('details')
-      .doc('Zzzp2cIqCEvcvcGlOGH9')
+      .doc(postId)
       .get()
       .then(docSnapshot => {
         if (docSnapshot.exists) {
           console.log('getting details from base');
-          console.log(docSnapshot.data());
           return docSnapshot.data();
         }
       });

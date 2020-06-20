@@ -15,14 +15,13 @@ const Listing = ({post}) => {
   const itemClasses = 'flex items-center mr-3';
   const iconClasses = 'h-6 w-6 text-gray-600';
   const [showDetails, setShowDetails] = useState(false);
-  const [details, setDetails] = useState(null);
+  const [details, setDetails] = useState();
   const [showModal, setShowModal] = useState(false);
 
   const firebase = useFirebase();
-  const collection = firebase.db.collection('details');
 
-  const fetchDetails = () => {
-    setDetails(firebase.doGetDetails());
+  const fetchDetails = async () => {
+    setDetails(await firebase.doGetDetails(post.postId));
   };
 
   const handleShowMoreClick = () => {
