@@ -135,7 +135,7 @@ const Eula = () => {
           </li>
           <li>
             Kui Kasutaja ei soovi saada isikustatud otseturustusteateid, siis on
-            võimalik valida e-kirja jaluses link „ei soovi saada
+            võimalik valida e-kirja jaluses alink „ei soovi saada
             otseturustusteateid“ või teha vastav märge Veebilehel.
           </li>
         </ul>
@@ -185,7 +185,7 @@ const Eula = () => {
           <br />
           Kõigi privaatsustingimuste ja andmetöötluse kohta tekkivate
           küsimustega palume võtta meiega ühendust e-posti aadressil
-          info@cofind.ee.
+          info@cofind.eu.
         </p>
       </div>
     </div>
