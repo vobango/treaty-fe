@@ -24,8 +24,8 @@ const Listing = ({post}) => {
     setDetails(await firebase.doGetDetails(post.postId));
   };
 
-  const handleShowMoreClick = () => {
-    const userHasRights = false;
+  const handleShowMoreClick = async overwrite => {
+    let userHasRights = (await firebase.doCheckUserPremium()) || overwrite;
     if (userHasRights) {
       setShowDetails(!showDetails);
       fetchDetails();
@@ -110,14 +110,26 @@ const Listing = ({post}) => {
       </AnimatePresence>
       {showModal && (
         <div
-          className="absolute center w-1/4 bg-green-300 text-center h-32 flex justify-center items-center rounded"
+          className="fixed center w-1/2 bg-green-300 text-center h-64 flex justify-around items-center rounded"
           style={{top: '50%'}}
         >
           <button
-            onClick={() => handlePayment()}
-            className="border-2 p-4 rounded"
+            onClick={() => setShowModal(false)}
+            className="absolute top-0 right-0 mr-1 mt-1"
           >
-            Buy more
+            X
+          </button>
+          <button
+            onClick={() => handlePayment(true)}
+            className="border-2 p-4 rounded w-1/3"
+          >
+            Buy Article
+          </button>
+          <button
+            onClick={() => handlePayment()}
+            className="border-2 p-4 rounded w-1/3"
+          >
+            Buy Premium
           </button>
         </div>
       )}

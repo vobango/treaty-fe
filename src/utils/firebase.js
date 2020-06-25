@@ -70,6 +70,7 @@ class Firebase {
                       posts: app.firestore.FieldValue.arrayUnion(postRef.id)
                     });
                   } else {
+                    // only creates user object, if the user actually creates a post/makes a purchase
                     this.db
                       .collection('users')
                       .doc(this.auth.currentUser.email)
@@ -125,10 +126,23 @@ class Firebase {
       .get()
       .then(docSnapshot => {
         if (docSnapshot.exists) {
-          console.log('getting details from base');
           return docSnapshot.data();
         }
       });
+  };
+
+  doCheckUserPremium = async () => {
+    const userRef = this.db
+      .collection('users')
+      .doc(this.auth.currentUser.email);
+
+    return userRef.get().then(function(doc) {
+      if (doc.exists) {
+        return !!doc.data().premium;
+      } else {
+        return false;
+      }
+    });
   };
 }
 export default Firebase;
