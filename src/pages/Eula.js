@@ -135,7 +135,7 @@ const Eula = () => {
           </li>
           <li>
             Kui Kasutaja ei soovi saada isikustatud otseturustusteateid, siis on
-            võimalik valida e-kirja jaluses alink „ei soovi saada
+            võimalik valida e-kirja jaluses link „ei soovi saada
             otseturustusteateid“ või teha vastav märge Veebilehel.
           </li>
         </ul>
