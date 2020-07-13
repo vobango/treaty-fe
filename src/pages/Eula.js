@@ -7,7 +7,7 @@ const Eula = () => {
   const {translate} = useLocale();
   return (
     <div>
-      <div className="flex flex-col px-16 xl:px-72 md:px-48 ">
+      <div className="flex flex-col px-16 xl:px-72 md:px-48 pb-16">
         <Link
           to="/"
           className="underline flex items-center w-full justify-center mt-4"
@@ -185,7 +185,7 @@ const Eula = () => {
           <br />
           Kõigi privaatsustingimuste ja andmetöötluse kohta tekkivate
           küsimustega palume võtta meiega ühendust e-posti aadressil
-          info@cofind.ee.
+          info@cofind.eu.
         </p>
       </div>
     </div>
