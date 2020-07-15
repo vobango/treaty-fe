@@ -7,7 +7,7 @@ const Eula = () => {
   const {translate} = useLocale();
   return (
     <div>
-      <div className="flex flex-col px-16 xl:px-72 md:px-48 ">
+      <div className="flex flex-col px-16 xl:px-72 md:px-48 pb-16">
         <Link
           to="/"
           className="underline flex items-center w-full justify-center mt-4"
@@ -16,11 +16,12 @@ const Eula = () => {
           <img className="h-16 pl-64" src={logo} alt={translate('logo')} />
         </Link>
         <h1 className="eula-header">Privaatsustingimused</h1>
-        <p>Kehtivad alates XX.XX.XXXX</p>
+        <p>Kehtivad alates 01.06.2020</p>
         <p>
           Privaatsustingimused reguleerivad isikuandmete töötlemist ja küpsiste
-          kasutamist OÜ XXX, registrikood XXX, asukohaga AADRESS (edaspidi
-          Ettevõte), veebilehel / rakenduses XXX (edaspidi Veebileht).
+          kasutamist COFIND OÜ, registrikood 14981728, asukohaga Sinika 15-7,
+          50110, Tartu, Eesti (edaspidi Ettevõte), veebilehel / rakenduses
+          www.cofind.eu (edaspidi Veebileht).
           <br />
           Kasutajad (ainsuses Kasutaja) on kõik isikud, kes külastavad
           Veebilehte, tarbivad teenuseid või edastavad Ettevõttele omalt poolt
@@ -119,11 +120,11 @@ const Eula = () => {
           <li>nõuda enda Isikuandmete töötlemise piiramist;</li>
         </ul>
         <p>
-          nõuda enda Isikuandmete ülekandmist. Oma õiguste kasutamiseks tuleb
-          Kasutajal saata e-posti aadressile XXXX@XXX.com vastavasisuline
-          sooviavaldus. Kui Kasutaja leiab, et tema õigusi on Isikuandmete
-          töötlemisel rikutud, on tal õigus pöörduda Andmekaitse Inspektsiooni
-          poole.
+          Oma õiguste kasutamiseks tuleb Kasutajal saata e-posti aadressile
+          info@cofind.eu vastavasisuline sooviavaldus.
+          <br />
+          Kui Kasutaja leiab, et tema õigusi on Isikuandmete töötlemisel
+          rikutud, on tal õigus pöörduda Andmekaitse Inspektsiooni poole.
         </p>
         <h1 className="eula-header">Otseturustusteated</h1>
         <ul className="list-disc eula-li-styles">
@@ -184,7 +185,7 @@ const Eula = () => {
           <br />
           Kõigi privaatsustingimuste ja andmetöötluse kohta tekkivate
           küsimustega palume võtta meiega ühendust e-posti aadressil
-          XXX@XXX.com.
+          info@cofind.eu.
         </p>
       </div>
     </div>

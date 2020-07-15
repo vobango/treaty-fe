@@ -13,9 +13,10 @@ const Entry = props => {
   };
 
   useEffect(() => {
-    const subPath = props.location && props.location.state.subPath;
+    const {location} = props;
+    const subPath = location && location.state.subPath;
     setCurrentPage(subPath ? subPath : 'entry');
-  }, []);
+  }, [props.location]);
 
   switch (currentPage) {
     case 'login':
