@@ -5,6 +5,7 @@ import {useLocale} from '../providers/locale';
 import {withAuthorization} from './session';
 import {useAuth} from '../providers/authentication';
 import {useFirebase} from '../providers/firebase';
+import {Link} from 'react-router-dom';
 
 const Layout = ({children}) => {
   const {translate} = useLocale();
@@ -16,7 +17,9 @@ const Layout = ({children}) => {
   return (
     <div className="w-full h-full" onClick={() => setUserMenu(false)}>
       <div className="py-4 mx-auto flex justify-around items-center max-w-3xl">
-        <img className="h-16" src={logo} alt={translate('logo')} />
+        <Link to="/home">
+          <img className="h-16" src={logo} alt={translate('logo')} />
+        </Link>
         {name && (
           <div className="relative">
             <button

@@ -10,12 +10,23 @@ import {useFirebase} from '../providers/firebase';
 const Listing = ({post}) => {
   const format = date => formatDate(date);
   const {translate, locale} = useLocale();
-  const {created, workArea, workField1, workerCount, dateRange = []} = post;
+  const {
+    created,
+    workArea,
+    workField1,
+    workField2,
+    workerCount,
+    dateRange = []
+  } = post;
   const [from, to] = dateRange;
   const itemClasses = 'flex items-center text-sm font-light text-gray-700';
   const detailsButton =
     'text-sm uppercase rounded-lg py-3 px-6 tracking-wide xl:text-lg';
-  const iconClasses = 'h-6 w-6 text-gray-600';
+  const headerText =
+    'font-bold text-sm w-1/3 md:w-1/4 flex justify-between items-center';
+  const detailText = 'text-lg font-thin';
+  const iconClasses = 'h-8 w-8 text-gray-600';
+  const groupingClass = 'flex my-1';
   const [details, setDetails] = useState();
   const [openDropdown, setOpenDropdown] = useState(false);
 
@@ -35,20 +46,56 @@ const Listing = ({post}) => {
   const renderDetails = () => {
     return (
       <div>
-        <p>
-          Company name: <span>{details.companyName}</span>
-        </p>
-        <p>
-          Email: <span>{details.contactEmail}</span>
-        </p>
-        <p>
-          Phone number: <span>{details.contactPhone}</span>
-        </p>
+        <div className="relative">
+          <div>
+            {!!workField1 && (
+              <div className="flex">
+                <p className={headerText}>Valdkond - 1</p>
+                <p className={detailText}>{workField1}</p>
+              </div>
+            )}
+            {!!workField2 && (
+              <div className="flex">
+                <p className={headerText}>Valdkond - 2</p>
+                <p className={detailText}>{workField2}</p>
+              </div>
+            )}
+          </div>
+          {!!workerCount && (
+            <div className="absolute top-0 right-0 mr-2 flex items-center">
+              <Icon.Worker className={iconClasses} />
+              {workerCount}
+            </div>
+          )}
+        </div>
         {!!details.details && (
-          <p>
-            Detailid: <span>{details.details}</span>
-          </p>
+          <div className="my-4">
+            <p className={headerText}>Lisainformatsioon</p>
+            <p className={detailText}>{details.details}</p>
+          </div>
         )}
+        <hr className="my-3" />
+        <div className="flex flex-col">
+          <p className={'w-full mb-2 font-bold text-sm flex justify-center'}>
+            Kontakt
+          </p>
+          <div className={groupingClass}>
+            <p className={headerText}>Kontaktisik:</p>
+            <p className={detailText}>{details.contactName}</p>
+          </div>
+          <div className={groupingClass}>
+            <p className={headerText}>Ettevõte:</p>
+            <p className={detailText}>{details.companyName}</p>
+          </div>
+          <div className={groupingClass}>
+            <p className={headerText}>Telefon:</p>
+            <p className={detailText}>{details.contactPhone}</p>
+          </div>
+          <div className={groupingClass}>
+            <p className={headerText}>E-post:</p>
+            <p className={detailText}>{details.contactEmail}</p>
+          </div>
+        </div>
       </div>
     );
   };
@@ -96,6 +143,8 @@ const Listing = ({post}) => {
     );
   };
 
+  const detailBoxWidth = !details ? 'w-10/12' : 'w-full';
+
   return (
     <motion.div
       key={created}
@@ -104,7 +153,7 @@ const Listing = ({post}) => {
       {renderHeader()}
 
       <div className="flex mt-4 items-center">
-        <div className="w-10/12">
+        <div className={detailBoxWidth}>
           {!details ? (
             <p
               className="select-none text-transparent"
