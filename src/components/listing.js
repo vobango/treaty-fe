@@ -12,11 +12,12 @@ const Listing = ({post}) => {
   const {translate, locale} = useLocale();
   const {created, workArea, workField1, workerCount, dateRange = []} = post;
   const [from, to] = dateRange;
-  const itemClasses = 'flex items-center mr-3';
+  const itemClasses = 'flex items-center text-sm font-light text-gray-700';
+  const detailsButton =
+    'text-sm uppercase rounded-lg py-3 px-6 tracking-wide xl:text-lg';
   const iconClasses = 'h-6 w-6 text-gray-600';
-  const [showDetails, setShowDetails] = useState(false);
   const [details, setDetails] = useState();
-  const [showModal, setShowModal] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
 
   const firebase = useFirebase();
 
@@ -24,26 +25,75 @@ const Listing = ({post}) => {
     setDetails(await firebase.doGetDetails(post.postId));
   };
 
-  const handleShowMoreClick = async overwrite => {
-    let userHasRights = (await firebase.doCheckUserPremium()) || overwrite;
-    if (userHasRights) {
-      setShowDetails(!showDetails);
-      fetchDetails();
-    } else {
-      setShowModal(true);
-    }
-  };
-
   const handlePayment = () => {
     const success = true;
     if (success) {
       fetchDetails();
-      setShowDetails(true);
-      setShowModal(false);
-    } else {
-      setShowDetails(false);
-      setShowModal(false);
     }
+  };
+
+  const renderDetails = () => {
+    return (
+      <div>
+        <p>
+          Company name: <span>{details.companyName}</span>
+        </p>
+        <p>
+          Email: <span>{details.contactEmail}</span>
+        </p>
+        <p>
+          Phone number: <span>{details.contactPhone}</span>
+        </p>
+        {!!details.details && (
+          <p>
+            Detailid: <span>{details.details}</span>
+          </p>
+        )}
+      </div>
+    );
+  };
+
+  const renderHeader = () => {
+    return (
+      <div>
+        <div className="flex justify-between items-center">
+          <h2 className="text-xl font-bold">{workField1}</h2>
+          {!!workArea && (
+            <div className={'font-bold text-md text-black'}>{workArea}</div>
+          )}
+        </div>
+        <div className="flex justify-between">
+          {!!from && !!to && (
+            <div className={itemClasses}>
+              {format(from)} - {format(to)}
+            </div>
+          )}
+          {!!created && (
+            <div className={itemClasses}>Lisatud {format(created)}</div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const renderPurchaseButtons = () => {
+    if (!!details) return null;
+    return (
+      <div className="flex justify-between mt-4">
+        <button
+          onClick={() => handlePayment()}
+          className={detailsButton + ' text-gray-700 bg-gray-200'}
+        >
+          Registeeru
+        </button>
+        <button
+          onClick={() => handlePayment()}
+          className={detailsButton + ' text-white bg-green-500'}
+        >
+          Maksa (1€)
+        </button>
+      </div>
+    );
   };
 
   return (
@@ -51,39 +101,34 @@ const Listing = ({post}) => {
       key={created}
       className="shadow-lg rounded-lg bg-green-100 p-6 my-8"
     >
-      <h2 className="text-xl">{workField1}</h2>
-      <div className="text-gray-600 text-sm mb-6">
-        {translate('workStartsIn')} {formatRelative(locale)(from)}
+      {renderHeader()}
+
+      <div className="flex mt-4 items-center">
+        <div className="w-10/12">
+          {!details ? (
+            <p
+              className="select-none text-transparent"
+              style={{textShadow: '0 0 5px rgba(0,0,0,0.5)'}}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, ed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua...
+            </p>
+          ) : (
+            renderDetails()
+          )}
+        </div>
+        {!details && (
+          <button onClick={() => setOpenDropdown(!openDropdown)}>
+            <Icon.DoubleArrow
+              direction="right"
+              className="w-16 h-8 ml-2 text-green-600"
+            />
+          </button>
+        )}
       </div>
-      <div className="flex">
-        {!!workArea && (
-          <div className={itemClasses}>
-            <Icon.Marker className={iconClasses} />
-            {workArea}
-          </div>
-        )}
-        {!!workerCount && (
-          <div className={itemClasses}>
-            <Icon.Worker className={iconClasses} />
-            {workerCount}
-          </div>
-        )}
-        {!!from && !!to && (
-          <div className={itemClasses}>
-            <Icon.Calendar className={iconClasses} />
-            {format(from)} - {format(to)}
-          </div>
-        )}
-      </div>
-      <button
-        onClick={() => handleShowMoreClick()}
-        className="flex justify-center items-center py-1 px-3 mt-6 rounded-full border-2 border-green-500 text-gray-800 text-sm w-1/2"
-      >
-        Vaata lähemalt{' '}
-        <Icon.Arrow direction="right" className="w-5 h-5 ml-2 text-gray-600" />
-      </button>
+
       <AnimatePresence>
-        {showDetails && details && (
+        {openDropdown && (
           <motion.div
             initial="collapsed"
             animate="open"
@@ -94,45 +139,10 @@ const Listing = ({post}) => {
             }}
             transition={{duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98]}}
           >
-            <div>
-              <p>
-                Company name: <span>{details.companyName}</span>
-              </p>
-              <p>
-                Email: <span>{details.contactEmail}</span>
-              </p>
-              <p>
-                Phone number: <span>{details.contactPhone}</span>
-              </p>
-            </div>
+            {renderPurchaseButtons()}
           </motion.div>
         )}
       </AnimatePresence>
-      {showModal && (
-        <div
-          className="fixed center w-1/2 bg-green-300 text-center h-64 flex justify-around items-center rounded"
-          style={{top: '50%'}}
-        >
-          <button
-            onClick={() => setShowModal(false)}
-            className="absolute top-0 right-0 mr-1 mt-1"
-          >
-            X
-          </button>
-          <button
-            onClick={() => handlePayment(true)}
-            className="border-2 p-4 rounded w-1/3"
-          >
-            Buy Article
-          </button>
-          <button
-            onClick={() => handlePayment()}
-            className="border-2 p-4 rounded w-1/3"
-          >
-            Buy Premium
-          </button>
-        </div>
-      )}
     </motion.div>
   );
 };

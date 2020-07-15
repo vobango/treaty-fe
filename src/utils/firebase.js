@@ -38,7 +38,8 @@ class Firebase {
         contactEmail: post.contactEmail,
         contactName: post.contactName,
         contactPhone: post.contactPhone,
-        companyName: post.companyName
+        companyName: post.companyName,
+        details: post.post
       })
       .then(
         function(detailsRef) {
@@ -56,7 +57,8 @@ class Firebase {
                 new Date(post.endDate).getTime()
               ],
               type: post.type,
-              postId: detailsRef.id
+              postId: detailsRef.id,
+              created: new Date()
             })
             .then(
               function(postRef) {
