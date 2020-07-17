@@ -237,6 +237,10 @@
 		"en": "Lorem ipsum it works",
 		"et": "COFIND on suunatud ehitussektori peamisele puudusele - töö ja tööjõu\n          leidmise probleemile ja sellele, kui palju aega kulub ükskõik kumma\n          leidmiseks. <br /> See on lahendus, kus väga täpselt suunatud\n          pakkumine leiab kiiresti parima lahenduse. <br /> Ettevõte, kellel on\n          hetkeliselt puudu töökätest või on üle tööjõudu sisestavad oma väga\n          konkreetsed vajadused ning meie teeme ülejäänu. <br /> See on väga\n          täpselt suunatud pakkumise ja nõudluse vajaduse rahuldamine, kus nii\n          tööjõu pakkujad ja töökäte vajajad on võrdsed partnerid, kes tahavad\n          lahendada ühist probleemi - tööhõive probleemi - et keegi ei istuks\n          jõude, kui kusagil objekt põleb."
 	},
+	"heroMessage": {
+		"en": "The fastest way to the best partner in construction business",
+		"et": "Kiireim viis parima partneri leidmiseks ehitussektoris"
+	},
 	"howItWorks-1": {
 		"en": "Lorem",
 		"et": "Me otsime ja leiame Sulle parima partneri."
