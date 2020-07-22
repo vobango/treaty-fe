@@ -58,15 +58,18 @@ export default () => {
       {/* Hero */}
       <div className="h-106 lg:h-128">
         <div className="absolute z-10 text-white w-full flex flex-col items-center justify-center pt-12 lg:pt-0 h-106 lg:h-128">
-          <div className="flex items-center justify-center">
-            <Icon.Arrow className="h-8 lg:h-16" direction="right" />
-            <h1 className="mx-4 text-4xl lg:text-6xl font-bold uppercase">
+          <div className="flex">
+            <Icon.Arrow className="mt-3 h-8 lg:h-16" direction="right" />
+            <h1 className="mx-4 text-4xl lg:text-6xl font-bold uppercase text-center">
               Cofind
+              <span className="block lowercase -mt-4 text-sm lg:text-xl tracking-wider">
+                {translate('slogan')}
+              </span>
             </h1>
-            <Icon.Arrow className="h-8 lg:h-16" direction="left" />
+            <Icon.Arrow className="mt-3 h-8 lg:h-16" direction="left" />
           </div>
-          <p className="text-3xl lg:text-5xl mt-4 tracking-wider">
-            {translate('slogan')}
+          <p className="text-xl text-center lg:text-2xl mt-4 tracking-wider">
+            {translate('heroMessage')}
           </p>
           <div className="mt-8">
             <Link
