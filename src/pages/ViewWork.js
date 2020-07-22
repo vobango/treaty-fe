@@ -44,7 +44,7 @@ const ViewWork = () => {
           {translate(`listings.${listingType}`)}
         </h1>
         {posts.map(post => (
-          <Listing post={post} />
+          <Listing {...post} />
         ))}
       </div>
     </Layout>

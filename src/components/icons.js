@@ -249,6 +249,7 @@ export const Icon = {
   Check,
   Close,
   Cross,
+  DoubleArrow,
   ListPoint,
   Loader,
   Marker,
@@ -259,5 +260,4 @@ export const Icon = {
   Tools,
   User,
   Worker,
-  DoubleArrow
 };

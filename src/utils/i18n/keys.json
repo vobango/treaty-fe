@@ -501,6 +501,10 @@
 		"en": "Passwords do not match!",
 		"et": "Paroolid ei kattu!"
 	},
+	"paymentEuro": {
+		"en": "Pay (1€)",
+		"et": "Maksa (1€)"
+	},
 	"generalRegisterError": {
 		"en": "Error Signing up with email and password"
 	},
@@ -523,6 +527,14 @@
 	"workerCountCondition": {
 		"en": "(1-99)",
 		"et": "(1-99)"
+	},
+	"workfield1": {
+		"en": "Work field - 1",
+		"et": "Valdkond - 1"
+	},
+	"workfield2": {
+		"en": "Work field - 2",
+		"et": "Valdkond - 2"
 	},
 	"chooseField": {
 		"en": "Choose a field",

@@ -7,17 +7,17 @@ import {useFirebase} from '../providers/firebase';
 
 //TODO: should probably be extracted as a dummy component
 
-const Listing = ({post}) => {
+const Listing = ({
+  created,
+  workArea,
+  workField1,
+  workField2,
+  workerCount,
+  dateRange = [],
+  postId
+}) => {
   const format = date => formatDate(date);
   const {translate, locale} = useLocale();
-  const {
-    created,
-    workArea,
-    workField1,
-    workField2,
-    workerCount,
-    dateRange = []
-  } = post;
   const [from, to] = dateRange;
   const itemClasses = 'flex items-center text-sm font-light text-gray-700';
   const detailsButton =
@@ -33,7 +33,7 @@ const Listing = ({post}) => {
   const firebase = useFirebase();
 
   const fetchDetails = async () => {
-    setDetails(await firebase.doGetDetails(post.postId));
+    setDetails(await firebase.doGetDetails(postId));
   };
 
   const handlePayment = () => {
@@ -50,13 +50,13 @@ const Listing = ({post}) => {
           <div>
             {!!workField1 && (
               <div className="flex">
-                <p className={headerText}>Valdkond - 1</p>
+                <p className={headerText}>{translate('workField1')}</p>
                 <p className={detailText}>{workField1}</p>
               </div>
             )}
             {!!workField2 && (
               <div className="flex">
-                <p className={headerText}>Valdkond - 2</p>
+                <p className={headerText}>{translate('workField2')}</p>
                 <p className={detailText}>{workField2}</p>
               </div>
             )}
@@ -70,7 +70,7 @@ const Listing = ({post}) => {
         </div>
         {!!details.details && (
           <div className="my-4">
-            <p className={headerText}>Lisainformatsioon</p>
+            <p className={headerText}>{translate('otherInfo')}</p>
             <p className={detailText}>{details.details}</p>
           </div>
         )}
@@ -80,19 +80,19 @@ const Listing = ({post}) => {
             Kontakt
           </p>
           <div className={groupingClass}>
-            <p className={headerText}>Kontaktisik:</p>
+            <p className={headerText}>{translate('contactPersonName')}:</p>
             <p className={detailText}>{details.contactName}</p>
           </div>
           <div className={groupingClass}>
-            <p className={headerText}>Ettevõte:</p>
+            <p className={headerText}>{translate('companyName')}:</p>
             <p className={detailText}>{details.companyName}</p>
           </div>
           <div className={groupingClass}>
-            <p className={headerText}>Telefon:</p>
+            <p className={headerText}>{translate('contactPersonPhone')}:</p>
             <p className={detailText}>{details.contactPhone}</p>
           </div>
           <div className={groupingClass}>
-            <p className={headerText}>E-post:</p>
+            <p className={headerText}>{translate('contactPersonEmail')}:</p>
             <p className={detailText}>{details.contactEmail}</p>
           </div>
         </div>
@@ -116,7 +116,9 @@ const Listing = ({post}) => {
             </div>
           )}
           {!!created && (
-            <div className={itemClasses}>Lisatud {format(created)}</div>
+            <div className={itemClasses}>
+              {translate('listingAddedTime')} {format(created)}
+            </div>
           )}
         </div>
       </div>
@@ -131,13 +133,13 @@ const Listing = ({post}) => {
           onClick={() => handlePayment()}
           className={detailsButton + ' text-gray-700 bg-gray-200'}
         >
-          Registeeru
+          {translate('register')}
         </button>
         <button
           onClick={() => handlePayment()}
           className={detailsButton + ' text-white bg-green-500'}
         >
-          Maksa (1€)
+          {translate('paymentEuro')}
         </button>
       </div>
     );
