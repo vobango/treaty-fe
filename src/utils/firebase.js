@@ -30,47 +30,60 @@ class Firebase {
 
   // *** Post API ***
   doAddPost = post => {
+    // adds post details to details collection
     this.db
-      .collection('posts')
+      .collection('details')
       .add({
-        post: post.post,
-        workerCount: post.workerCount,
-        workArea: post.workArea,
-        workField1: post.workField1,
-        workField2: post.workField2,
-        dateRange: [
-          new Date(post.startDate).getTime(),
-          new Date(post.endDate).getTime()
-        ],
         email: this.auth.currentUser.email,
-        created: new Date().getTime(),
         contactEmail: post.contactEmail,
         contactName: post.contactName,
         contactPhone: post.contactPhone,
         companyName: post.companyName,
-        type: post.type
+        details: post.post
       })
       .then(
-        function(docRef) {
-          // adds the posts reference to the current users posts
-          const userRef = this.db
-            .collection('users')
-            .doc(this.auth.currentUser.email);
-          userRef.get().then(docSnapshot => {
-            if (docSnapshot.exists) {
-              userRef.update({
-                posts: app.firestore.FieldValue.arrayUnion(docRef.id)
-              });
-            } else {
-              this.db
-                .collection('users')
-                .doc(this.auth.currentUser.email)
-                .set({
-                  posts: [docRef.id],
-                  created: new Date().getTime()
+        function(detailsRef) {
+          // adds post to post collection for previews. Also stores refrence to each posts details
+          this.db
+            .collection('posts')
+            .add({
+              post: post.post,
+              workerCount: post.workerCount,
+              workArea: post.workArea,
+              workField1: post.workField1,
+              workField2: post.workField2,
+              dateRange: [
+                new Date(post.startDate).getTime(),
+                new Date(post.endDate).getTime()
+              ],
+              type: post.type,
+              postId: detailsRef.id,
+              created: new Date()
+            })
+            .then(
+              function(postRef) {
+                // adds the posts reference to the current users posts
+                const userRef = this.db
+                  .collection('users')
+                  .doc(this.auth.currentUser.email);
+                userRef.get().then(docSnapshot => {
+                  if (docSnapshot.exists) {
+                    userRef.update({
+                      posts: app.firestore.FieldValue.arrayUnion(postRef.id)
+                    });
+                  } else {
+                    // only creates user object, if the user actually creates a post/makes a purchase
+                    this.db
+                      .collection('users')
+                      .doc(this.auth.currentUser.email)
+                      .set({
+                        posts: [postRef.id],
+                        created: new Date().getTime()
+                      });
+                  }
                 });
-            }
-          });
+              }.bind(this)
+            );
         }.bind(this)
       )
       .catch(function(error) {
@@ -105,6 +118,33 @@ class Firebase {
         .delete()
         .then();
     }
+  };
+
+  doGetDetails = async postId => {
+    if (!postId) return;
+    return this.db
+      .collection('details')
+      .doc(postId)
+      .get()
+      .then(docSnapshot => {
+        if (docSnapshot.exists) {
+          return docSnapshot.data();
+        }
+      });
+  };
+
+  doCheckUserPremium = async () => {
+    const userRef = this.db
+      .collection('users')
+      .doc(this.auth.currentUser.email);
+
+    return userRef.get().then(function(doc) {
+      if (doc.exists) {
+        return !!doc.data().premium;
+      } else {
+        return false;
+      }
+    });
   };
 }
 export default Firebase;
