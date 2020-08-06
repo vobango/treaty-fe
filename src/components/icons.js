@@ -259,5 +259,5 @@ export const Icon = {
   Settings,
   Tools,
   User,
-  Worker,
+  Worker
 };
