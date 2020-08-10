@@ -26,7 +26,6 @@ const Listing = ({
     'font-bold text-xs md:text-sm w-3/5 md:w-1/3 flex justify-between items-center';
   const detailText =
     'text-md md:text-lg font-thin w-full md:w-2/3 break-words overflow-auto';
-  const iconClasses = 'h-8 w-8 text-gray-600';
   const groupingClass = 'flex my-1';
   const [details, setDetails] = useState();
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -50,20 +49,20 @@ const Listing = ({
         <div>
           {!!workField1 && (
             <div className="flex">
-              <p className={headerText}>{translate('workField1')}</p>
+              <p className={headerText}>{translate('workSpecialty1')}</p>
               <p className={detailText}>{workField1}</p>
             </div>
           )}
           {!!workField2 && (
             <div className="flex">
-              <p className={headerText}>{translate('workField2')}</p>
+              <p className={headerText}>{translate('workSpecialty2')}</p>
               <p className={detailText}>{workField2}</p>
             </div>
           )}
         </div>
         {!!workerCount && (
           <div className="absolute top-0 right-0 mr-2 flex items-center">
-            <Icon.Worker className={iconClasses} />
+            <Icon.Worker className="h-8 w-8 text-gray-600" />
             {workerCount}
           </div>
         )}
@@ -190,7 +189,7 @@ const Listing = ({
         <Icon.DoubleArrow
           direction="right"
           transform={direction === 'right' ? 'scale(1,1)' : 'scale(-1,1)'}
-          className="w-16 h-8 ml-2 text-green-600"
+          className="w-16 h-8 text-green-600"
         />
       </button>
     );
