@@ -28,6 +28,9 @@ class Firebase {
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
   doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
+  getUserRef = () => {
+    return this.db.collection('users').doc(this.auth.currentUser.email);
+  };
   // *** Post API ***
   doAddPost = post => {
     // adds post details to details collection
@@ -145,6 +148,25 @@ class Firebase {
         return false;
       }
     });
+  };
+
+  doAddPaidListing = async listingId => {
+    const doc = await this.getUserRef().get();
+
+    if (!doc.exists) {
+      return;
+    }
+    this.getUserRef().update({
+      paidPosts: app.firestore.FieldValue.arrayUnion(listingId)
+    });
+  };
+
+  doGetPaidPosts = async () => {
+    const doc = await this.getUserRef().get();
+    if (!doc.exists) {
+      return [];
+    }
+    return doc.data().paidPosts || [];
   };
 }
 export default Firebase;
