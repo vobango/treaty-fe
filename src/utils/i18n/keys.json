@@ -532,11 +532,11 @@
 		"en": "(1-99)",
 		"et": "(1-99)"
 	},
-	"workfield1": {
+	"workSpecialty1": {
 		"en": "Work field - 1",
 		"et": "Valdkond - 1"
 	},
-	"workfield2": {
+	"workSpecialty2": {
 		"en": "Work field - 2",
 		"et": "Valdkond - 2"
 	},
