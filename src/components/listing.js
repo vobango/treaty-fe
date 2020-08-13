@@ -1,7 +1,9 @@
 import {AnimatePresence, motion} from 'framer-motion';
-import {formatDate, formatRelative} from '../utils/helpers';
+import {Link} from 'react-router-dom';
+import {formatDate} from '../utils/helpers';
 import {Icon} from './icons';
 import React, {useState} from 'react';
+import {useLocation} from 'react-router';
 import {useLocale} from '../providers/locale';
 import {useFirebase} from '../providers/firebase';
 
@@ -17,8 +19,10 @@ const Listing = ({
   postId
 }) => {
   const format = date => formatDate(date);
-  const {translate, locale} = useLocale();
+  const {translate} = useLocale();
   const [from, to] = dateRange;
+  const {search} = useLocation();
+  console.log(search);
   const itemClasses = 'flex items-center text-sm font-light text-gray-700';
   const detailsButton =
     'text-sm uppercase rounded-lg py-3 px-6 tracking-wide xl:text-lg';
@@ -34,13 +38,6 @@ const Listing = ({
 
   const fetchDetails = async () => {
     setDetails(await firebase.doGetDetails(postId));
-  };
-
-  const handlePayment = () => {
-    const success = true;
-    if (success) {
-      fetchDetails();
-    }
   };
 
   const renderDetails = () => {
@@ -129,18 +126,13 @@ const Listing = ({
     if (!!details) return null;
     return (
       <div className="flex justify-between mt-4">
-        <button
-          onClick={() => handlePayment()}
-          className={detailsButton + ' text-gray-700 bg-gray-200'}
-        >
-          {translate('register')}
-        </button>
-        <button
-          onClick={() => handlePayment()}
+        <div />
+        <Link
+          to="/payment"
           className={detailsButton + ' text-white bg-green-500'}
         >
           {translate('paymentEuro')}
-        </button>
+        </Link>
       </div>
     );
   };
@@ -157,12 +149,8 @@ const Listing = ({
       <div className="flex mt-4 items-center">
         <div className={detailBoxWidth}>
           {!details ? (
-            <p
-              className="select-none text-transparent"
-              style={{textShadow: '0 0 5px rgba(0,0,0,0.5)'}}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, ed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua...
+            <p style={{filter: 'blur(6px)'}}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit...
             </p>
           ) : (
             renderDetails()

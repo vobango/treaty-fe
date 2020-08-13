@@ -6,3 +6,5 @@ export const EULA = '/eula';
 export const ADD = '/add';
 export const LISTINGS = '/listings';
 export const SETTINGS = '/settings';
+export const PAYMENT = '/payment';
+export const PAYMENT_SUCCESS = '/payment_success';
