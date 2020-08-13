@@ -10,7 +10,7 @@ const ViewWork = () => {
   const {translate} = useLocale();
   const [posts, setPosts] = useState([]);
   const firebase = useFirebase();
-  const {search} = useLocation();
+  const {search, listingId} = useLocation();
   const listingType = new URLSearchParams(search).get('type') || 'job';
 
   useEffect(() => {
@@ -44,7 +44,11 @@ const ViewWork = () => {
           {translate(`listings.${listingType}`)}
         </h1>
         {posts.map(post => (
-          <Listing key={post.id} {...post} />
+          <Listing
+            key={post.id}
+            status={listingId === post.postId ? 'paid' : 'unpaid'}
+            {...post}
+          />
         ))}
       </div>
     </Layout>

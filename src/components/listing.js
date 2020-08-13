@@ -16,13 +16,13 @@ const Listing = ({
   workField2,
   workerCount,
   dateRange = [],
-  postId
+  postId,
+  status
 }) => {
   const format = date => formatDate(date);
   const {translate} = useLocale();
   const [from, to] = dateRange;
   const {search} = useLocation();
-  console.log(search);
   const itemClasses = 'flex items-center text-sm font-light text-gray-700';
   const detailsButton =
     'text-sm uppercase rounded-lg py-3 px-3 tracking-wide xl:text-md sm:w-1/3 sm:text-xs';
@@ -35,17 +35,15 @@ const Listing = ({
   const [openDropdown, setOpenDropdown] = useState(false);
 
   const firebase = useFirebase();
-
-  const fetchDetails = async () => {
-    setDetails(await firebase.doGetDetails(postId));
-  };
-
-  const handlePayment = () => {
-    const success = true;
-    if (success) {
+  React.useEffect(() => {
+    const fetchDetails = async () => {
+      setDetails(await firebase.doGetDetails(postId));
+      setOpenDropdown(true);
+    };
+    if (status === 'paid') {
       fetchDetails();
     }
-  };
+  }, [status, setOpenDropdown]);
 
   const renderDetailsHeader = () => {
     return (
@@ -168,14 +166,13 @@ const Listing = ({
     if (!!details) return null;
     return (
       <div className="flex justify-between mt-4 w-full">
-        <button
-          onClick={() => handlePayment()}
-          className={detailsButton + ' text-gray-700 bg-gray-200'}
-        >
-          {translate('register')}
-        </button>
-        <button
-          onClick={() => handlePayment()}
+        <div />
+        <Link
+          to={{
+            pathname: '/payment',
+            listingId: postId,
+            redirectTo: search
+          }}
           className={detailsButton + ' text-white bg-green-500'}
         >
           {translate('paymentEuro')}
@@ -218,7 +215,7 @@ const Listing = ({
             renderDetails()
           )}
         </div>
-        {!details && renderArrowButton('right')}
+        {!details && renderArrowButton(openDropdown ? 'left' : 'right')}
       </div>
 
       <AnimatePresence>
