@@ -17,6 +17,7 @@ const Listing = ({
   workerCount,
   dateRange = [],
   postId,
+  open,
   status
 }) => {
   const format = date => formatDate(date);
@@ -32,18 +33,18 @@ const Listing = ({
     'text-md md:text-lg font-thin w-full md:w-2/3 break-words overflow-auto';
   const groupingClass = 'flex my-1';
   const [details, setDetails] = useState();
-  const [openDropdown, setOpenDropdown] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(open);
 
   const firebase = useFirebase();
   React.useEffect(() => {
     const fetchDetails = async () => {
       setDetails(await firebase.doGetDetails(postId));
-      setOpenDropdown(true);
+      await firebase.doAddPaidListing(postId);
     };
     if (status === 'paid') {
       fetchDetails();
     }
-  }, [status, setOpenDropdown]);
+  }, [status, setOpenDropdown, firebase, postId]);
 
   const renderDetailsHeader = () => {
     return (
