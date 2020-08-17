@@ -9,8 +9,9 @@ import Listing from '../components/listing';
 const ViewWork = () => {
   const {translate} = useLocale();
   const [posts, setPosts] = useState([]);
+  const [refs, setRefs] = useState({});
   const firebase = useFirebase();
-  const {search} = useLocation();
+  const {search, listingId} = useLocation();
   const listingType = new URLSearchParams(search).get('type') || 'job';
 
   useEffect(() => {
@@ -37,6 +38,14 @@ const ViewWork = () => {
     };
   }, [firebase, listingType]);
 
+  React.useEffect(() => {
+    if (listingId) {
+      setTimeout(() => {
+        document.getElementById(listingId).scrollIntoView({behavior: 'smooth'});
+      }, 300);
+    }
+  }, [listingId]);
+
   return (
     <Layout>
       <div className="w-full md:w-1/2 lg:w-1/3">
@@ -44,7 +53,12 @@ const ViewWork = () => {
           {translate(`listings.${listingType}`)}
         </h1>
         {posts.map(post => (
-          <Listing {...post} />
+          <div key={post.id} id={post.postId}>
+            <Listing
+              status={listingId === post.postId ? 'paid' : 'unpaid'}
+              {...post}
+            />
+          </div>
         ))}
       </div>
     </Layout>
