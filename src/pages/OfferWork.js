@@ -10,6 +10,8 @@ import ContactInfo from '../components/newListing/contactForm';
 import ListingPreview from '../components/newListing/preview';
 import {HOME} from '../utils/routes';
 import Portal from '../components/portal';
+import request from '../utils/request';
+import {useAuth} from '../providers/authentication';
 
 const OfferWork = () => {
   const {translate} = useLocale();
@@ -32,8 +34,21 @@ const OfferWork = () => {
   const {search} = useLocation();
   const searchParams = new URLSearchParams(search);
   const listingType = searchParams.get('type') || 'job';
-  const sendPost = () => {
-    firebase.doAddPost({
+  const {email} = useAuth();
+  const sendNotification = listingId => {
+    request('/.netlify/functions/notifications', {
+      body: {
+        ignore: email,
+        title: `${translate(
+          `listing.${listingType}`
+        )}: ${workField1.toLowerCase()}, ${workArea}`,
+        link: `http://cofind.eu/listings?type=${listingType}&id=${listingId}`,
+        text: translate('otherInfo')
+      }
+    });
+  };
+  const sendPost = async () => {
+    const newPostId = await firebase.doAddPost({
       workerCount,
       startDate,
       endDate,
@@ -47,6 +62,7 @@ const OfferWork = () => {
       companyName,
       type: listingType
     });
+    sendNotification(newPostId);
     history.push(HOME);
   };
   const [showConfirm, setConfirm] = React.useState(false);

@@ -10,10 +10,11 @@ const serviceAccount = {
 };
 
 exports.handler = async function(event, context, callback) {
-  /* const listing = JSON.parse(event.body);
+  const defaultResponse = {statusCode: 200, body: '{}'};
+  const listing = JSON.parse(event.body);
   if (!listing) {
-    return {statusCode: 200};
-  } */
+    return defaultResponse;
+  }
   if (admin.apps.length === 0) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
@@ -27,28 +28,22 @@ exports.handler = async function(event, context, callback) {
     .get();
 
   if (snapshot.empty) {
-    return {statusCode: 200};
+    return defaultResponse;
   }
   const users = [];
   snapshot.forEach(function(doc) {
-    users.push(doc.id);
+    if (doc.id !== listing.ignore) {
+      users.push({address: doc.id});
+    }
   });
-  client.transmissions
-    .send({
-      content: {
-        from: 'info@cofind.eu',
-        subject: 'Hello, World!',
-        html: '<html><body><p>My cool email.</p></body></html>'
-      },
-      recipients: [{address: 'kaspar.arme@gmail.com'}]
-    })
-    .then(data => {
-      console.log('Woohoo! You just sent your first mailing!');
-      console.log(data);
-    })
-    .catch(err => {
-      console.log('Whoops! Something went wrong');
-      console.log(err);
-    });
-  return {statusCode: 200, body: JSON.stringify(users)};
+  const {title, link, text} = listing;
+  client.transmissions.send({
+    content: {
+      from: 'info@cofind.eu',
+      subject: title,
+      html: `<html><body><p>${text} <a href=${link}>${link}</a></p></body></html>`
+    },
+    recipients: users
+  });
+  return defaultResponse;
 };
