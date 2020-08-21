@@ -58,7 +58,6 @@ class Firebase {
       postId: detailsRef.id,
       created: new Date()
     });
-    console.log(postRef.id);
 
     // adds the posts reference to the current users posts
     const userRef = await this.db
