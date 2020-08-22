@@ -20,7 +20,13 @@ const Listing = ({
   open,
   status
 }) => {
-  const format = date => formatDate(date);
+  const format = date => {
+    let timestamp = date;
+    if (typeof date.toDate === 'function') {
+      timestamp = date.toDate();
+    }
+    return formatDate(timestamp);
+  };
   const {translate} = useLocale();
   const [from, to] = dateRange;
   const {search} = useLocation();
