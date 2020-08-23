@@ -44,7 +44,7 @@ class Firebase {
     });
 
     // adds post to post collection for previews. Also stores refrence to each posts details
-    const postRef = await this.db.collection('posts').add({
+    await this.db.collection('posts').add({
       post: post.post,
       workerCount: post.workerCount,
       workArea: post.workArea,
@@ -67,7 +67,7 @@ class Firebase {
 
     if (docSnapshot.exists) {
       userRef.update({
-        posts: app.firestore.FieldValue.arrayUnion(postRef.id)
+        posts: app.firestore.FieldValue.arrayUnion(detailsRef.id)
       });
     } else {
       // only creates user object, if the user actually creates a post/makes a purchase
@@ -75,12 +75,12 @@ class Firebase {
         .collection('users')
         .doc(this.auth.currentUser.email)
         .set({
-          posts: [postRef.id],
+          posts: [detailsRef.id],
           created: new Date().getTime()
         });
     }
 
-    return postRef.id;
+    return detailsRef.id;
   };
 
   doGetReference = (created, user, collection) => {
@@ -155,7 +155,11 @@ class Firebase {
     if (!doc.exists) {
       return [];
     }
-    return doc.data().paidPosts || [];
+
+    const ownPosts = doc.data().posts || [];
+    const paidPosts = doc.data().paidPosts || [];
+
+    return [...ownPosts, ...paidPosts];
   };
 }
 export default Firebase;
