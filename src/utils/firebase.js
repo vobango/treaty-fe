@@ -32,66 +32,55 @@ class Firebase {
     return this.db.collection('users').doc(this.auth.currentUser.email);
   };
   // *** Post API ***
-  doAddPost = post => {
+  doAddPost = async post => {
     // adds post details to details collection
-    this.db
-      .collection('details')
-      .add({
-        email: this.auth.currentUser.email,
-        contactEmail: post.contactEmail,
-        contactName: post.contactName,
-        contactPhone: post.contactPhone,
-        companyName: post.companyName,
-        details: post.post
-      })
-      .then(
-        function(detailsRef) {
-          // adds post to post collection for previews. Also stores refrence to each posts details
-          this.db
-            .collection('posts')
-            .add({
-              post: post.post,
-              workerCount: post.workerCount,
-              workArea: post.workArea,
-              workField1: post.workField1,
-              workField2: post.workField2,
-              dateRange: [
-                new Date(post.startDate).getTime(),
-                new Date(post.endDate).getTime()
-              ],
-              type: post.type,
-              postId: detailsRef.id,
-              created: new Date()
-            })
-            .then(
-              function(postRef) {
-                // adds the posts reference to the current users posts
-                const userRef = this.db
-                  .collection('users')
-                  .doc(this.auth.currentUser.email);
-                userRef.get().then(docSnapshot => {
-                  if (docSnapshot.exists) {
-                    userRef.update({
-                      posts: app.firestore.FieldValue.arrayUnion(postRef.id)
-                    });
-                  } else {
-                    // only creates user object, if the user actually creates a post/makes a purchase
-                    this.db
-                      .collection('users')
-                      .doc(this.auth.currentUser.email)
-                      .set({
-                        posts: [postRef.id],
-                        created: new Date().getTime()
-                      });
-                  }
-                });
-              }.bind(this)
-            );
-        }.bind(this)
-      )
-      .catch(function(error) {
-        console.error('Error adding document: ', error);
+    const detailsRef = await this.db.collection('details').add({
+      email: this.auth.currentUser.email,
+      contactEmail: post.contactEmail,
+      contactName: post.contactName,
+      contactPhone: post.contactPhone,
+      companyName: post.companyName,
+      details: post.post
+    });
+
+    // adds post to post collection for previews. Also stores refrence to each posts details
+    const postRef = await this.db.collection('posts').add({
+      post: post.post,
+      workerCount: post.workerCount,
+      workArea: post.workArea,
+      workField1: post.workField1,
+      workField2: post.workField2,
+      dateRange: [
+        new Date(post.startDate).getTime(),
+        new Date(post.endDate).getTime()
+      ],
+      type: post.type,
+      postId: detailsRef.id,
+      created: new Date()
+    });
+
+    // adds the posts reference to the current users posts
+    const userRef = await this.db
+      .collection('users')
+      .doc(this.auth.currentUser.email);
+    const docSnapshot = await userRef.get();
+
+    if (docSnapshot.exists) {
+      userRef.update({
+        posts: app.firestore.FieldValue.arrayUnion(postRef.id)
       });
+    } else {
+      // only creates user object, if the user actually creates a post/makes a purchase
+      this.db
+        .collection('users')
+        .doc(this.auth.currentUser.email)
+        .set({
+          posts: [postRef.id],
+          created: new Date().getTime()
+        });
+    }
+
+    return postRef.id;
   };
 
   doGetReference = (created, user, collection) => {
