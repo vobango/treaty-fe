@@ -257,6 +257,16 @@
 		"en": "Job offers",
 		"et": "Tööpakkumised"
 	},
+  "listing": {
+    "job": {
+      "en": "Job listing",
+      "et": "Tööpakkumine"
+    },
+    "worker": {
+      "en": "Worker listing",
+      "et": "Tööjõupakkumine"
+    }
+  },
 	"listingAddedTime": {
 		"en": "Added",
 		"et": "Lisatud"

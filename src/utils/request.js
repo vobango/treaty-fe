@@ -17,7 +17,12 @@ function request(endpoint, {body, ...customConfig} = {}) {
   // When showing a loader, wait at least 500ms
   // so a fast API response does not create a flickering UI
   return Promise.all([sleep, req]).then(async ([, res]) => {
-    const data = await res.json();
+    let data;
+    try {
+      data = await res.clone().json();
+    } catch {
+      data = await res.text();
+    }
     if (res.ok) {
       return data;
     } else {

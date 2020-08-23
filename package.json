@@ -6,6 +6,7 @@
     "@wojtekmaj/react-daterange-picker": "^3.0.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.15.3",
+    "firebase-admin": "^9.1.0",
     "framer-motion": "^1.11.1",
     "intersection-observer": "^0.10.0",
     "isomorphic-unfetch": "^3.0.0",
@@ -23,7 +24,8 @@
     "react-responsive": "^8.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "recompose": "^0.30.0"
+    "recompose": "^0.30.0",
+    "sparkpost": "^2.1.4"
   },
   "scripts": {
     "dev": "run-p build:styles start",
