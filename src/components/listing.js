@@ -21,11 +21,7 @@ const Listing = ({
   status
 }) => {
   const format = date => {
-    let timestamp = date;
-    if (typeof date.toDate === 'function') {
-      timestamp = date.toDate();
-    }
-    return formatDate(timestamp);
+    return formatDate(date);
   };
   const {translate} = useLocale();
   const [from, to] = dateRange;
