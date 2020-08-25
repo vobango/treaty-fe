@@ -17,7 +17,6 @@ class Firebase {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
 
-    console.log(this.auth.Auth);
     this.db = app.firestore();
   }
   // *** Auth API ***
