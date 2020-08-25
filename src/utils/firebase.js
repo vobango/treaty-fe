@@ -17,11 +17,18 @@ class Firebase {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
 
+    console.log(this.auth.Auth);
     this.db = app.firestore();
   }
   // *** Auth API ***
-  doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+  doCreateUserWithEmailAndPassword = async (email, password) => {
+    try {
+      await this.auth.createUserWithEmailAndPassword(email, password);
+      this.doCreateUserObject(email);
+    } catch (e) {
+      console.error(e);
+    }
+  };
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
   doSignOut = () => this.auth.signOut();
@@ -31,6 +38,18 @@ class Firebase {
   getUserRef = () => {
     return this.db.collection('users').doc(this.auth.currentUser.email);
   };
+
+  doCreateUserObject = email => {
+    this.db
+      .collection('users')
+      .doc(email)
+      .set({
+        posts: [],
+        paidPosts: [],
+        notifications: true
+      });
+  };
+
   // *** Post API ***
   doAddPost = async post => {
     // adds post details to details collection
@@ -69,15 +88,6 @@ class Firebase {
       userRef.update({
         posts: app.firestore.FieldValue.arrayUnion(detailsRef.id)
       });
-    } else {
-      // only creates user object, if the user actually creates a post/makes a purchase
-      this.db
-        .collection('users')
-        .doc(this.auth.currentUser.email)
-        .set({
-          posts: [detailsRef.id],
-          created: new Date().getTime()
-        });
     }
 
     return detailsRef.id;
