@@ -56,7 +56,7 @@ class Firebase {
       ],
       type: post.type,
       postId: detailsRef.id,
-      created: new Date()
+      created: new Date().getTime()
     });
 
     // adds the posts reference to the current users posts

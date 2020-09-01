@@ -20,7 +20,9 @@ const Listing = ({
   open,
   status
 }) => {
-  const format = date => formatDate(date);
+  const format = date => {
+    return formatDate(date);
+  };
   const {translate} = useLocale();
   const [from, to] = dateRange;
   const {search} = useLocation();
