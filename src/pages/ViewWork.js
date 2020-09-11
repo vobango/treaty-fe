@@ -6,6 +6,12 @@ import {withAuthorization} from '../components/session';
 import {useLocale} from '../providers/locale';
 import {useListingForm} from '../providers/newListing';
 import Listing from '../components/listing';
+import {Icon} from '../components/icons';
+import DatePicker, {registerLocale, setDefaultLocale} from 'react-datepicker';
+import en from 'date-fns/locale/en-GB';
+import 'react-datepicker/dist/react-datepicker.css';
+registerLocale('en', en);
+setDefaultLocale('en');
 
 const ViewWork = () => {
   const {translate} = useLocale();
@@ -29,6 +35,10 @@ const ViewWork = () => {
   const [selectedJob, setJob] = React.useState('');
   const handleJobSelect = event => {
     setJob(event.target.value);
+  };
+  const [selectedDate, setDate] = React.useState(null);
+  const handleDateSelect = date => {
+    setDate(date.getTime());
   };
 
   React.useEffect(() => {
@@ -60,6 +70,9 @@ const ViewWork = () => {
     if (selectedJob) {
       query = query.where('workFields', 'array-contains', selectedJob);
     }
+    if (selectedDate) {
+      query = query.where('startDate', '>=', selectedDate);
+    }
     const unsubscribe = query.onSnapshot(snapshot => {
       let readData = [];
 
@@ -77,7 +90,7 @@ const ViewWork = () => {
     return () => {
       unsubscribe();
     };
-  }, [firebase, listingType, selectedAreas, selectedJob]);
+  }, [firebase, listingType, selectedAreas, selectedJob, selectedDate]);
 
   return (
     <Layout>
@@ -120,7 +133,7 @@ const ViewWork = () => {
           </div>
           <div>
             <h3 className="font-bold mb-2">Valdkond</h3>
-            <select onChange={handleJobSelect}>
+            <select onChange={handleJobSelect} className="input">
               {state.jobs.map((job, i) => {
                 return (
                   <option key={job} value={i === 0 ? '' : job}>
@@ -129,6 +142,25 @@ const ViewWork = () => {
                 );
               })}
             </select>
+            <div className="mt-8">
+              <h3 className="font-bold mb-2">Algusaeg</h3>
+              <div className="flex items-center">
+                <DatePicker
+                  dateFormat="dd.MM.yy"
+                  id="start-date"
+                  placeholderText="pp.kk.aa"
+                  className="input w-full mr-1"
+                  minDate={new Date()}
+                  onChange={handleDateSelect}
+                  selected={selectedDate}
+                />
+                {selectedDate && (
+                  <button onClick={() => setDate(null)}>
+                    <Icon.Close className="h-4" />
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
         </div>
         {posts.length > 0 ? (

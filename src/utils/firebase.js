@@ -73,6 +73,7 @@ class Firebase {
         new Date(post.startDate).getTime(),
         new Date(post.endDate).getTime()
       ],
+      startDate: new Date(post.startDate).getTime(),
       type: post.type,
       postId: detailsRef.id,
       created: new Date().getTime()
