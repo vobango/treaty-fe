@@ -4,13 +4,16 @@ import {ReactQueryConfigProvider} from 'react-query';
 import {queryConfig} from '../utils/constants';
 import {LocaleProvider} from './locale';
 import {AuthProvider} from './authentication';
+import {ListingStateProvider} from './newListing';
 
 export function Providers({children}) {
   return (
     <FirebaseProvider>
       <ReactQueryConfigProvider config={queryConfig}>
         <AuthProvider>
-          <LocaleProvider>{children}</LocaleProvider>
+          <LocaleProvider>
+            <ListingStateProvider>{children}</ListingStateProvider>
+          </LocaleProvider>
         </AuthProvider>
       </ReactQueryConfigProvider>
     </FirebaseProvider>

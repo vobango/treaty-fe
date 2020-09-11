@@ -12,7 +12,6 @@ import Layout from './layout';
 import OfferWork from '../pages/OfferWork';
 import ViewWork from '../pages/ViewWork';
 import Eula from '../pages/Eula';
-import {ListingStateProvider} from '../providers/newListing';
 
 const Navigation = () => {
   return (
@@ -22,11 +21,7 @@ const Navigation = () => {
       <Route exact path={ROUTES.APP} component={AppAuth} />
       <Route exact path={ROUTES.HOME} component={Home} />
       <Route exact path={ROUTES.EULA} component={Eula} />
-      <Route path={ROUTES.ADD}>
-        <ListingStateProvider>
-          <OfferWork />
-        </ListingStateProvider>
-      </Route>
+      <Route path={ROUTES.ADD} component={OfferWork} />
       <Route path={ROUTES.LISTINGS} component={ViewWork} />
       <Route path={ROUTES.SETTINGS}>
         <Layout>

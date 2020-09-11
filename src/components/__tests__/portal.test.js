@@ -24,7 +24,7 @@ describe('Portal component', function() {
   it('should render child nodes', async function() {
     const testContent = faker.random.word();
     render(
-      <Portal id={faker.random.word()}>
+      <Portal id="ANY_ID">
         <div>{testContent}</div>
       </Portal>
     );

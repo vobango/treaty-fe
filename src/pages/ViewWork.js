@@ -4,13 +4,32 @@ import Layout from '../components/layout';
 import {useFirebase} from '../providers/firebase';
 import {withAuthorization} from '../components/session';
 import {useLocale} from '../providers/locale';
+import {useListingForm} from '../providers/newListing';
 import Listing from '../components/listing';
 
 const ViewWork = () => {
   const {translate} = useLocale();
   const firebase = useFirebase();
+  const {state} = useListingForm();
   const {search, listingId} = useLocation();
   const listingType = new URLSearchParams(search).get('type') || 'job';
+  const QUERY_LIMIT = 10;
+  const [selectedAreas, setAreas] = React.useState([]);
+  const handleAreaSelect = area => {
+    setAreas(prevState => {
+      if (prevState.includes(area)) {
+        return prevState.filter(selectedArea => area !== selectedArea);
+      } else if (prevState.length === 10) {
+        return prevState;
+      } else {
+        return [...prevState, area];
+      }
+    });
+  };
+  const [selectedJob, setJob] = React.useState('');
+  const handleJobSelect = event => {
+    setJob(event.target.value);
+  };
 
   React.useEffect(() => {
     if (listingId) {
@@ -34,46 +53,101 @@ const ViewWork = () => {
   useEffect(() => {
     // Live updates
     const collection = firebase.db.collection('posts');
-    const unsubscribe = collection
-      .where('type', '==', listingType)
-      .onSnapshot(snapshot => {
-        let readData = [];
+    let query = collection.where('type', '==', listingType);
+    if (selectedAreas.length > 0) {
+      query = query.where('workArea', 'in', selectedAreas);
+    }
+    if (selectedJob) {
+      query = query.where('workFields', 'array-contains', selectedJob);
+    }
+    const unsubscribe = query.onSnapshot(snapshot => {
+      let readData = [];
 
-        if (snapshot.size) {
-          snapshot.forEach(doc => {
-            readData.push({id: doc.ref.id, ...doc.data()});
-          });
-        }
-
-        readData.sort((a, b) => {
-          return b.created - a.created;
+      if (snapshot.size) {
+        snapshot.forEach(doc => {
+          readData.push({id: doc.ref.id, ...doc.data()});
         });
-        setPosts(readData);
+      }
+
+      readData.sort((a, b) => {
+        return b.created - a.created;
       });
+      setPosts(readData);
+    });
     return () => {
       unsubscribe();
     };
-  }, [firebase, listingType]);
+  }, [firebase, listingType, selectedAreas, selectedJob]);
 
   return (
     <Layout>
       <div className="w-full md:w-1/2 lg:w-1/3">
-        <h1 className="text-3xl text-center">
+        <h1 className="text-3xl text-center mb-8">
           {translate(`listings.${listingType}`)}
         </h1>
-        {posts.map(post => (
-          <div key={post.id} id={post.postId}>
-            <Listing
-              status={
-                listingId === post.postId || paidPosts.includes(post.postId)
-                  ? 'paid'
-                  : 'unpaid'
-              }
-              open={listingId === post.postId}
-              {...post}
-            />
+        <div className="flex justify-center">
+          <div className="mr-8 ">
+            <div className="flex justify-between mb-2 items-center">
+              <h3 className="font-bold">Piirkond</h3>
+              <div
+                className={` ${
+                  selectedAreas.length === QUERY_LIMIT
+                    ? 'text-red-500'
+                    : 'text-gray-600'
+                } text-sm text-right`}
+              >
+                {selectedAreas.length}/{QUERY_LIMIT}
+              </div>
+            </div>
+            <div className="h-40 overflow-auto mb-3">
+              {state.areas.slice(1).map(area => {
+                return (
+                  <div key={area} className="grid grid-cols-8">
+                    <input
+                      type="checkbox"
+                      id={area}
+                      className="mb-1 self-center"
+                      checked={selectedAreas.includes(area)}
+                      onChange={() => handleAreaSelect(area)}
+                    />
+                    <label htmlFor={area} className="col-span-7">
+                      {area}
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        ))}
+          <div>
+            <h3 className="font-bold mb-2">Valdkond</h3>
+            <select onChange={handleJobSelect}>
+              {state.jobs.map((job, i) => {
+                return (
+                  <option key={job} value={i === 0 ? '' : job}>
+                    {job}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+        {posts.length > 0 ? (
+          posts.map(post => (
+            <div key={post.id} id={post.postId}>
+              <Listing
+                status={
+                  listingId === post.postId || paidPosts.includes(post.postId)
+                    ? 'paid'
+                    : 'unpaid'
+                }
+                open={listingId === post.postId}
+                {...post}
+              />
+            </div>
+          ))
+        ) : (
+          <h2>Ühtegi postitust ei leitud</h2>
+        )}
       </div>
     </Layout>
   );

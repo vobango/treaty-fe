@@ -50,6 +50,7 @@ class Firebase {
       workArea: post.workArea,
       workField1: post.workField1,
       workField2: post.workField2,
+      workFields: [post.workField1, post.workField2],
       dateRange: [
         new Date(post.startDate).getTime(),
         new Date(post.endDate).getTime()
